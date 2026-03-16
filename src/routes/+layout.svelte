@@ -13,6 +13,8 @@
 	import 'swiper/css';
 	/*favicon*/
 	import favicon from '$lib/assets/favicon.png';
+	/*モーダル*/
+	import Modal from '$lib/components/Modal.svelte';
 
 	/*NProgressの設定*/
 	beforeNavigate(() => {
@@ -67,12 +69,61 @@
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	});
+
+	/*s:モーダル*/
+	let showModal = $state(false);
+	let modalType = $state('');
+
+	function openModal(type: string) {
+		showModal = true;
+		modalType = type;
+	}
+	/*e:モーダル*/
+	//
+	/*s:カルーセル*/
+	let swiperContainer: HTMLDivElement | null = null;
+	let swiperInstance: any = null;
+
+	onMount(() => {
+		const handleKeydown = (event: KeyboardEvent) => {
+			// Ctrl + K (または Cmd + K) を判定
+			if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+				event.preventDefault(); // ブラウザのデフォルト挙動を無効化
+				openModal('a');
+			}
+		};
+
+		window.addEventListener('keydown', handleKeydown);
+
+		// クリーンアップ関数
+		return () => {
+			window.removeEventListener('keydown', handleKeydown);
+		};
+	});
 </script>
 
 <svelte:head>
 	<link rel="stylesheet" href="https://cdn.atserver186.jp/libs/fontawesome/css/all.min.css" />
 	<link rel="icon" href={favicon} />
 </svelte:head>
+
+<Modal bind:showModal>
+	<!--s:M.お困りの場合-->
+	{#if modalType === 'a'}
+		<form class="s-search-form mb-4" action="/organizations/" method="GET">
+			<input
+				class="s-search-input"
+				type="text"
+				id="searchTerm"
+				name="search"
+				placeholder="検索..."
+			/>
+			<button class="m-search-button" type="submit" title="検索する"
+				><i class="fas fa-search"></i></button
+			>
+		</form>
+	{:else if modalType === 'b'}{/if}
+</Modal>
 
 <header class={headerClass}>
 	<div class="flex items-center justify-between px-2 py-2">
@@ -122,7 +173,14 @@
 		<!--PC用メニュー-->
 		<nav class="hidden md:flex">
 			<ul class="flex items-center gap-5 whitespace-nowrap transition">
-				<li><a href="/" class="header-text ml-3 text-xs tracking-wider transition">ホーム</a></li>
+				<li>
+					<button
+						onclick={() => openModal('a')}
+						type="button"
+						class="header-text header-search-btn ml-3 text-xs tracking-wider transition"
+						><i class="fa-solid fa-magnifying-glass mr-1"></i><kbd>Ctrl&nbsp;K</kbd></button
+					>
+				</li>
 				<li>
 					<a href="/service" class="header-text ml-3 text-xs tracking-wider transition">サービス</a>
 				</li>
@@ -132,8 +190,8 @@
 					>
 				</li>
 				<li>
-					<a href="/site/about" class="header-text ml-3 text-xs tracking-wider transition"
-						>当サイトについて</a
+					<a href="/site/contact" class="header-text ml-3 text-xs tracking-wider transition"
+						>お問い合わせ</a
 					>
 				</li>
 				<li class="mr-6">
@@ -153,7 +211,7 @@
 				<li><a href="/" class="header-text">ホーム</a></li>
 				<li><a href="/service" class="header-text">サービス</a></li>
 				<li><a href="/software" class="header-text">ソフトウェア</a></li>
-				<li><a href="/site/about" class="header-text">当サイトについて</a></li>
+				<li><a href="/site/contact" class="header-text">お問い合わせ</a></li>
 				<li>
 					<button class="header-text" onclick={() => (otherOpen = !otherOpen)}>その他</button>
 				</li>
