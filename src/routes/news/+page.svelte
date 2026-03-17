@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { reveal } from '$lib/reveal';
 
-	let pageTitle = 'サービス';
+	let pageTitle = 'ニュース';
 </script>
 
 <svelte:head>

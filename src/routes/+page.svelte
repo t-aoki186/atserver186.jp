@@ -11,6 +11,10 @@
 	import 'swiper/css';
 	import 'swiper/css/navigation';
 	import 'swiper/css/pagination';
+	/*Sveltekit-View-Transition(ページ遷移時のアニメーション)*/
+	import { setupViewTransition } from 'sveltekit-view-transition';
+	//
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
 
 	/*s:モーダル*/
 	let showModal = $state(false);
@@ -65,6 +69,9 @@
 		}
 	});
 	/*s:カルーセル*/
+	/*s:View Transition*/
+	setupViewTransition();
+	/*e:View Transition*/
 </script>
 
 <svelte:head>
@@ -72,13 +79,6 @@
 </svelte:head>
 
 <div class="top-container relative flex w-full items-center bg-(--main-bg-color)">
-	<!--
-	<img
-		src="https://cdn.atserver186.jp/img/tf26/material/top-img.webp"
-		alt="ATSERVER"
-		class="h-auto w-[90%] m-auto rounded-xl object-cover"
-	/>
-	-->
 	<!--s:カルーセル-->
 	<!--
 	<div class="carousel-wrapper">
@@ -400,6 +400,10 @@
 </main>
 
 <style>
+	@view-transition {
+		navigation: auto;
+	}
+
 	.carousel-wrapper {
 		width: 60vw;
 		margin: 0 auto;

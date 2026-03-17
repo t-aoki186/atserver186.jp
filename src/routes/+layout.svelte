@@ -127,50 +127,60 @@
 
 <header class={headerClass}>
 	<div class="flex items-center justify-between px-2 py-2">
-		<!-- ロゴ -->
+		<!--s:ロゴ-->
 		<a href="/" class="flex shrink-0 whitespace-nowrap transition">
 			<img src={logo} alt="" class="h-10 w-auto rounded-xl" />
-			<!--<p class="header-text m-auto ml-2 font-bold">ATSERVER</p>-->
 		</a>
-		<!-- ハンバーガー / その他メニュー閉じる（スマホ用） -->
-		<div class="grid md:hidden">
-			{#if !otherOpen}
-				<button
-					class="col-start-1 row-start-1 flex cursor-pointer flex-col gap-1.5"
-					transition:fade={{ duration: 300 }}
-					onclick={() => (open = !open)}
-					title="メニュー"
-				>
-					<div class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center">
-						<input class="peer hidden" type="checkbox" checked={open} />
-						<div
-							class="header-hamburger h-0.5 w-[50%] origin-left translate-y-[0.45rem] rounded-sm bg-black transition-all duration-300 peer-checked:rotate-[-45deg]"
-						></div>
-						<div
-							class="header-hamburger h-0.5 w-[50%] origin-center rounded-md bg-black transition-all duration-300 peer-checked:hidden"
-						></div>
-						<div
-							class="header-hamburger h-0.5 w-[50%] origin-left -translate-y-[0.45rem] rounded-md bg-black transition-all duration-300 peer-checked:rotate-[45deg]"
-						></div>
-					</div>
-				</button>
-			{/if}
+		<!--e:ロゴ-->
+		<!---->
+		<div class="flex items-center md:hidden">
+			<!--s:スマホ用検索ボタン-->
+			<button onclick={() => openModal('a')} type="button" title="検索する" class="mr-4 text-sm"
+				><i class="fa-solid fa-magnifying-glass"></i></button
+			>
+			<!--e:スマホ用検索ボタン-->
+			<!---->
+			<!--s:スマホ用ハンバーガー / その他メニュー閉じる-->
+			<div class="grid">
+				{#if !otherOpen}
+					<button
+						class="col-start-1 row-start-1 flex cursor-pointer flex-col gap-1.5"
+						transition:fade={{ duration: 300 }}
+						onclick={() => (open = !open)}
+						title="メニュー"
+					>
+						<div class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center">
+							<input class="peer hidden" type="checkbox" checked={open} />
+							<div
+								class="header-hamburger h-0.5 w-[50%] origin-left translate-y-[0.45rem] rounded-sm bg-black transition-all duration-300 peer-checked:rotate-[-45deg]"
+							></div>
+							<div
+								class="header-hamburger h-0.5 w-[50%] origin-center rounded-md bg-black transition-all duration-300 peer-checked:hidden"
+							></div>
+							<div
+								class="header-hamburger h-0.5 w-[50%] origin-left -translate-y-[0.45rem] rounded-md bg-black transition-all duration-300 peer-checked:rotate-[45deg]"
+							></div>
+						</div>
+					</button>
+				{/if}
 
-			{#if otherOpen}
-				<button
-					class="col-start-1 row-start-1 flex cursor-pointer flex-col gap-1.5"
-					transition:fade={{ duration: 300 }}
-					onclick={() => closeOther(open)}
-					title="メニュー"
-				>
-					<div class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center">
-						<i class="fa-solid fa-angle-left other-close-ico"></i>
-					</div>
-				</button>
-			{/if}
+				{#if otherOpen}
+					<button
+						class="col-start-1 row-start-1 flex cursor-pointer flex-col gap-1.5"
+						transition:fade={{ duration: 300 }}
+						onclick={() => closeOther(open)}
+						title="メニュー"
+					>
+						<div class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center">
+							<i class="fa-solid fa-angle-left other-close-ico"></i>
+						</div>
+					</button>
+				{/if}
+			</div>
+			<!--s:スマホ用ハンバーガー / その他メニュー閉じる-->
 		</div>
-
-		<!--PC用メニュー-->
+		<!---->
+		<!--s:PC用メニュー-->
 		<nav class="hidden md:flex">
 			<ul class="flex items-center gap-5 whitespace-nowrap transition">
 				<li>
@@ -190,7 +200,7 @@
 					>
 				</li>
 				<li>
-					<a href="/site/contact" class="header-text ml-3 text-xs tracking-wider transition"
+					<a href="/contact" class="header-text ml-3 text-xs tracking-wider transition"
 						>お問い合わせ</a
 					>
 				</li>
@@ -202,6 +212,7 @@
 				</li>
 			</ul>
 		</nav>
+		<!--e:PC用メニュー-->
 	</div>
 
 	<!--スマホ用メニュー-->
@@ -211,7 +222,7 @@
 				<li><a href="/" class="header-text">ホーム</a></li>
 				<li><a href="/service" class="header-text">サービス</a></li>
 				<li><a href="/software" class="header-text">ソフトウェア</a></li>
-				<li><a href="/site/contact" class="header-text">お問い合わせ</a></li>
+				<li><a href="/contact" class="header-text">お問い合わせ</a></li>
 				<li>
 					<button class="header-text" onclick={() => (otherOpen = !otherOpen)}>その他</button>
 				</li>
@@ -234,13 +245,18 @@
 		>
 			<ul class="flex flex-col gap-4 text-sm tracking-wide">
 				<li>
-					<a href="/site/oss" class="header-text"
-						><i class="fa-solid fa-rectangle-list mr-1 text-xs"></i>使用しているOSS一覧</a
+					<a href="/news" class="header-text"
+						><i class="fa-regular fa-file-lines mr-1 text-xs"></i>ニュース</a
 					>
 				</li>
 				<li>
-					<a href="/site/saucecode" class="header-text"
-						><i class="fa-solid fa-code mr-1 text-xs"></i>ソースコード</a
+					<a href="/site/oss" class="header-text"
+						><i class="fa-solid fa-rectangle-list mr-1 text-xs"></i>使用しているOSS</a
+					>
+				</li>
+				<li>
+					<a href="https://github.com/t-aoki186/atserver186.jp" class="header-text"
+						><i class="fa-brands fa-github mr-1 text-xs"></i>ソースコード</a
 					>
 				</li>
 				<li>
@@ -254,7 +270,7 @@
 					>
 				</li>
 				<li>
-					<a href="/site/contact" class="header-text"
+					<a href="/contact" class="header-text"
 						><i class="fa-solid fa-envelope mr-1 text-xs"></i>お問い合わせ</a
 					>
 				</li>
@@ -304,7 +320,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="/site/contact">
+						<a href="/contact">
 							<span>お問い合わせ</span>
 						</a>
 					</li>
@@ -384,7 +400,7 @@
 		<a href="/site/privacy" class="footer-link" style="margin-right: 10px; margin-left: 10px;"
 			>プライバシーポリシー</a
 		><span class="footer-span">|</span>
-		<a href="/site/contact" class="footer-link" style="margin-left: 10px;">お問い合わせ</a>
+		<a href="/contact" class="footer-link" style="margin-left: 10px;">お問い合わせ</a>
 		<p class="footer-text">
 			&copy; 2026 ATSERVER. | atserver186.jp All Rights Reserved.
 			本サイトの無断転載は、固くこれを禁じます。
