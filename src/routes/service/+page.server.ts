@@ -1,8 +1,8 @@
-import { fetchOrganizations } from '$lib/server/getjson/services';
+import { fetchServices } from '$lib/server/getjson/services';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
-  const results = await fetchOrganizations();
+  const results = await fetchServices();
   return {
     results
   };

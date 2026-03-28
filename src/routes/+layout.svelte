@@ -255,7 +255,7 @@
 					>
 				</li>
 				<li>
-					<a href="https://github.com/t-aoki186/atserver186.jp" class="header-text"
+					<a href="https://github.com/t-aoki186/atserver186.jp" class="header-text" target="_blank"
 						><i class="fa-brands fa-github mr-1 text-xs"></i>ソースコード</a
 					>
 				</li>

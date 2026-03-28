@@ -115,7 +115,6 @@
 		</div>
 	</div>
 </div>
-<hr class="main-hr" />
 <main>
 	<!--s:サービス-->
 	<div class="container m-auto mt-10 rounded-xl bg-(--title-bg-color)" data-aos="fade-up">
@@ -350,6 +349,9 @@
 				>
 				<a href="https://nanasi-rasi.net/" target="_blank"
 					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>ななしぃ</a
+				>
+				<a href="https://nishi.boats/" target="_blank"
+					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>nishi.boats</a
 				>
 			</div>
 		</div>
