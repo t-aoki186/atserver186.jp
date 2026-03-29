@@ -390,7 +390,7 @@
 		</div>
 		<!---->
 	</div>
-	<div class="footer-bottom-content">
+	<div class="footer-bottom-content mx-auto">
 		<br />
 		<hr class="sub-hr" />
 		<br />

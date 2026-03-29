@@ -1,6 +1,6 @@
 <script lang="ts">
 	/*共通*/
-	let { data } = $props() as { data: { latest: any[] } };
+	let { data } = $props() as { data: { latestNews: any[]; latestMulinks: any[], latest2Mulinks: any[] } };
 	import { onMount } from 'svelte';
 	import { reveal } from '$lib/reveal';
 	/*モーダル*/
@@ -252,8 +252,8 @@
 					{/each}
 				</p>
 				<hr class="main-hr" />
-				{#each data?.latest ?? [] as item}
-					<ul>
+				<ul>
+					{#each data?.latestNews ?? [] as item}
 						<li class="mx-auto mb-4 w-full list-none">
 							<a href="/news/{item.id}">
 								<div
@@ -279,8 +279,8 @@
 								</div>
 							</a>
 						</li>
-					</ul>
-				{/each}
+					{/each}
+				</ul>
 			</div>
 			<div class="link-4 flex items-center justify-center">
 				<i
@@ -311,48 +311,18 @@
 	<div class="container mx-auto mb-10" data-aos="fade-up">
 		<div class="main-link">
 			<div class="link-2">
-				<a href="http://ramuneserver.net/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>ramuneserver.net</a
-				>
-				<a href="https://ilovejunkpcnico.netlify.app/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>Nico Site</a
-				>
-				<a href="https://linkserver.jp/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>LinkServer</a
-				>
-				<a href="https://256server.com/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>256server</a
-				>
-				<a href="https://senpai114514.icu/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>i i yo!ko i
-					yo!-いいよこいよ114514</a
-				>
-				<a href="https://mellllonsoda-server.com/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>Mellllonsoda Portfolio</a
-				>
+				{#each data?.latestMulinks ?? [] as item}
+					<a href={item.url} target="_blank"
+						><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>{item.title}</a
+					>
+				{/each}
 			</div>
 			<div class="link-2">
-				<a href="https://www.kaerubasyo.com/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>kaeruの帰ル場所</a
-				>
-				<a href="https://umaii.f5.si/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>うまいだんご</a
-				>
-				<a href="https://atuatu-hhakumai.github.io/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>Atuatu Hhakumai</a
-				>
-				<a href="https://home.seutacloud.com/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>Clover's homepage</a
-				>
-				<a href="https://pusyuuwanko.com/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>プシューサービス</a
-				>
-				<a href="https://nanasi-rasi.net/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>ななしぃ</a
-				>
-				<a href="https://nishi.boats/" target="_blank"
-					><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>nishi.boats</a
-				>
+				{#each data?.latest2Mulinks ?? [] as item}
+					<a href={item.url} target="_blank"
+						><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>{item.title}</a
+					>
+				{/each}
 			</div>
 		</div>
 		<a href="/link" class="link-main" target="_blank">
@@ -404,18 +374,6 @@
 <style>
 	@view-transition {
 		navigation: auto;
-	}
-
-	.carousel-wrapper {
-		width: 60vw;
-		margin: 0 auto;
-	}
-
-	.slide-card {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: flex-start;
 	}
 
 	:global(.ats-swiper) {
