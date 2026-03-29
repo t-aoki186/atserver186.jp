@@ -16,11 +16,27 @@
 		<p class="tf26-page-title" style="color: black; margin-bottom: 0;">{pageTitle}</p>
 	</div>
 	<section class="container mx-auto mt-25 mb-25">
-		<div class="flex">
-			<div class=""></div>
-			<!---->
-			<div class=""></div>
-		</div>
+		<p class="mt-6 mb-6 text-lg md:mt-10 md:mb-10 md:text-xl">
+			以下のお問い合わせフォームもしくはメールアドレスからお問い合わせください。<br />
+			クリックするとメールソフトが起動します。<br />
+			なお、返信にはお時間をいただく場合がございます。ご了承ください。
+		</p>
+		<a
+			href="https://legacy.atserver186.jp/public/atserver186.jp/inquiry/"
+			class="link-main"
+			target="_blank"
+		>
+			<div class="link-main-underline">
+				<i class="fa-solid fa-arrow-right-long"></i>
+				<span>お問い合わせフォーム</span>
+			</div>
+		</a>
+		<a href="mailto:84th.tccaoki@gmail.com" class="link-main mt-4" target="_blank">
+			<div class="link-main-underline">
+				<i class="fa-solid fa-envelope"></i>
+				<span>84th.tccaoki[at]gmail.com</span>
+			</div>
+		</a>
 	</section>
 </main>
 <ol class="main-breadcrumb container mx-auto">

@@ -17,9 +17,7 @@
 	</div>
 	<section class="container mx-auto mt-25 mb-25">
 		<div class="flex">
-			<div class=""></div>
-			<!---->
-			<div class=""></div>
+			<p>現在利用可能なソフトウェアはございません。</p>
 		</div>
 	</section>
 </main>

@@ -108,9 +108,8 @@
 </svelte:head>
 
 <Modal bind:showModal>
-	<!--s:M.お困りの場合-->
 	{#if modalType === 'a'}
-		<form class="s-search-form mb-4" action="/organizations/" method="GET">
+		<form class="s-search-form mb-4" action="/search/" method="GET">
 			<input
 				class="s-search-input"
 				type="text"

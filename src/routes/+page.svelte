@@ -193,7 +193,7 @@
 				</p>
 			</div>
 		</div>
-		<a href="/" class="link-main">
+		<a href="/news/2025/10/08/47" class="link-main">
 			<div class="link-main-underline">
 				<i class="fa-solid fa-arrow-right-long"></i>
 				<span>仕様・外観を見る</span>
@@ -231,10 +231,10 @@
 			</div>
 		</div>
 		<br />
-		<a href="/theme" class="link-main">
+		<a href="/contact" class="link-main">
 			<div class="link-main-underline">
 				<i class="fa-solid fa-arrow-right-long"></i>
-				<span>詳しくはこちら</span>
+				<span>問い合わせる</span>
 			</div>
 		</a>
 		<br />
