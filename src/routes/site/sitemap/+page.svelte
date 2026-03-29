@@ -143,7 +143,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="/site/link">
+						<a href="/site/links">
 							<i class="fa-solid fa-ellipsis mr-1 text-xs"></i>
 							<span>すべてのSNS / リンクを見る</span>
 						</a>

@@ -265,7 +265,7 @@
 					>
 				</li>
 				<li>
-					<a href="/site/link" class="header-text"
+					<a href="/site/links" class="header-text"
 						><i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"></i>各種SNS / リンク</a
 					>
 				</li>
