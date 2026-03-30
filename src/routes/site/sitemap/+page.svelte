@@ -19,7 +19,7 @@
 		<div class="flex">
 			<div class="sitemap-content">
 				<h2
-					class="mb-4 border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
+					class="border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
 				>
 					提供中のもの
 				</h2>
@@ -58,7 +58,7 @@
 			</div>
 			<div class="sitemap-content">
 				<h2
-					class="mb-4 border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
+					class="border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
 				>
 					ATSERVERについて
 				</h2>
@@ -107,7 +107,7 @@
 			</div>
 			<div class="sitemap-content">
 				<h2
-					class="mb-4 border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
+					class="border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
 				>
 					各種SNS / リンク
 				</h2>
