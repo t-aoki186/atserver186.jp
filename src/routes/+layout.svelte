@@ -2,6 +2,10 @@
 	import { beforeNavigate, afterNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	/*ローディング*/
+	import { isVisible, hasInitialized } from '$lib/stores/loader';
+	import Loading from '$lib/components/Loading.svelte';
+	import { get } from 'svelte/store';
 	/*独自スタイル*/
 	import './layout.css';
 	import './icon.css';
@@ -100,6 +104,24 @@
 			window.removeEventListener('keydown', handleKeydown);
 		};
 	});
+
+onMount(() => {
+    // localStorage をチェック
+    const alreadySeen = localStorage.getItem('hasSeenIntro');
+
+    if (!alreadySeen) {
+      // 初回アクセスの場合
+      isVisible.set(true);
+      
+      // 「見たよ」というフラグを保存
+      localStorage.setItem('hasSeenIntro', 'true');
+
+      // 動画の長さに合わせて自動で消す（動画のendedイベントを使わない場合の保険）
+      setTimeout(() => {
+        isVisible.set(false);
+      }, 5000); 
+    }
+  });
 </script>
 
 <svelte:head>
@@ -121,8 +143,13 @@
 				><i class="fas fa-search"></i></button
 			>
 		</form>
+		<p class="mt-4 text-lg">現在検索機能は実装されていません。</p>
 	{:else if modalType === 'b'}{/if}
 </Modal>
+
+{#if $isVisible}
+	<Loading />
+{/if}
 
 <header class={headerClass}>
 	<div class="flex items-center justify-between px-2 py-2">

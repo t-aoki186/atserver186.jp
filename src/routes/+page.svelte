@@ -1,8 +1,12 @@
 <script lang="ts">
 	/*共通*/
-	let { data } = $props() as { data: { latestNews: any[]; latestMulinks: any[], latest2Mulinks: any[] } };
+	let { data } = $props() as {
+		data: { latestNews: any[]; latestMulinks: any[]; latest2Mulinks: any[] };
+	};
 	import { onMount } from 'svelte';
 	import { reveal } from '$lib/reveal';
+	/*ローディング*/
+	import { isVisible } from '$lib/stores/loader';
 	/*モーダル*/
 	import Modal from '$lib/components/Modal.svelte';
 	/*カルーセル*/
@@ -72,6 +76,12 @@
 	/*s:View Transition*/
 	setupViewTransition();
 	/*e:View Transition*/
+
+	/*s:ローディングアニメーションをもう一度視聴する*/
+	function replayAnimation() {
+		isVisible.set(true);
+	}
+	/*e:ローディングアニメーションをもう一度視聴する*/
 </script>
 
 <svelte:head>
@@ -125,48 +135,17 @@
 		</p>
 	</div>
 	<div class="container mx-auto" data-aos="fade-up">
-		<form class="s-search-form mb-4" action="/organizations/" method="GET">
-			<input
-				class="s-search-input"
-				type="text"
-				id="searchTerm"
-				name="search"
-				placeholder="検索..."
-			/>
-			<button class="m-search-button" type="submit" title="検索する"
-				><i class="fas fa-search"></i></button
-			>
-		</form>
-		<div class="relative m-auto mt-10 mb-4 max-w-125 bg-white">
-			<!-- 左下の角 -->
-			<span
-				class="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-(--main-text-color)"
-			></span>
-			<!-- 右下の角 -->
-			<span
-				class="absolute right-0 bottom-0 h-4 w-4 border-r-2 border-b-2 border-(--main-text-color)"
-			></span>
-			<!-- コンテンツ -->
-			<div class="flex justify-center gap-4 font-bold text-(--main-text-color)">
-				<div class="tp-search-method">
-					<a href="/organizations" class="dash-link">
-						<i class="fa-solid fa-list"></i>
-						<p>絞り込む</p>
-					</a>
-				</div>
-				<div class="tp-search-method">
-					<a href="/timetable" class="dash-link">
-						<i class="fa-solid fa-list"></i>
-						<p>タイムテーブルから<br />探す</p>
-					</a>
-				</div>
-			</div>
-		</div>
-		<p>[右から左]横に流れるサービスのサムネイル</p>
-		<p class="mb-4">[左から右]横に流れるサービスのサムネイル</p>
-		<a href="/search?category=service" class="link-main">
+		<a href="/service" class="link-main">
 			<div class="link-main-underline">
 				<i class="fa-solid fa-magnifying-glass"></i>
+				<span>サービスを検索する</span>
+			</div>
+		</a>
+		<p>[右から左]横に流れるサービスのサムネイル</p>
+		<p class="mb-4">[左から右]横に流れるサービスのサムネイル</p>
+		<a href="/service" class="link-main">
+			<div class="link-main-underline">
+				<i class="fa-solid fa-arrow-right-long"></i>
 				<span>サービス一覧はこちら</span>
 			</div>
 		</a>
@@ -362,7 +341,7 @@
 	<hr class="main-hr" />
 	<!--s:アニメーションを再視聴-->
 	<div class="container m-auto my-10">
-		<a href="/" class="link-main">
+		<a onclick={replayAnimation} class="link-main">
 			<div class="link-main-underline">
 				<i class="fa-solid fa-circle-play"></i>
 				<span>アニメーションをもう一度視聴する</span>
