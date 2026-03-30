@@ -38,22 +38,24 @@
 	const slides = [
 		{
 			id: 1,
-			title: 'スライド 1',
-			body: 'これは最初のスライドです。',
-			image: 'https://picsum.photos/id/1018/1200/600'
+			title: '外部公開用鯖',
+			/*body: 'これは最初のスライドです。',*/
+			image: 'https://pic.atserver186.jp/img/atserver/root/carousel/server_1.webp'
 		},
 		{
 			id: 2,
-			title: 'スライド 2',
-			body: 'これは2番目のスライドです。',
-			image: 'https://picsum.photos/id/1025/1200/600'
-		},
+			title: '個人用鯖',
+			/*body: 'これは2番目のスライドです。',*/
+			image: 'https://pic.atserver186.jp/img/atserver/root/carousel/server_2.webp'
+		}
+		/*
 		{
 			id: 3,
 			title: 'スライド 3',
 			body: '最後のスライドです。',
-			image: 'https://picsum.photos/id/1035/1200/600'
+			image: 'https://pic.atserver186.jp/img/atserver/root/carousel/server_1.webp'
 		}
+		*/
 	];
 	//
 	onMount(() => {
@@ -90,7 +92,6 @@
 
 <div class="top-container relative flex w-full items-center bg-(--main-bg-color)">
 	<!--s:カルーセル-->
-	<!--
 	<div class="carousel-wrapper">
 		<div class="swiper ats-swiper" bind:this={swiperContainer}>
 			<div class="swiper-wrapper">
@@ -101,8 +102,8 @@
 								<img src={s.image} alt={s.title} class="slide-img h-full w-full object-cover" />
 							{/if}
 							<div class="p-4">
-								<h2 class="mb-2 text-xl font-semibold">{s.title}</h2>
-								<p class="text-sm">{s.body}</p>
+								<h2 class="mb-2 text-sm font-semibold md:text-xl">{s.title}</h2>
+								<!--<p class="text-sm">{s.body}</p>-->
 							</div>
 						</div>
 					</div>
@@ -113,7 +114,6 @@
 			<div class="swiper-button-next"></div>
 		</div>
 	</div>
-	-->
 	<!--e:カルーセル-->
 	<!--スクロールインジケーターを重ねる-->
 	<div class="absolute right-0 bottom-6 z-10 md:right-6">
@@ -230,7 +230,7 @@
 						<span class="char text-(--main-text-color)" style={`--d: ${i * 0.12}s`}>{char}</span>
 					{/each}
 				</p>
-				<hr class="main-hr" />
+				<hr class="main-hr mb-4" />
 				<ul>
 					{#each data?.latestNews ?? [] as item}
 						<li class="mx-auto mb-4 w-full list-none">
@@ -365,7 +365,63 @@
 		color: var(--sub-text-color);
 	}
 
-	.tp-search-method {
+	/* Swiper navigation & pagination responsive size */
+	:global(.ats-swiper .swiper-button-next),
+	:global(.ats-swiper .swiper-button-prev) {
+		font-size: 2.2rem;
+		width: 44px;
+		height: 44px;
+	}
+	:global(.ats-swiper .swiper-pagination-bullet) {
+		width: 12px;
+		height: 12px;
+	}
+
+	@media (max-width: 1024px) {
+		:global(.ats-swiper .swiper-button-next),
+		:global(.ats-swiper .swiper-button-prev) {
+			font-size: 1.5rem;
+			width: 32px;
+			height: 32px;
+		}
+		:global(.ats-swiper .swiper-pagination-bullet) {
+			width: 9px;
+			height: 9px;
+		}
+	}
+
+	@media (max-width: 600px) {
+		:global(.ats-swiper .swiper-button-next),
+		:global(.ats-swiper .swiper-button-prev) {
+			font-size: 1.1rem;
+			width: 24px;
+			height: 24px;
+		}
+		:global(.ats-swiper .swiper-pagination-bullet) {
+			width: 7px;
+			height: 7px;
+		}
+	}
+
+	.carousel-wrapper {
+		width: 60vw;
+		margin: 0 auto;
+	}
+
+	.slide-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+	}
+
+	@media (max-width: 1024px) {
+		.carousel-wrapper {
+			width: 90vw;
+		}
+	}
+
+	/*.tp-search-method {
 		text-decoration: none;
 		width: 48%;
 		border-radius: 10px;
@@ -377,7 +433,7 @@
 	.tp-search-method:hover {
 		transform: scale(1.03);
 		opacity: 0.9;
-	}
+	}*/
 
 	#scroll-down {
 		display: block;

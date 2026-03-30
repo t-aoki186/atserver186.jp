@@ -105,23 +105,23 @@
 		};
 	});
 
-onMount(() => {
-    // localStorage をチェック
-    const alreadySeen = localStorage.getItem('hasSeenIntro');
+	onMount(() => {
+		// localStorage をチェック
+		const alreadySeen = localStorage.getItem('hasSeenIntro');
 
-    if (!alreadySeen) {
-      // 初回アクセスの場合
-      isVisible.set(true);
-      
-      // 「見たよ」というフラグを保存
-      localStorage.setItem('hasSeenIntro', 'true');
+		if (!alreadySeen) {
+			// 初回アクセスの場合
+			isVisible.set(true);
 
-      // 動画の長さに合わせて自動で消す（動画のendedイベントを使わない場合の保険）
-      setTimeout(() => {
-        isVisible.set(false);
-      }, 5000); 
-    }
-  });
+			// 「見たよ」というフラグを保存
+			localStorage.setItem('hasSeenIntro', 'true');
+
+			// 動画の長さに合わせて自動で消す（動画のendedイベントを使わない場合の保険）
+			setTimeout(() => {
+				isVisible.set(false);
+			}, 5000);
+		}
+	});
 </script>
 
 <svelte:head>
@@ -161,8 +161,11 @@ onMount(() => {
 		<!---->
 		<div class="flex items-center md:hidden">
 			<!--s:スマホ用検索ボタン-->
-			<button onclick={() => openModal('a')} type="button" title="検索する" class="mr-4 text-sm"
-				><i class="fa-solid fa-magnifying-glass"></i></button
+			<button
+				onclick={() => openModal('a')}
+				type="button"
+				title="検索する"
+				class="mr-4 cursor-pointer text-sm"><i class="fa-solid fa-magnifying-glass"></i></button
 			>
 			<!--e:スマホ用検索ボタン-->
 			<!---->
@@ -328,36 +331,81 @@ onMount(() => {
 
 			<!-- フッターの右側コンテンツ -->
 			<div class="footer-flex-content">
-				<h4>ご案内</h4>
+				<h4>提供中のもの</h4>
 				<ul>
-					<li>
-						<a href="/about">
-							<span>当サイトについて</span>
+					<li class="flex flex-col gap-2.5">
+						<a href="/service">
+							<span>webサービス</span>
 						</a>
 					</li>
 					<li>
-						<a href="/timetable">
-							<span>開発中</span>
+						<a href="https://dev.atserver186.jp/service/" target="_blank">
+							<span>開発中のwebサービス</span>
 						</a>
 					</li>
 					<li>
-						<a href="/qa">
-							<span>開発終了</span>
+						<a href="/software">
+							<span>PC/スマホ用ソフトウェア</span>
 						</a>
 					</li>
 					<li>
-						<a href="/contact">
-							<span>お問い合わせ</span>
+						<a href="https://dev.atserver186.jp/software/" target="_blank">
+							<span>開発中のPC/スマホ用ソフトウェア</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://dev.atserver186.jp/api/" target="_blank">
+							<span>API等について</span>
+						</a>
+					</li>
+					<li>
+						<a href="/site/related-services">
+							<span>関連サービス(別ドメイン)</span>
 						</a>
 					</li>
 				</ul>
 			</div>
 			<div class="footer-flex-content">
-				<h4>テスト</h4>
+				<h4>ATSERVERについて</h4>
 				<ul>
+					<li class="flex flex-col gap-2.5">
+						<a href="/about">
+							<span>当サイトについて</span>
+						</a>
+					</li>
 					<li>
-						<a href="/circle/club/tcc">
-							<span>テスト</span>
+						<a href="/site/related-services">
+							<span>関連サービス(別ドメイン)</span>
+						</a>
+					</li>
+					<li>
+						<a href="/site/terms">
+							<span>利用規約</span>
+						</a>
+					</li>
+					<li>
+						<a href="/site/privacypolicy">
+							<span>プライバシーポリシー</span>
+						</a>
+					</li>
+					<li>
+						<a href="/news">
+							<span>ニュース</span>
+						</a>
+					</li>
+					<li>
+						<a href="/site/oss">
+							<span>使用しているOSS</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/t-aoki186/atserver186.jp" target="_blank">
+							<span>ソースコード</span>
+						</a>
+					</li>
+					<li>
+						<a href="/site/contact">
+							<span>お問い合わせ</span>
 						</a>
 					</li>
 				</ul>
@@ -405,16 +453,6 @@ onMount(() => {
 				<img src={logo_2} alt={logo_alt} class="h-auto w-20 rounded-xl" />
 			</a>
 		</div>
-		<!--アコーディオン-->
-		<div class="overflow-hidden rounded-lg border">
-			<button
-				class="justfy-between flex w-full items-center bg-gray-100 p-4 transition"
-				onclick={() => (accordionOpen = !accordionOpen)}
-			>
-				<span>テスト</span>
-			</button>
-		</div>
-		<!---->
 	</div>
 	<div class="footer-bottom-content mx-auto">
 		<br />
