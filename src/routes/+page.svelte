@@ -88,6 +88,7 @@
 
 <svelte:head>
 	<title>ATSERVER</title>
+	<meta property="og:title" content="ATSERVER" />
 </svelte:head>
 
 <div class="top-container relative flex w-full items-center bg-(--main-bg-color)">

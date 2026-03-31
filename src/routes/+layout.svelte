@@ -17,6 +17,8 @@
 	import 'swiper/css';
 	/*favicon*/
 	import favicon from '$lib/assets/favicon.png';
+	/*SEO*/
+	import { page } from '$app/stores';
 	/*モーダル*/
 	import Modal from '$lib/components/Modal.svelte';
 
@@ -127,6 +129,26 @@
 <svelte:head>
 	<link rel="stylesheet" href="https://cdn.atserver186.jp/libs/fontawesome/css/all.min.css" />
 	<link rel="icon" href={favicon} />
+	<!--s:SEO-->
+	<!--各ページでheadに内容がなければ以下の内容が表示される-->
+	<title>ATSERVER</title>
+	<meta
+		name="description"
+		content="ATSERVERは様々なWebサービスを提供するサイトです。自作SNS・リンク共有サービス・掲示板・ブログ・その他ツールなどのWebサービスを展開しています。"
+	/>
+	<meta
+		name="keywords"
+		content="自宅鯖,自宅サーバー,Server,homeserver,ブログ,電子工作,dev,時計,リンク共有サービス,ATSLink,メモ帳,wiki,SNS,atserver,えーてぃーさーばー,ATS,ATSocial,Commina, 自作SNS, ATSERVER, 投稿, ミニゲーム, Webサービス"
+	/>
+	<meta property="og:site_name" content="ATSERVER" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="https://atserver186.jp/ogp.png" />
+	<meta property="og:title" content="ATSERVER" />
+	<link rel="canonical" href={$page.url.href} />
+	<meta property="og:url" content={$page.url.href} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@ATSERVER186" />
+	<!--e:SEO-->
 </svelte:head>
 
 <Modal bind:showModal>
