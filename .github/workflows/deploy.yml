@@ -16,6 +16,9 @@ jobs:
 
       - name: Install and Build
         run: |
+          # Node.jsがある場所を環境変数に追加（念のため）
+          export PATH=$PATH:/usr/local/bin:/usr/bin
+
           # サーバー上のプロジェクトディレクトリに移動
           cd /opt/atserver186.jp
           
