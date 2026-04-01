@@ -17,7 +17,7 @@ jobs:
       - name: Install and Build
         run: |
           # サーバー上のプロジェクトディレクトリに移動
-          cd /root/atserver186.jp
+          cd /opt/atserver186.jp
           
           # 最新のソースを取得
           git pull origin main
