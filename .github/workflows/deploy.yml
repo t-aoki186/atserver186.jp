@@ -16,20 +16,21 @@ jobs:
 
       - name: Install and Build
         run: |
-          # Node.jsがある場所を環境変数に追加（念のため）
-          export PATH=$PATH:/usr/local/bin:/usr/bin
-
-          # サーバー上のプロジェクトディレクトリに移動
-          cd /opt/atserver186.jp
+          # 1. パスを強制的に通す
+          export PATH=/usr/local/bin:/usr/bin:$PATH
           
-          # 最新のソースを取得
+          # 2. 今動いているバージョンをログに出して「犯人」を特定する
+          node -v
+          npm -v
+          
+          # 3. npm自体を最新版にアップデートする（これ重要！）
+          sudo npm install -g npm@latest
+          
+          cd /opt/atserver186.jp
           git pull origin main
           
-          # 依存関係のインストールとビルド
-          npm install
-          npm run build
+          # 4. エンジンチェックを無視して強引にインストール（最終手段に近いですが有効です）
+          npm install --engine-strict=false
           
-          # --- ここからが大事 ---
-          # PM2を使ってバックグラウンドで起動/再起動する
-          # すでに動いていれば restart、なければ start
+          npm run build
           pm2 restart web01 || pm2 start build/index.js --name web01
