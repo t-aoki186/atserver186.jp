@@ -14,22 +14,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install and Build
+      - name: Debug Environment
         run: |
-          # 1. 直接新しい方の node と npm を使うように設定
-          # (which node で出たパスが /usr/local/bin/node の場合)
-          alias node='/usr/local/bin/node'
-          alias npm='/usr/local/bin/node /usr/local/bin/npm'
+          echo "--- 1. Who am I? ---"
+          whoami
           
-          cd /opt/atserver186.jp
-          git pull origin main
+          echo "--- 2. Where is node? ---"
+          which -a node
           
-          # 2. バージョン確認（ここで v24... と出れば勝ちです）
-          /usr/local/bin/node -v
+          echo "--- 3. What is in /usr/local/bin? ---"
+          ls -l /usr/local/bin | grep node || echo "No node in /usr/local/bin"
           
-          # 3. フルパスで実行して EBADENGINE を回避
-          /usr/local/bin/node /usr/local/bin/npm install --engine-strict=false
-          /usr/local/bin/node /usr/local/bin/npm run build
+          echo "--- 4. What is in /usr/bin? ---"
+          ls -l /usr/bin/node || echo "No node in /usr/bin"
           
-          # 4. PM2もフルパスで（which pm2 で場所を確認してください）
-          /usr/local/bin/pm2 restart web01 || /usr/local/bin/pm2 start build/index.js --name web01
+          echo "--- 5. Current PATH ---"
+          echo $PATH
