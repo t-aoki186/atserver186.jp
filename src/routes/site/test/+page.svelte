@@ -18,7 +18,7 @@
 	</div>
 	<section class="container mx-auto mt-25 mb-25">
 		<div class="flex flex-col">
-            <p class="mb-2">これはテストページです。</p>
+            <p class="mb-2">テスト</p>
         </div>
 	</section>
 </main>
