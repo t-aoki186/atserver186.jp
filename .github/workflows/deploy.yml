@@ -16,21 +16,20 @@ jobs:
 
       - name: Install and Build
         run: |
-          # 1. パスを強制的に通す
-          export PATH=/usr/local/bin:/usr/bin:$PATH
-          
-          # 2. 今動いているバージョンをログに出して「犯人」を特定する
-          node -v
-          npm -v
-          
-          # 3. npm自体を最新版にアップデートする（これ重要！）
-          sudo npm install -g npm@latest
+          # 1. 直接新しい方の node と npm を使うように設定
+          # (which node で出たパスが /usr/local/bin/node の場合)
+          alias node='/usr/local/bin/node'
+          alias npm='/usr/local/bin/node /usr/local/bin/npm'
           
           cd /opt/atserver186.jp
           git pull origin main
           
-          # 4. エンジンチェックを無視して強引にインストール（最終手段に近いですが有効です）
-          npm install --engine-strict=false
+          # 2. バージョン確認（ここで v24... と出れば勝ちです）
+          /usr/local/bin/node -v
           
-          npm run build
-          pm2 restart web01 || pm2 start build/index.js --name web01
+          # 3. フルパスで実行して EBADENGINE を回避
+          /usr/local/bin/node /usr/local/bin/npm install --engine-strict=false
+          /usr/local/bin/node /usr/local/bin/npm run build
+          
+          # 4. PM2もフルパスで（which pm2 で場所を確認してください）
+          /usr/local/bin/pm2 restart web01 || /usr/local/bin/pm2 start build/index.js --name web01
