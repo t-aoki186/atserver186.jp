@@ -10,23 +10,21 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      # 1. 念のため最新のコードを作業ディレクトリに持ってくる
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Debug Environment
+      - name: Install and Build
         run: |
-          echo "--- 1. Who am I? ---"
-          whoami
+          # 1. プロジェクトディレクトリへ移動
+          cd /opt/atserver186.jp
           
-          echo "--- 2. Where is node? ---"
-          which -a node
+          # 2. ソースを最新にする
+          git pull origin main
           
-          echo "--- 3. What is in /usr/local/bin? ---"
-          ls -l /usr/local/bin | grep node || echo "No node in /usr/local/bin"
+          # 3. 依存関係のインストールとビルド
+          npm install
+          npm run build
           
-          echo "--- 4. What is in /usr/bin? ---"
-          ls -l /usr/bin/node || echo "No node in /usr/bin"
-          
-          echo "--- 5. Current PATH ---"
-          echo $PATH
+          # 4. PM2で再起動（反映）
+          # ※もし pm2 command not found と出たら root で npm install -g pm2 してください
+          pm2 restart web01 || pm2 start build/index.js --name web01
