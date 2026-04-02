@@ -2,14 +2,14 @@
 	import { onMount } from 'svelte';
 	import './components.css';
 
-	let { showModal = $bindable(), children } = $props();
+	let { showModalB = $bindable(), children } = $props();
 
 	let visible = $state(false);
 	let closing = $state(false);
 
-	//showModal が true になったら表示開始
+	//showModalB が true になったら表示開始
 	$effect(() => {
-		if (showModal) {
+		if (showModalB) {
 			visible = true;
 			closing = false;
 		} else if (visible) {
@@ -22,7 +22,7 @@
 	});
 
 	const close = () => {
-		showModal = false;
+		showModalB = false;
 	};
 
 	// close on Escape key when modal is visible
@@ -67,7 +67,8 @@
 		background: white;
 		border-radius: 12px;
 		padding: 1.5rem;
-		width: min(800px, 90vw);
+		/*width: min(800px, 90vw);*/
+		width: 90vw;
 		max-height: 80vh;
 		overflow: auto;
 		position: relative;
