@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { reveal } from '$lib/reveal';
 	import Modal from '$lib/components/ModalB.svelte';
+	import { navState } from '$lib/stores/navState.svelte.js';
 
 	let pageTitle = '時計';
 
@@ -16,7 +17,11 @@
 		modalType = type;
 	}
 	/*e:モーダル*/
-
+	/*s:共通パーツの表示・非表示切り替え*/
+	function toggleNav() {
+		navState.visible = !navState.visible;
+	}
+	/*e:共通パーツの表示・非表示切り替え*/
 	/*s:時計表示用*/
 	let time = $state(new Date()); //現在時刻をリアクティブな状態として定義
 
@@ -46,25 +51,40 @@
 
 <Modal bind:showModalB>
 	{#if modalType === 'a'}
-		<p class="mt-4 text-lg">test</p>
+		<button onclick={toggleNav} class="cursor-pointer">
+			{@html navState.visible ? '<i class="fa-solid fa-eye-slash"></i>非表示' : '<i class="fa-solid fa-eye"></i>表示'}
+		</button>
 	{/if}
 </Modal>
 
-<button
-	class="fixed h-auto w-auto cursor-pointer rounded-xl p-5"
-	style="bottom: 20px; right: 20px; background-color: var(--main-text-color); height: 50px; width: 50px; color: white;"
-	onclick={() => openModal('a')}
-	title="設定を開く"><i class="fa-solid fa-gear text-3xl"></i></button
+<button class="tool-setting-btn" onclick={() => openModal('a')} title="設定を開く"
+	><i class="fa-solid fa-gear text-3xl"></i></button
 >
 
-<main class="mt-15 mr-1 ml-1 min-h-screen">
-	<p>{formattedDate}</p>
-	<p>{formattedTime}</p>
+<main class="mr-1 ml-1 flex min-h-screen flex-col">
+	<div class="mx-auto my-auto landing-[1.2] text-center">
+		<p class="text-3xl">{formattedDate}</p>
+		<p class="text-9xl mt-15">{formattedTime}</p>
+	</div>
 </main>
-<ol class="main-breadcrumb container mx-auto">
+{#if navState.visible}
+<ol class="main-breadcrumb container mx-auto items-center">
 	<li><a href="/">ホーム</a></li>
 	<li>{pageTitle}</li>
 </ol>
+{/if}
 
 <style>
+	.tool-setting-btn {
+		position: fixed;
+		cursor: pointer;
+		bottom: 20px;
+		right: 20px;
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+		background-color: var(--main-bg-color);
+		box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+		border: 1px solid #ccc;
+	}
 </style>

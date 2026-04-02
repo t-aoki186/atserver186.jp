@@ -21,6 +21,8 @@
 	import { page } from '$app/stores';
 	/*モーダル*/
 	import Modal from '$lib/components/Modal.svelte';
+	/*共通パーツ表示・非表示切り替え*/
+	import { navState } from '$lib/stores/navState.svelte.js';
 
 	/*NProgressの設定*/
 	beforeNavigate(() => {
@@ -173,6 +175,7 @@
 	<Loading />
 {/if}
 
+{#if navState.visible}
 <header class={headerClass}>
 	<div class="flex items-center justify-between px-2 py-2">
 		<!--s:ロゴ-->
@@ -335,9 +338,11 @@
 		</nav>
 	{/if}
 </header>
+{/if}
 
 {@render children()}
 
+{#if navState.visible}
 <!--フッター-->
 <footer class="footer m-0 mb-0 w-full pt-[10] pr-0 pb-[10] pl-0">
 	<div class="hidden md:flex">
@@ -493,3 +498,4 @@
 		</p>
 	</div>
 </footer>
+{/if}
