@@ -22,6 +22,13 @@
 		navState.visible = !navState.visible;
 	}
 	/*e:共通パーツの表示・非表示切り替え*/
+	/*s:テーマ切り替え*/
+	let isDark = $state(false);
+
+	const toggleMode = () => {
+		isDark = !isDark;
+	};
+	/*e:テーマ切り替え*/
 	/*s:時計表示用*/
 	let time = $state(new Date()); //現在時刻をリアクティブな状態として定義
 	let timeZone = $state('Asia/Tokyo'); //デフォルトのタイムゾーン
@@ -82,6 +89,11 @@
 				<option value={zone.value}>{zone.label}</option>
 			{/each}
 		</select>
+		<div class:is-dark={isDark}>
+			<button onclick={toggleMode} class="cursor-pointer">
+				{@html isDark ? '<i class="fa-solid fa-sun"></i>ライトモード' : '<i class="fa-solid fa-moon"></i>ダークモード'}
+			</button>
+		</div>
 	{/if}
 </Modal>
 
@@ -89,7 +101,7 @@
 	><i class="fa-solid fa-gear text-3xl"></i></button
 >
 
-<main class="mr-1 ml-1 flex min-h-screen flex-col">
+<main class="clock-container flex min-h-screen flex-col" class:is-dark={isDark}>
 	<div class="landing-[1.2] mx-auto my-auto text-center">
 		<p class="text-3xl">{formattedDate}</p>
 		<p class="mt-15 text-9xl">{formattedTime}</p>
@@ -114,5 +126,15 @@
 		background-color: var(--main-bg-color);
 		box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 		border: 1px solid #ccc;
+	}
+
+	.clock-container {
+		background-color: var(--main-bg-color);
+		color: var(--main-text-color);
+	}
+
+	.clock-container.is-dark {
+		background-color: #1f1f1f;
+		color: var(--main-bg-color);
 	}
 </style>
