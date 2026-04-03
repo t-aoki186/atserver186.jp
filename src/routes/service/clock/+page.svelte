@@ -24,6 +24,20 @@
 	/*e:共通パーツの表示・非表示切り替え*/
 	/*s:時計表示用*/
 	let time = $state(new Date()); //現在時刻をリアクティブな状態として定義
+	let timeZone = $state('Asia/Tokyo'); //デフォルトのタイムゾーン
+
+	//タイムゾーンの選択肢
+	const zones = [
+		{ label: '日本(東京)', value: 'Asia/Tokyo' },
+		{ label: 'アメリカ(ニューヨーク)', value: 'America/New_York' },
+		{ label: 'イギリス(ロンドン)', value: 'Europe/London' },
+		{ label: 'フランス(パリ)', value: 'Europe/Paris' },
+		{ label: 'ドイツ(ベルリン)', value: 'Europe/Berlin' },
+		{ label: 'オーストラリア(シドニー)', value: 'Australia/Sydney' },
+		{ label: '中国(北京)', value: 'Asia/Shanghai' },
+		{ label: '韓国(ソウル)', value: 'Asia/Seoul' },
+		{ label: 'UTC', value: 'UTC' }
+	];
 
 	$effect(() => {
 		const interval = setInterval(() => {
@@ -33,15 +47,22 @@
 		return () => clearInterval(interval);
 	});
 
+	//年月日
 	const formattedDate = $derived(
 		time.toLocaleDateString('ja-JP', {
+			timeZone,
 			year: 'numeric',
 			month: '2-digit',
 			day: '2-digit'
 		})
 	);
 
-	const formattedTime = $derived(time.toLocaleTimeString('ja-JP')); //時間
+	//時間
+	const formattedTime = $derived(
+		time.toLocaleTimeString('ja-JP', {
+			timeZone
+		})
+	);
 </script>
 
 <svelte:head>
@@ -52,8 +73,15 @@
 <Modal bind:showModalB>
 	{#if modalType === 'a'}
 		<button onclick={toggleNav} class="cursor-pointer">
-			{@html navState.visible ? '<i class="fa-solid fa-eye-slash"></i>非表示' : '<i class="fa-solid fa-eye"></i>表示'}
+			{@html navState.visible
+				? '<i class="fa-solid fa-eye-slash"></i>非表示'
+				: '<i class="fa-solid fa-eye"></i>表示'}
 		</button>
+		<select bind:value={timeZone}>
+			{#each zones as zone}
+				<option value={zone.value}>{zone.label}</option>
+			{/each}
+		</select>
 	{/if}
 </Modal>
 
@@ -62,16 +90,16 @@
 >
 
 <main class="mr-1 ml-1 flex min-h-screen flex-col">
-	<div class="mx-auto my-auto landing-[1.2] text-center">
+	<div class="landing-[1.2] mx-auto my-auto text-center">
 		<p class="text-3xl">{formattedDate}</p>
-		<p class="text-9xl mt-15">{formattedTime}</p>
+		<p class="mt-15 text-9xl">{formattedTime}</p>
 	</div>
 </main>
 {#if navState.visible}
-<ol class="main-breadcrumb container mx-auto items-center">
-	<li><a href="/">ホーム</a></li>
-	<li>{pageTitle}</li>
-</ol>
+	<ol class="main-breadcrumb container mx-auto items-center">
+		<li><a href="/">ホーム</a></li>
+		<li>{pageTitle}</li>
+	</ol>
 {/if}
 
 <style>
