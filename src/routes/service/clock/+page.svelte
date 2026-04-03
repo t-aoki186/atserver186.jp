@@ -110,22 +110,22 @@
 
 <Modal bind:showModalB>
 	{#if modalType === 'settings'}
-		<div class="link_btn_list">
-			<div class="link_btn_list_item">
+		<div class="clock-setting-btn">
+			<div class="clock-setting-btn-item">
 				<button onclick={toggleNav} class="dash-link cursor-pointer">
 					{@html navState.visible
 						? '<p>UI</p><i class="fa-solid fa-eye-slash"></i>非表示'
 						: '<p>UI</p><i class="fa-solid fa-eye"></i>表示'}
 				</button>
 			</div>
-			<div class="link_btn_list_item" class:is-dark={isDark}>
+			<div class="clock-setting-btn-item" class:is-dark={isDark}>
 				<button onclick={toggleMode} class="dash-link cursor-pointer">
 					{@html isDark
 						? '<p>テーマ</p><i class="fa-solid fa-sun"></i>'
 						: '<p>テーマ</p><i class="fa-solid fa-moon"></i>'}
 				</button>
 			</div>
-			<div class="link_btn_list_item">
+			<div class="clock-setting-btn-item">
 				<button id="fullscreen-toggle-btn" class="dash-link cursor-pointer">
 					{@html isFullscreen
 						? '<p>最小化</p><i class="fa-solid fa-compress"></i>'
@@ -133,13 +133,15 @@
 				</button>
 			</div>
 		</div>
-		<label class="timezone-selector">
-			<select bind:value={timeZone}>
-				{#each zones as zone}
-					<option value={zone.value}>{zone.label}</option>
-				{/each}
-			</select>
-		</label>
+		<div class="timezone-selector-container">
+			<label class="timezone-selector">
+				<select bind:value={timeZone}>
+					{#each zones as zone}
+						<option value={zone.value}>{zone.label}</option>
+					{/each}
+				</select>
+			</label>
+		</div>
 	{/if}
 </Modal>
 
@@ -238,18 +240,19 @@
 	}
 
 	/* サービス一覧リンク */
-	.link_btn_list {
+	.clock-setting-btn {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 20px;
 		padding: 20px 0;
 	}
 
-	.link_btn_list_item {
+	.clock-setting-btn-item {
 		background-color: var(--main-bg-color);
 		text-decoration: none;
 		width: 48%;
-		max-width: 10vh;
+		max-width: 180px;
+		min-width: 100px;
 		flex: 0 0 auto;
 		border-radius: 10px;
 		padding: 15px;
@@ -257,7 +260,7 @@
 		text-align: center;
 	}
 
-	.link_btn_list_item:hover {
+	.clock-setting-btn-item:hover {
 		transform: scale(1.03);
 		opacity: 0.9;
 		background-color: #9c9a9a;
@@ -265,5 +268,21 @@
 
 	.dash-link {
 		text-decoration: none;
+	}
+
+	@media (max-width: 640px) {
+		.clock-setting-btn-item {
+			width: 100%;
+			padding: 5px 0;
+		}
+
+		.timezone-selector-container {
+			display: flex;
+			justify-content: center;
+		}
+
+		.clock-setting-btn {
+			justify-content: center;
+		}
 	}
 </style>
