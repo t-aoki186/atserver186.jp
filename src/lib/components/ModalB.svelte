@@ -67,9 +67,9 @@
 		background: white;
 		border-radius: 12px;
 		padding: 1.5rem;
-		/*width: min(800px, 90vw);*/
-		width: 90vw;
-		max-height: 80vh;
+		width: min(800px, 90vw);
+		/*width: 90vw;*/
+		height: 80vh;
 		overflow: auto;
 		position: relative;
 	}

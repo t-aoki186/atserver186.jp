@@ -1,7 +1,7 @@
 <script lang="ts">
 	const { data } = $props();
 
-	import { onMount } from 'svelte';
+	// import { onMount } from 'svelte';
 	import { reveal } from '$lib/reveal';
 	import Modal from '$lib/components/ModalB.svelte';
 	import { navState } from '$lib/stores/navState.svelte.js';
@@ -70,6 +70,37 @@
 			timeZone
 		})
 	);
+
+	// フルスクリーン状態
+	let isFullscreen = $state(false);
+
+	// フルスクリーン切替関数
+	function toggleFullscreen() {
+		if (!isFullscreen) {
+			document.body.requestFullscreen();
+		} else {
+			document.exitFullscreen();
+		}
+	}
+
+	// フルスクリーン状態の監視
+	function fullscreenChangeHandler() {
+		isFullscreen = !!document.fullscreenElement;
+	}
+
+	$effect(() => {
+		if (showModalB && modalType === 'settings') {
+			const btn = document.getElementById('fullscreen-toggle-btn');
+			if (btn) {
+				btn.onclick = toggleFullscreen;
+			}
+			document.addEventListener('fullscreenchange', fullscreenChangeHandler);
+			// クリーンアップ
+			return () => {
+				document.removeEventListener('fullscreenchange', fullscreenChangeHandler);
+			};
+		}
+	});
 </script>
 
 <svelte:head>
@@ -78,33 +109,48 @@
 </svelte:head>
 
 <Modal bind:showModalB>
-	{#if modalType === 'a'}
-		<button onclick={toggleNav} class="cursor-pointer">
-			{@html navState.visible
-				? '<i class="fa-solid fa-eye-slash"></i>非表示'
-				: '<i class="fa-solid fa-eye"></i>表示'}
-		</button>
-		<select bind:value={timeZone}>
-			{#each zones as zone}
-				<option value={zone.value}>{zone.label}</option>
-			{/each}
-		</select>
-		<div class:is-dark={isDark}>
-			<button onclick={toggleMode} class="cursor-pointer">
-				{@html isDark ? '<i class="fa-solid fa-sun"></i>ライトモード' : '<i class="fa-solid fa-moon"></i>ダークモード'}
-			</button>
+	{#if modalType === 'settings'}
+		<div class="link_btn_list">
+			<div class="link_btn_list_item">
+				<button onclick={toggleNav} class="dash-link cursor-pointer">
+					{@html navState.visible
+						? '<p>UI</p><i class="fa-solid fa-eye-slash"></i>非表示'
+						: '<p>UI</p><i class="fa-solid fa-eye"></i>表示'}
+				</button>
+			</div>
+			<div class="link_btn_list_item" class:is-dark={isDark}>
+				<button onclick={toggleMode} class="dash-link cursor-pointer">
+					{@html isDark
+						? '<p>テーマ</p><i class="fa-solid fa-sun"></i>'
+						: '<p>テーマ</p><i class="fa-solid fa-moon"></i>'}
+				</button>
+			</div>
+			<div class="link_btn_list_item">
+				<button id="fullscreen-toggle-btn" class="dash-link cursor-pointer">
+					{@html isFullscreen
+						? '<p>最小化</p><i class="fa-solid fa-compress"></i>'
+						: '<p>最大化</p><i class="fa-solid fa-expand"></i>'}
+				</button>
+			</div>
 		</div>
+		<label class="timezone-selector">
+			<select bind:value={timeZone}>
+				{#each zones as zone}
+					<option value={zone.value}>{zone.label}</option>
+				{/each}
+			</select>
+		</label>
 	{/if}
 </Modal>
 
-<button class="tool-setting-btn" onclick={() => openModal('a')} title="設定を開く"
+<button class="tool-setting-btn" onclick={() => openModal('settings')} title="設定を開く"
 	><i class="fa-solid fa-gear text-3xl"></i></button
 >
 
 <main class="clock-container flex min-h-screen flex-col" class:is-dark={isDark}>
 	<div class="landing-[1.2] mx-auto my-auto text-center">
-		<p class="text-3xl">{formattedDate}</p>
-		<p class="mt-15 text-9xl">{formattedTime}</p>
+		<p class="clock-date">{formattedDate}</p>
+		<p class="clock-time mt-15">{formattedTime}</p>
 	</div>
 </main>
 {#if navState.visible}
@@ -136,5 +182,88 @@
 	.clock-container.is-dark {
 		background-color: #1f1f1f;
 		color: var(--main-bg-color);
+	}
+
+	.clock-date {
+		font-size: var(--text-4xl);
+		line-height: var(--text-4xl--line-height);
+	}
+
+	.clock-time {
+		font-size: var(--text-9xl);
+		line-height: var(--text-9xl--line-height);
+	}
+
+	@media (max-width: 640px) {
+		.clock-date {
+			font-size: var(--text-2xl);
+			line-height: var(--text-2xl--line-height);
+		}
+
+		.clock-time {
+			font-size: var(--text-6xl);
+			line-height: var(--text-6xl--line-height);
+		}
+	}
+
+	.timezone-selector {
+		display: inline-flex;
+		align-items: center;
+		position: relative;
+	}
+
+	.timezone-selector::after {
+		position: absolute;
+		right: 15px;
+		width: 10px;
+		height: 7px;
+		background-color: #535353;
+		clip-path: polygon(0 0, 100% 0, 50% 100%);
+		content: '';
+		pointer-events: none;
+	}
+
+	.timezone-selector select {
+		appearance: none;
+		min-width: 230px;
+		height: 2.8em;
+		padding: 0.4em calc(0.8em + 30px) 0.4em 0.8em;
+		border: 1px solid #d0d0d0;
+		border-top-right-radius: 10px;
+		border-top-left-radius: 10px;
+		background-color: #fff;
+		color: #333333;
+		font-size: 1em;
+		cursor: pointer;
+	}
+
+	/* サービス一覧リンク */
+	.link_btn_list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		padding: 20px 0;
+	}
+
+	.link_btn_list_item {
+		background-color: var(--main-bg-color);
+		text-decoration: none;
+		width: 48%;
+		max-width: 10vh;
+		flex: 0 0 auto;
+		border-radius: 10px;
+		padding: 15px;
+		transition: 0.3s;
+		text-align: center;
+	}
+
+	.link_btn_list_item:hover {
+		transform: scale(1.03);
+		opacity: 0.9;
+		background-color: #9c9a9a;
+	}
+
+	.dash-link {
+		text-decoration: none;
 	}
 </style>
