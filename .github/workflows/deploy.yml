@@ -26,4 +26,5 @@ jobs:
           npm run build
           
           # 4. PM2で再起動（反映）
+          # ※もし pm2 command not found と出たら root で npm install -g pm2 してください
           pm2 restart web01 || pm2 start build/index.js --name web01

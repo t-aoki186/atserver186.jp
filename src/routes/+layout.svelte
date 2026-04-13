@@ -109,18 +109,19 @@
 		};
 	});
 
+	/*ローディングアニメーション*/
 	onMount(() => {
 		// localStorage をチェック
 		const alreadySeen = localStorage.getItem('hasSeenIntro');
 
 		if (!alreadySeen) {
-			// 初回アクセスの場合
+			//初回アクセスの場合
 			isVisible.set(true);
 
-			// 「見たよ」というフラグを保存
+			//動画を視聴済みのフラグを追加
 			localStorage.setItem('hasSeenIntro', 'true');
 
-			// 動画の長さに合わせて自動で消す（動画のendedイベントを使わない場合の保険）
+			//動画の長さに合わせて自動で消す（動画のendedイベントを使わない場合の保険）
 			setTimeout(() => {
 				isVisible.set(false);
 			}, 5000);
@@ -206,13 +207,13 @@
 						<div class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center">
 							<input class="peer hidden" type="checkbox" checked={open} />
 							<div
-								class="header-hamburger h-0.5 w-[50%] origin-left translate-y-[0.45rem] rounded-sm bg-black transition-all duration-300 peer-checked:rotate-[-45deg]"
+								class="header-hamburger h-0.5 w-[50%] origin-left translate-y-[0.45rem] rounded-sm bg-black transition-all duration-300 peer-checked:-rotate-45"
 							></div>
 							<div
 								class="header-hamburger h-0.5 w-[50%] origin-center rounded-md bg-black transition-all duration-300 peer-checked:hidden"
 							></div>
 							<div
-								class="header-hamburger h-0.5 w-[50%] origin-left -translate-y-[0.45rem] rounded-md bg-black transition-all duration-300 peer-checked:rotate-[45deg]"
+								class="header-hamburger h-0.5 w-[50%] origin-left -translate-y-[0.45rem] rounded-md bg-black transition-all duration-300 peer-checked:rotate-45"
 							></div>
 						</div>
 					</button>

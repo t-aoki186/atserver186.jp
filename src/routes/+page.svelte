@@ -342,12 +342,12 @@
 	<hr class="main-hr" />
 	<!--s:アニメーションを再視聴-->
 	<div class="container m-auto my-10">
-		<a onclick={replayAnimation} class="link-main">
+		<button onclick={replayAnimation} class="link-main">
 			<div class="link-main-underline">
 				<i class="fa-solid fa-circle-play"></i>
 				<span>アニメーションをもう一度視聴する</span>
 			</div>
-		</a>
+		</button>
 	</div>
 </main>
 

@@ -237,7 +237,7 @@ body {
 	padding: 0 0.5em;
 	color: var(--main-text-color);
 	background: transparent;
-	border-left: solid 5px var(--main-text-color);
+	border-left: solid 3px var(--main-text-color);
 }
 
 @media (max-width: 768px) {
