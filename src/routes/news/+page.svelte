@@ -1,10 +1,9 @@
 <script>
 	const { data } = $props();
 
-	import { onMount } from 'svelte';
 	import { reveal } from '$lib/reveal';
 
-	let pageTitle = 'ニュース';
+	let pageTitle = 'お知らせ';
 </script>
 
 <svelte:head>
@@ -16,28 +15,40 @@
 	<div class="container m-auto mt-25 border-b-2 border-b-(--main-text-color)">
 		<p class="tf26-page-title" style="color: black; margin-bottom: 0;">{pageTitle}</p>
 	</div>
-	<section class="container mx-auto mt-25 mb-25">
-	<div class="flex flex-wrap justify-center gap-4">
-			{#each data.results as item}
-				<article class="sp-search-result-card">
-					<a href="/news/{item.id}" class="sp-search-result-link-overlay">
-						<p class="hidden">hidden:エラー対策</p>
-					</a>
-					<div class="mb-2">
-						<p class="text-lg font-bold text-(--main-text-color)">{item.title}</p>
-						<p
-							class="text-sm"
-							style="color: color-mix(in srgb, var(--main-text-color), transparent 50%);"
-						>
-							{item.type}
-						</p>
-					</div>
-					<div class="flex"></div>
-					<p class="text-sm text-gray-600">{item.heading}</p>
-					<p class="text-xs text-gray-400">{item.date}</p>
-				</article>
+	<section class="container mx-auto mt-15 mb-25">
+		{#if data.news && data.news.length > 0}
+			{#each data.news as item}
+				<ul>
+					<li class="mx-auto mb-4 w-full list-none" style="view-transition-name: newsp-hero;">
+						<a href="/news/{item.id}">
+							<div
+								class="news-list flex border-l-2 pl-4"
+								style="border-left-color: var(--main-text-color);"
+							>
+								<div class="news-list-date-box mr-4">
+									<span class="news-list-month"
+										>{String(new Date(item.date).getMonth() + 1).padStart(2, '0')}</span
+									>
+									<span class="news-list-slash">/</span>
+									<span class="news-list-date"
+										>{String(new Date(item.date).getDate()).padStart(2, '0')}</span
+									>
+								</div>
+								<div class="truncate-parent flex-col">
+									<p class="truncate-title news-list-title ml-2 font-bold">{item.title}</p>
+									<p class="truncate-heading news-list-heading mb-2">{item.heading}</p>
+								</div>
+								<div class="news-list-icon my-auto ml-auto">
+									<i class="fa-solid fa-angles-right left-auto mr-2"></i>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
 			{/each}
-		</div>
+		{:else}
+			<p>お知らせの取得に失敗しました</p>
+		{/if}
 	</section>
 </main>
 <ol class="main-breadcrumb container mx-auto">
