@@ -15,16 +15,18 @@ jobs:
 
       - name: Install and Build
         run: |
-          # 1. プロジェクトディレクトリへ移動
+          # 安全なディレクトリと登録する
+          git config --global --add safe.directory /opt/atserver186.jp
+
           cd /opt/atserver186.jp
           
-          # 2. ソースを最新にする
+          # ソースを最新にする
           git pull origin main
           
-          # 3. 依存関係のインストールとビルド
+          # モジュールのインストールとビルド
           npm install
           npm run build
           
-          # 4. PM2で再起動（反映）
-          # ※もし pm2 command not found と出たら root で npm install -g pm2 してください
+          # PM2を再起動
+          # ※もし pm2 command not found と出たら root で npm install -g pm2 する
           pm2 restart web01 || pm2 start build/index.js --name web01
