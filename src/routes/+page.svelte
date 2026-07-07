@@ -305,7 +305,7 @@
 				{/each}
 			</div>
 		</div>
-		<a href="/site/links/#Mutual_links" class="link-main">
+		<a href="/site/mulinks" class="link-main">
 			<div class="link-main-underline">
 				<i class="fa-solid fa-arrow-right-long"></i>
 				<span>もっと見る</span>

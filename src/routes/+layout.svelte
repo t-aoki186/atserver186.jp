@@ -359,7 +359,7 @@
 
 			<!-- フッターの右側コンテンツ -->
 			<div class="footer-flex-content">
-				<h4>提供中のもの</h4>
+				<h4>サービス</h4>
 				<ul>
 					<li class="flex flex-col gap-2.5">
 						<a href="/service">

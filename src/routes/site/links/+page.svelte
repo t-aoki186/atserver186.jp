@@ -63,12 +63,6 @@
 				<div class="flex flex-col">
 					<p class="tf26-dialog-title">相互リンク</p>
 				</div>
-				{#each data.results as item}
-					<a class="profile-link-card" href={item.url} target="_blank"
-						><i class="fa-solid fa-up-right-from-square text-xl"></i>
-						{item.title}P<br /><span></span></a
-					>
-				{/each}
 				<!--
 				<div
 					style="display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:24px;"
