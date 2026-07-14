@@ -26,7 +26,7 @@
 		{#each posts as post}
 			<ul>
 				<li class="mx-auto mb-4 w-full list-none" style="view-transition-name: newsp-hero;">
-					<a href="/news/{post.slug}">
+					<a href="/news/{post.category}/{post.slug}">
 						<div
 							class="news-list flex border-l-2 pl-4"
 							style="border-left-color: var(--main-text-color);"

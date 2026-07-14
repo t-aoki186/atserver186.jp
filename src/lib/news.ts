@@ -33,6 +33,7 @@ export async function getAllPosts(): Promise<Post[]> {
         slug,
         title: attributes.title,
         author: attributes.author,
+        category: attributes.category,
         date: attributes.date,
         thumbnail: attributes.thumbnail,
         content: body,

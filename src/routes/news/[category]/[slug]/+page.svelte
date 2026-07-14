@@ -43,9 +43,6 @@
 			><i class="fa-solid fa-folder-open mr-1"></i>
 			{post.category}</a
 		>
-		<p class="w-fit rounded-2xl border border-gray-500 px-2 py-1 text-xs">
-			{Array.isArray(post.tags) ? post.tags.join(', ') : post.tags}
-		</p>
 	</div>
 	<img
 		src={post.thumbnail}
