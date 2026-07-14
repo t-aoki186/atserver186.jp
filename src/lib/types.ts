@@ -3,6 +3,7 @@ export interface FrontMatter {
   author: string;
   date: string;
   category: string;
+  edited: number;
   tags: string | string[];
   heading: string;
   thumbnail?: string;

@@ -53,7 +53,7 @@
 				{post.category}</a
 			>
 		</div>
-		<p class=""><i class="fa-solid fa-clock-rotate-left"></i>{formattedDate}</p>
+		<p class=""><i class="fa-regular fa-clock"></i>{formattedDate}{#if post.edited === 1}<span class="ml-2 w-fit rounded-2xl border border-gray-500 px-1 text-xs"><i class="fa-solid fa-clock-rotate-left mr-1"></i>編集済</span>{/if}</p>
 
 		{#if tableOfContents && tableOfContents.length > 0}
 			<nav class="table-of-contents mt-2 mb-6 rounded-xl bg-gray-100 p-4">
