@@ -22,6 +22,14 @@
 	function sanitizeTransitionName(str: string): string {
 		return str.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-_]/g, '');
 	}
+
+	const inputdate = new Date(post.date);
+
+	const formattedDate = new Intl.DateTimeFormat('ja-JP', {
+		year: 'numeric',
+		month: '2-digit',
+		day: '2-digit'
+	}).format(inputdate);
 </script>
 
 <svelte:head>
@@ -29,57 +37,53 @@
 	<meta property="og:title" content="{pageTitle} | {data.site_title}" />
 </svelte:head>
 
-<article class="mx-auto mt-15 mb-25">
-	<div class="mb-4">
-		<h1 class="text-3xl font-bold">{post.title}</h1>
+<main class="mt-15 mr-1 ml-1 min-h-screen">
+	<div class="container m-auto mt-25 border-b-2 border-b-(--main-text-color)">
+		<p class="tf26-page-title" style="color: black; margin-bottom: 0;">{post.title}</p>
 	</div>
-	<div class="mb-4 flex gap-2">
-		<p class="w-fit rounded-2xl border border-gray-500 px-2 py-1 text-xs">
-			<i class="fa-regular fa-circle-user mr-1"></i>{post.author}
-		</p>
-		<a
-			href="/category/{post.category}"
-			class="w-fit rounded-2xl border border-gray-500 px-2 py-1 text-xs"
-			><i class="fa-solid fa-folder-open mr-1"></i>
-			{post.category}</a
-		>
-	</div>
-	<img
-		src={post.thumbnail}
-		alt="{post.title}のサムネイル"
-		class="mx-auto rounded-xl"
-		style="view-transition-name: {sanitizeTransitionName(post.title)}-hero;"
-	/>
-	<p class=""><i class="fa-solid fa-clock-rotate-left"></i>{post.date}</p>
+	<article class="container mx-auto mt-15 mb-25">
+		<div class="mb-4 flex gap-2">
+			<p class="w-fit rounded-2xl border border-gray-500 px-2 py-1 text-xs">
+				<i class="fa-regular fa-circle-user mr-1"></i>{post.author}
+			</p>
+			<a
+				href="/category/{post.category}"
+				class="w-fit rounded-2xl border border-gray-500 px-2 py-1 text-xs"
+				><i class="fa-solid fa-folder-open mr-1"></i>
+				{post.category}</a
+			>
+		</div>
+		<p class=""><i class="fa-solid fa-clock-rotate-left"></i>{formattedDate}</p>
 
-	{#if tableOfContents && tableOfContents.length > 0}
-		<nav class="table-of-contents mt-2 mb-6 rounded-xl bg-gray-100 p-4">
-			<h2 class="mb-3 text-lg font-bold"><i class="fa-solid fa-list-ul mr-1"></i>目次</h2>
-			<ul class="space-y-1">
-				{#each tableOfContents as item}
-					<li class="ml-0">
-						<a href="#{item.id}" class="text-black hover:underline">{item.title}</a>
-						{#if item.children && item.children.length > 0}
-							<ul class="ml-4 space-y-1">
-								{#each item.children as child}
-									<li>
-										<a href="#{child.id}" class="text-black hover:underline">{child.title}</a>
-									</li>
-								{/each}
-							</ul>
-						{/if}
-					</li>
-				{/each}
-			</ul>
-		</nav>
-	{/if}
+		{#if tableOfContents && tableOfContents.length > 0}
+			<nav class="table-of-contents mt-2 mb-6 rounded-xl bg-gray-100 p-4">
+				<h2 class="mb-3 text-lg font-bold"><i class="fa-solid fa-list-ul mr-1"></i>目次</h2>
+				<ul class="space-y-1">
+					{#each tableOfContents as item}
+						<li class="ml-0">
+							<a href="#{item.id}" class="text-black hover:underline">{item.title}</a>
+							{#if item.children && item.children.length > 0}
+								<ul class="ml-4 space-y-1">
+									{#each item.children as child}
+										<li>
+											<a href="#{child.id}" class="text-black hover:underline">{child.title}</a>
+										</li>
+									{/each}
+								</ul>
+							{/if}
+						</li>
+					{/each}
+				</ul>
+			</nav>
+		{/if}
 
-	<div class="markdown-content">
-		{@html post.html}
-	</div>
-</article>
+		<div class="markdown-content">
+			{@html post.html}
+		</div>
+	</article>
+</main>
 
-<ol class="main-breadcrumb mx-auto">
+<ol class="main-breadcrumb container mx-auto">
 	<li><a href="/">ホーム</a></li>
 	<li><a href="/category/{post.category}">{post.category}</a></li>
 	<li>{pageTitle}</li>

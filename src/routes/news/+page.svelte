@@ -10,6 +10,10 @@
 	// data.posts を使う（+page.server.ts から渡される）
 	const posts = $derived(data.posts);
 
+		function sanitizeTransitionName(str: string): string {
+		return str.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-_]/g, '');
+	}
+
 	let pageTitle = 'お知らせ';
 </script>
 
@@ -41,7 +45,7 @@
 								>
 							</div>
 							<div class="truncate-parent flex-col">
-								<p class="truncate-title news-list-title ml-2 font-bold">{post.title}</p>
+								<p class="truncate-title news-list-title ml-2 font-bold" style="view-transition-name: {sanitizeTransitionName(post.title)}-hero;">{post.title}</p>
 								<p class="truncate-heading news-list-heading mb-2">{post.heading}</p>
 							</div>
 							<div class="news-list-icon my-auto ml-auto">
