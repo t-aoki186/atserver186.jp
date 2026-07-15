@@ -47,7 +47,7 @@
 				<i class="fa-regular fa-circle-user mr-1"></i>{post.author}
 			</p>
 			<a
-				href="/category/{post.category}"
+				href="/news/category/{post.category}"
 				class="w-fit rounded-2xl border border-gray-500 px-2 py-1 text-xs"
 				><i class="fa-solid fa-folder-open mr-1"></i>
 				{post.category}</a
@@ -85,7 +85,8 @@
 
 <ol class="main-breadcrumb container mx-auto">
 	<li><a href="/">ホーム</a></li>
-	<li><a href="/category/{post.category}">{post.category}</a></li>
+	<li><a href="/news">お知らせ</a></li>
+	<li><a href="/news/category/{post.category}">{post.category}</a></li>
 	<li>{pageTitle}</li>
 </ol>
 

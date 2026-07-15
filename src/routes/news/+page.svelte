@@ -10,14 +10,14 @@
 	// data.posts を使う（+page.server.ts から渡される）
 	const posts = $derived(data.posts);
 
-		function sanitizeTransitionName(str: string): string {
+	function sanitizeTransitionName(str: string): string {
 		return str.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-_]/g, '');
 	}
 
 	let pageTitle = 'お知らせ';
 </script>
 
-<svelte:head>	
+<svelte:head>
 	<title>{pageTitle} | {data.site_title}</title>
 	<meta property="og:title" content="{pageTitle} | {data.site_title}" />
 </svelte:head>
@@ -27,6 +27,11 @@
 		<p class="tf26-page-title" style="color: black; margin-bottom: 0;">{pageTitle}</p>
 	</div>
 	<section class="container mx-auto mt-15 mb-25">
+		<div class="mb-4 flex">
+			<a href="https://legacy.atserver186.jp/public/atserver186.jp/news/" target="_blank" class="text-lg"
+				><i class="fa-solid fa-folder text-bace mr-1"></i><span class="underline">過去のお知らせはアーカイブされました。</span></a
+			>
+		</div>
 		{#each posts as post}
 			<ul>
 				<li class="mx-auto mb-4 w-full list-none" style="view-transition-name: newsp-hero;">
@@ -45,7 +50,12 @@
 								>
 							</div>
 							<div class="truncate-parent flex-col">
-								<p class="truncate-title news-list-title ml-2 font-bold" style="view-transition-name: {sanitizeTransitionName(post.title)}-hero;">{post.title}</p>
+								<p
+									class="truncate-title news-list-title ml-2 font-bold"
+									style="view-transition-name: {sanitizeTransitionName(post.title)}-hero;"
+								>
+									{post.title}
+								</p>
 								<p class="truncate-heading news-list-heading mb-2">{post.heading}</p>
 							</div>
 							<div class="news-list-icon my-auto ml-auto">
