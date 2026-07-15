@@ -13,13 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install and Build
+      - name: Deploy to production
         run: |
-          # --global から --system に変更
-          sudo git config --system --add safe.directory /opt/atserver186.jp
-
           cd /opt/atserver186.jp
-          git pull origin main
-          npm install
+          git fetch origin main
+          git reset --hard origin/main   # ローカルの変更をすべて破棄し、リモートと完全に一致させる
+          npm ci                          # または npm install（後述）
           npm run build
           pm2 restart web01 || pm2 start build/index.js --name web01
