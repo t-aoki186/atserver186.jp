@@ -177,326 +177,386 @@
 {/if}
 
 {#if navState.visible}
-<header class={headerClass}>
-	<div class="flex items-center justify-between px-2 py-2">
-		<!--s:ロゴ-->
-		<a href="/" class="flex shrink-0 whitespace-nowrap transition">
-			<img src={logo} alt="" class="h-10 w-auto rounded-xl" />
-		</a>
-		<!--e:ロゴ-->
-		<!---->
-		<div class="flex items-center md:hidden">
-			<!--s:スマホ用検索ボタン-->
-			<button
-				onclick={() => openModal('a')}
-				type="button"
-				title="検索する"
-				class="mr-4 cursor-pointer text-sm"><i class="fa-solid fa-magnifying-glass"></i></button
-			>
-			<!--e:スマホ用検索ボタン-->
+	<header class={headerClass}>
+		<div class="flex items-center justify-between px-2 py-2">
+			<!--s:ロゴ-->
+			<a href="/" class="flex shrink-0 whitespace-nowrap transition">
+				<img src={logo} alt="" class="h-10 w-auto rounded-xl" />
+			</a>
+			<!--e:ロゴ-->
 			<!---->
-			<!--s:スマホ用ハンバーガー / その他メニュー閉じる-->
-			<div class="grid">
-				{#if !otherOpen}
-					<button
-						class="col-start-1 row-start-1 flex cursor-pointer flex-col gap-1.5"
-						transition:fade={{ duration: 300 }}
-						onclick={() => (open = !open)}
-						title="メニュー"
-					>
-						<div class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center">
-							<input class="peer hidden" type="checkbox" checked={open} />
-							<div
-								class="header-hamburger h-0.5 w-[50%] origin-left translate-y-[0.45rem] rounded-sm bg-black transition-all duration-300 peer-checked:-rotate-45"
-							></div>
-							<div
-								class="header-hamburger h-0.5 w-[50%] origin-center rounded-md bg-black transition-all duration-300 peer-checked:hidden"
-							></div>
-							<div
-								class="header-hamburger h-0.5 w-[50%] origin-left -translate-y-[0.45rem] rounded-md bg-black transition-all duration-300 peer-checked:rotate-45"
-							></div>
-						</div>
-					</button>
-				{/if}
+			<div class="flex items-center md:hidden">
+				<!--s:スマホ用検索ボタン-->
+				<button
+					onclick={() => openModal('a')}
+					type="button"
+					title="検索する"
+					class="mr-4 cursor-pointer text-sm"><i class="fa-solid fa-magnifying-glass"></i></button
+				>
+				<!--e:スマホ用検索ボタン-->
+				<!---->
+				<!--s:スマホ用ハンバーガー / その他メニュー閉じる-->
+				<div class="grid">
+					{#if !otherOpen}
+						<button
+							class="col-start-1 row-start-1 flex cursor-pointer flex-col gap-1.5"
+							transition:fade={{ duration: 300 }}
+							onclick={() => (open = !open)}
+							title="メニュー"
+						>
+							<div class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center">
+								<input class="peer hidden" type="checkbox" checked={open} />
+								<div
+									class="header-hamburger h-0.5 w-[50%] origin-left translate-y-[0.45rem] rounded-sm bg-black transition-all duration-300 peer-checked:-rotate-45"
+								></div>
+								<div
+									class="header-hamburger h-0.5 w-[50%] origin-center rounded-md bg-black transition-all duration-300 peer-checked:hidden"
+								></div>
+								<div
+									class="header-hamburger h-0.5 w-[50%] origin-left -translate-y-[0.45rem] rounded-md bg-black transition-all duration-300 peer-checked:rotate-45"
+								></div>
+							</div>
+						</button>
+					{/if}
 
-				{#if otherOpen}
-					<button
-						class="col-start-1 row-start-1 flex cursor-pointer flex-col gap-1.5"
-						transition:fade={{ duration: 300 }}
-						onclick={() => closeOther(open)}
-						title="メニュー"
-					>
-						<div class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center">
-							<i class="fa-solid fa-angle-left other-close-ico"></i>
-						</div>
-					</button>
-				{/if}
+					{#if otherOpen}
+						<button
+							class="col-start-1 row-start-1 flex cursor-pointer flex-col gap-1.5"
+							transition:fade={{ duration: 300 }}
+							onclick={() => closeOther(open)}
+							title="メニュー"
+						>
+							<div class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center">
+								<i class="fa-solid fa-angle-left other-close-ico"></i>
+							</div>
+						</button>
+					{/if}
+				</div>
+				<!--s:スマホ用ハンバーガー / その他メニュー閉じる-->
 			</div>
-			<!--s:スマホ用ハンバーガー / その他メニュー閉じる-->
+			<!---->
+			<!--s:PC用メニュー-->
+			<nav class="hidden md:flex">
+				<ul class="flex items-center gap-5 whitespace-nowrap transition">
+					<li>
+						<button
+							onclick={() => openModal('a')}
+							type="button"
+							class="header-text header-search-btn ml-3 text-xs tracking-wider transition"
+							><i class="fa-solid fa-magnifying-glass mr-1"></i><kbd>Ctrl&nbsp;K</kbd></button
+						>
+					</li>
+					<li>
+						<a href="/service" class="header-text ml-3 text-xs tracking-wider transition"
+							>サービス</a
+						>
+					</li>
+					<li>
+						<a href="/software" class="header-text ml-3 text-xs tracking-wider transition"
+							>ソフトウェア</a
+						>
+					</li>
+					<li>
+						<a href="/contact" class="header-text ml-3 text-xs tracking-wider transition"
+							>お問い合わせ</a
+						>
+					</li>
+					<li class="mr-6">
+						<button
+							class="header-text ml-3 cursor-pointer text-xs tracking-wider transition"
+							onclick={() => (otherOpen = !otherOpen)}>その他</button
+						>
+					</li>
+				</ul>
+			</nav>
+			<!--e:PC用メニュー-->
 		</div>
-		<!---->
-		<!--s:PC用メニュー-->
-		<nav class="hidden md:flex">
-			<ul class="flex items-center gap-5 whitespace-nowrap transition">
-				<li>
-					<button
-						onclick={() => openModal('a')}
-						type="button"
-						class="header-text header-search-btn ml-3 text-xs tracking-wider transition"
-						><i class="fa-solid fa-magnifying-glass mr-1"></i><kbd>Ctrl&nbsp;K</kbd></button
-					>
-				</li>
-				<li>
-					<a href="/service" class="header-text ml-3 text-xs tracking-wider transition">サービス</a>
-				</li>
-				<li>
-					<a href="/software" class="header-text ml-3 text-xs tracking-wider transition"
-						>ソフトウェア</a
-					>
-				</li>
-				<li>
-					<a href="/contact" class="header-text ml-3 text-xs tracking-wider transition"
-						>お問い合わせ</a
-					>
-				</li>
-				<li class="mr-6">
-					<button
-						class="header-text ml-3 cursor-pointer text-xs tracking-wider transition"
-						onclick={() => (otherOpen = !otherOpen)}>その他</button
-					>
-				</li>
-			</ul>
-		</nav>
-		<!--e:PC用メニュー-->
-	</div>
 
-	<!--スマホ用メニュー-->
-	{#if !otherOpen && !isOtherClosing}
-		<nav class="px-6 pt-6 pb-6 md:hidden">
-			<ul class="flex flex-col gap-4 text-sm tracking-wide">
-				<li><a href="/" class="header-text">ホーム</a></li>
-				<li><a href="/service" class="header-text">サービス</a></li>
-				<li><a href="/software" class="header-text">ソフトウェア</a></li>
-				<li><a href="/contact" class="header-text">お問い合わせ</a></li>
-				<li>
-					<button class="header-text" onclick={() => (otherOpen = !otherOpen)}>その他</button>
-				</li>
-			</ul>
-		</nav>
-	{/if}
+		<!--スマホ用メニュー-->
+		{#if !otherOpen && !isOtherClosing}
+			<nav class="px-6 pt-6 pb-6 md:hidden">
+				<ul class="flex flex-col gap-4 text-sm tracking-wide">
+					<li><a href="/" class="header-text">ホーム</a></li>
+					<li><a href="/service" class="header-text">サービス</a></li>
+					<li><a href="/software" class="header-text">ソフトウェア</a></li>
+					<li><a href="/contact" class="header-text">お問い合わせ</a></li>
+					<li>
+						<button class="header-text" onclick={() => (otherOpen = !otherOpen)}>その他</button>
+					</li>
+				</ul>
+			</nav>
+		{/if}
 
-	{#if otherOpen}
-		<nav
-			class="overflow-auto p-6"
-			transition:fade={{ duration: 500 }}
-			onoutrostart={() => (isOtherClosing = true)}
-			onoutroend={() => {
-				isOtherClosing = false;
-				if (pendingOpen) {
-					open = true;
-					pendingOpen = false;
-				}
-			}}
-		>
-			<ul class="flex flex-col gap-4 text-sm tracking-wide">
-				<li>
-					<a href="/news" class="header-text"
-						><i class="fa-regular fa-file-lines mr-1 text-xs"></i>ニュース</a
-					>
-				</li>
-				<li>
-					<a href="/site/oss" class="header-text"
-						><i class="fa-solid fa-rectangle-list mr-1 text-xs"></i>使用しているOSS</a
-					>
-				</li>
-				<li>
-					<a href="https://github.com/t-aoki186/atserver186.jp" class="header-text" target="_blank"
-						><i class="fa-brands fa-github mr-1 text-xs"></i>ソースコード</a
-					>
-				</li>
-				<li>
-					<a href="/site/sitemap" class="header-text"
-						><i class="fa-solid fa-sitemap mr-1 text-xs"></i>サイトマップ</a
-					>
-				</li>
-				<li>
-					<a href="/site/links" class="header-text"
-						><i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"></i>各種SNS / リンク</a
-					>
-				</li>
-				<li>
-					<a href="/contact" class="header-text"
-						><i class="fa-solid fa-envelope mr-1 text-xs"></i>お問い合わせ</a
-					>
-				</li>
-				<hr class="main-hr" />
-				<button class="header-text" onclick={() => closeOther(open)}>
-					<i class="fa-solid fa-angle-left mr-1 text-xs"></i>
-					{#if open}メニューに戻る{/if}
-					{#if !open}閉じる{/if}
-				</button>
-			</ul>
-		</nav>
-	{/if}
-</header>
+		{#if otherOpen}
+			<nav
+				class="overflow-auto p-6"
+				transition:fade={{ duration: 500 }}
+				onoutrostart={() => (isOtherClosing = true)}
+				onoutroend={() => {
+					isOtherClosing = false;
+					if (pendingOpen) {
+						open = true;
+						pendingOpen = false;
+					}
+				}}
+			>
+				<ul class="flex flex-col gap-4 text-sm tracking-wide">
+					<li>
+						<a href="/news" class="header-text"
+							><i class="fa-regular fa-file-lines mr-1 text-xs"></i>ニュース</a
+						>
+					</li>
+					<li>
+						<a href="/site/oss" class="header-text"
+							><i class="fa-solid fa-rectangle-list mr-1 text-xs"></i>使用しているOSS</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://github.com/t-aoki186/atserver186.jp"
+							class="header-text"
+							target="_blank"><i class="fa-brands fa-github mr-1 text-xs"></i>ソースコード</a
+						>
+					</li>
+					<li>
+						<a href="/site/sitemap" class="header-text"
+							><i class="fa-solid fa-sitemap mr-1 text-xs"></i>サイトマップ</a
+						>
+					</li>
+					<li>
+						<a href="/site/links" class="header-text"
+							><i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"></i>各種SNS / リンク</a
+						>
+					</li>
+					<li>
+						<a href="/contact" class="header-text"
+							><i class="fa-solid fa-envelope mr-1 text-xs"></i>お問い合わせ</a
+						>
+					</li>
+					<hr class="main-hr" />
+					<button class="header-text" onclick={() => closeOther(open)}>
+						<i class="fa-solid fa-angle-left mr-1 text-xs"></i>
+						{#if open}メニューに戻る{/if}
+						{#if !open}閉じる{/if}
+					</button>
+				</ul>
+			</nav>
+		{/if}
+	</header>
 {/if}
 
 {@render children()}
 
 {#if navState.visible}
-<!--フッター-->
-<footer class="footer m-0 mb-0 w-full pt-[10] pr-0 pb-[10] pl-0">
-	<div class="hidden md:flex">
-		<div class="footer-top-content">
-			<!-- フッターの左側コンテンツ -->
-			<div class="footer-flex-content">
-				<div class="footer-logo">
-					<a href="/">
-						<img src={logo_2} alt={logo_alt} class="h-auto w-15 rounded-xl" />
-					</a>
+	<!--フッター-->
+	<footer class="footer m-0 w-full">
+		<div class="container">
+			<div class="hidden md:flex">
+				<div class="footer-top-content">
+					<!-- フッターの左側コンテンツ -->
+					<div class="footer-flex-content">
+						<div class="footer-logo">
+							<a href="/">
+								<img src={logo_2} alt={logo_alt} class="h-auto w-15 rounded-xl" />
+							</a>
+						</div>
+					</div>
+
+					<!-- フッターの右側コンテンツ -->
+					<div class="footer-flex-content">
+						<h4>サービス</h4>
+						<ul>
+							<li><a href="/service">webサービス</a></li>
+							<li><a href="/software">ソフトウェア</a></li>
+							<li><a href="/works/">関連サービス一覧</a></li>
+							<li><a href="https://dev.atserver186.jp" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square text-xs mr-1"></i>dev.atserver186.jp</a></li>
+						</ul>
+					</div>
+					<div class="footer-flex-content">
+						<h4>ATSERVERについて</h4>
+						<ul>
+							<li>
+								<a href="/about">
+									<span>当サイトについて</span>
+								</a>
+							</li>
+							<li>
+								<a href="/news">
+									<span>お知らせ</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/oss">
+									<span>使用しているOSS</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/sauce" target="_blank">
+									<span>ソースコード</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/terms">
+									<span>利用規約</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/privacypolicy">
+									<span>プライバシーポリシー</span>
+								</a>
+							</li>
+							<li>
+								<a href="/contact">
+									<span>お問い合わせ</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="footer-flex-content">
+						<h4>各種SNS / リンク</h4>
+						<ul>
+							<li>
+								<a href="https://x.com/t_aoki186" target="_blank">
+									<i class="fa-brands fa-x-twitter mr-1 text-xs"></i>
+									<span>X(Twitter)</span>
+								</a>
+							</li>
+							<li>
+								<a href="https://github.com/t-aoki186" target="_blank">
+									<i class="fa-brands fa-github text-xs"></i>
+									<span>Github</span>
+								</a>
+							</li>
+							<li>
+								<a href="https://gitlab.atserver186.jp/" target="_blank">
+									<i class="fa-brands fa-gitlab text-xs"></i>
+									<span>Gitlab</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/links">
+									<i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"></i>
+									<span>すべてのリンクを確認する</span>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
-
-			<!-- フッターの右側コンテンツ -->
-			<div class="footer-flex-content">
-				<h4>サービス</h4>
-				<ul>
-					<li class="flex flex-col gap-2.5">
-						<a href="/service">
-							<span>webサービス</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://dev.atserver186.jp/service/" target="_blank">
-							<span>開発中のwebサービス</span>
-						</a>
-					</li>
-					<li>
-						<a href="/software">
-							<span>PC/スマホ用ソフトウェア</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://dev.atserver186.jp/software/" target="_blank">
-							<span>開発中のPC/スマホ用ソフトウェア</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://dev.atserver186.jp/api/" target="_blank">
-							<span>API等について</span>
-						</a>
-					</li>
-					<li>
-						<a href="/site/related-services">
-							<span>関連サービス(別ドメイン)</span>
-						</a>
-					</li>
-				</ul>
+			<!--s:モバイル表示用-->
+			<div class="flex w-full flex-col p-1 md:hidden">
+				<!--s:ロゴ・住所-->
+				<div class="flex flex-col items-center justify-center gap-4">
+					<a href="/">
+						<img src={logo_2} alt={logo_alt} class="mt-4 h-auto w-20 rounded-xl" />
+					</a>
+				</div>
+				<!--s:ロゴ・住所-->
+				<!---->
+				<!--s:アコーディオン-->
+				<div class="mt-8">
+					<details class="accordion-main mb-4 min-w-full">
+						<summary class="font-bold">サービス</summary>
+						<ul class="pt-2 pl-2">
+							<li><a href="/service">webサービス</a></li>
+							<li><a href="/software">ソフトウェア</a></li>
+							<li><a href="/works/">関連サービス一覧</a></li>
+							<li><a href="https://dev.atserver186.jp" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square text-xs mr-1"></i>dev.atserver186.jp</a></li>
+						</ul>
+					</details>
+					<details class="accordion-main mb-4 min-w-full">
+						<summary class="font-bold">ATSERVERについて</summary>
+						<ul class="pt-2 pl-2">
+							<li>
+								<a href="/about">
+									<span>当サイトについて</span>
+								</a>
+							</li>
+							<li>
+								<a href="/news">
+									<span>お知らせ</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/oss">
+									<span>使用しているOSS</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/sauce" target="_blank">
+									<span>ソースコード</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/terms">
+									<span>利用規約</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/privacypolicy">
+									<span>プライバシーポリシー</span>
+								</a>
+							</li>
+							<li>
+								<a href="/contact">
+									<span>お問い合わせ</span>
+								</a>
+							</li>
+						</ul>
+					</details>
+					<details class="accordion-main min-w-full">
+						<summary class="font-bold">各種SNS / リンク</summary>
+						<ul class="pt-2 pl-2">
+							<li>
+								<a href="https://x.com/t_aoki186" target="_blank">
+									<i class="fa-brands fa-x-twitter mr-1 text-xs"></i>
+									<span>X(Twitter)</span>
+								</a>
+							</li>
+							<li>
+								<a href="https://github.com/t-aoki186" target="_blank">
+									<i class="fa-brands fa-github text-xs"></i>
+									<span>Github</span>
+								</a>
+							</li>
+							<li>
+								<a href="https://gitlab.atserver186.jp/" target="_blank">
+									<i class="fa-brands fa-gitlab text-xs"></i>
+									<span>Gitlab</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/links">
+									<i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"></i>
+									<span>すべてのリンクを確認する</span>
+								</a>
+							</li>
+						</ul>
+					</details>
+				</div>
+				<!--e:アコーディオン-->
 			</div>
-			<div class="footer-flex-content">
-				<h4>ATSERVERについて</h4>
-				<ul>
-					<li class="flex flex-col gap-2.5">
-						<a href="/about">
-							<span>当サイトについて</span>
-						</a>
-					</li>
-					<li>
-						<a href="/site/related-services">
-							<span>関連サービス(別ドメイン)</span>
-						</a>
-					</li>
-					<li>
-						<a href="/site/terms">
-							<span>利用規約</span>
-						</a>
-					</li>
-					<li>
-						<a href="/site/privacypolicy">
-							<span>プライバシーポリシー</span>
-						</a>
-					</li>
-					<li>
-						<a href="/news">
-							<span>ニュース</span>
-						</a>
-					</li>
-					<li>
-						<a href="/site/oss">
-							<span>使用しているOSS</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://github.com/t-aoki186/atserver186.jp" target="_blank">
-							<span>ソースコード</span>
-						</a>
-					</li>
-					<li>
-						<a href="/site/contact">
-							<span>お問い合わせ</span>
-						</a>
-					</li>
-				</ul>
+			<!--e:モバイル表示用-->
+			<!---->
+			<!--s:フッター最下部-->
+			<div class="footer-bottom-content mx-auto">
+				<br />
+				<hr class="sub-hr" />
+				<br />
+				<a href="/site/terms/" class="footer-link" style="margin-right: 10px;">サイトポリシー</a
+				><span class="footer-span">|</span>
+				<a
+					href="/site/privacypolicy/"
+					class="footer-link"
+					style="margin-right: 10px; margin-left: 10px;">プライバシーポリシー</a
+				><span class="footer-span">|</span>
+				<a href="/contact" class="footer-link" style="margin-left: 10px;">お問い合わせ</a>
+				<p class="footer-text">
+					&copy; 2026 ATSERVER. | atserver186.jp All Rights Reserved.
+					本サイトの無断転載は、固くこれを禁じます。
+				</p>
 			</div>
-			<div class="footer-flex-content">
-				<h4>各種SNS / リンク</h4>
-				<ul>
-					<li>
-						<a href="https://x.com/ATShift186_XZ1" target="_blank">
-							<i class="fa-brands fa-x-twitter mr-1 text-xs"></i>
-							<span>Twitter</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://msk.atserver186.jp" target="_blank">
-							<i class="tf26-icon-material icon-misskey-mi mr-1 text-xs"></i>
-							<span>Misskey(あっとみすき)</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://www.youtube.com/@atshift" target="_blank">
-							<i class="fa-brands fa-youtube mr-1 text-xs"></i>
-							<span>YouTube</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://developer.atserver186.jp" target="_blank">
-							<i class="fa-solid fa-comment mr-1 text-xs"></i>
-							<span>ATSocial</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://github.com/t-aoki186/" target="_blank">
-							<i class="fa-brands fa-github mr-1 text-xs"></i>
-							<span>Github</span>
-						</a>
-					</li>
-				</ul>
-			</div>
+			<!--e:フッター最下部-->
 		</div>
-	</div>
-	<div class="md:hidden">
-		<div class="flex flex-col items-center justify-center gap-4">
-			<a href="/">
-				<img src={logo_2} alt={logo_alt} class="h-auto w-20 rounded-xl" />
-			</a>
-		</div>
-	</div>
-	<div class="footer-bottom-content mx-auto">
-		<br />
-		<hr class="sub-hr" />
-		<br />
-		<a href="/site/terms" class="footer-link" style="margin-right: 10px;">利用規約</a><span
-			class="footer-span">|</span
-		>
-		<a href="/site/privacy" class="footer-link" style="margin-right: 10px; margin-left: 10px;"
-			>プライバシーポリシー</a
-		><span class="footer-span">|</span>
-		<a href="/contact" class="footer-link" style="margin-left: 10px;">お問い合わせ</a>
-		<p class="footer-text">
-			&copy; 2026 ATSERVER. | atserver186.jp All Rights Reserved.
-			本サイトの無断転載は、固くこれを禁じます。
-		</p>
-	</div>
-</footer>
+	</footer>
 {/if}

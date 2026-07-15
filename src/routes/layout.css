@@ -254,6 +254,51 @@ body {
 	}
 }
 
+/*アコーディオン*/
+.accordion-main summary {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	color: white;
+	cursor: pointer;
+}
+
+.accordion-main summary::-webkit-details-marker {
+	display: none;
+}
+
+.accordion-main summary::after {
+	transform: translateY(-25%) rotate(45deg);
+	width: 8px;
+	height: 8px;
+	margin-left: 10px;
+	border-radius: 1px;
+	border-bottom: 2px solid white;
+	border-right: 2px solid white;
+	content: '';
+	transition: transform 0.3s;
+}
+
+.accordion-main[open] summary::after {
+	transform: rotate(225deg);
+}
+
+.accordion-main a {
+	transform: translateY(-10px);
+	opacity: 0;
+	margin: 0;
+	color: white;
+	transition:
+		transform 0.5s,
+		opacity 0.5s;
+}
+
+.accordion-main[open] a {
+	transform: none;
+	opacity: 1;
+}
+
 /*パンクズリスト*/
 .main-breadcrumb {
 	display: flex;
@@ -263,7 +308,7 @@ body {
 	font-size: 0.9em;
 	background-color: var(--main-bg-color);
 	border-radius: 10px;
-	@apply mb-4 mt-4;
+	@apply mt-4 mb-4;
 }
 
 .main-breadcrumb li {
@@ -328,7 +373,7 @@ body {
 }
 
 .footer-bottom-content {
-	width: 90%;
+	width: 100%;
 	padding: 20px;
 }
 
@@ -430,7 +475,7 @@ body {
 	}
 
 	.footer-bottom-content {
-		width: 95%;
+		padding: 2px;
 	}
 }
 
