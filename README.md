@@ -1,42 +1,32 @@
-# sv
+# ATSERVER
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+[atserver186.jp](https://atserver186.jp)
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
+## 依存関係のインストール
+`node.js`と`npm`が開発用PCに入っていることを確認してください。
+次のコマンドを使って、必要なパッケージを取得します。
+```
+npm i
 ```
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.12.7 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" mdsvex --install npm atserver186
+## 開発サーバを建てる
+通常は`http://localhost:5173`に開発サーバを建てられます。
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
 npm run dev
-
-# or start the server and open the app in a new browser tab
+```
+ウィンドウを開く場合は
+```
 npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
-
-```sh
+## 本番環境での動かし方
+開発用にビルドするには
+```
 npm run build
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+し、本番サーバを起動するには
+```
+cd build
+npm start
+```
+です。
