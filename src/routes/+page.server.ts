@@ -1,8 +1,8 @@
-import { fetchNews } from '$lib/server/getjson/news';
+import { getAllPosts } from '$lib/news';
 import { fetchMulinks } from '$lib/server/getjson/mulinks';
 
 export async function load() {
-    const news = await fetchNews();
+    const news = await getAllPosts();
     const mulinks = await fetchMulinks();
 
     // 新着5件のみ取得

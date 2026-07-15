@@ -173,7 +173,7 @@
 				</p>
 			</div>
 		</div>
-		<a href="/news/2025/10/08/47" class="link-main">
+		<a href="https://legacy.atserver186.jp/public/atserver186.jp/news/archives/2026/02/01/55/" class="link-main">
 			<div class="link-main-underline">
 				<i class="fa-solid fa-arrow-right-long"></i>
 				<span>仕様・外観を見る</span>
@@ -233,25 +233,25 @@
 				</p>
 				<hr class="main-hr mb-4" />
 				<ul>
-					{#each data?.latestNews ?? [] as item}
+					{#each data?.latestNews ?? [] as post}
 						<li class="mx-auto mb-4 w-full list-none">
-							<a href="/news/{item.id}">
+							<a href="/news/{post.category}/{post.slug}">
 								<div
 									class="news-list flex border-l-2 pl-4"
 									style="border-left-color: var(--main-text-color);"
 								>
 									<div class="news-list-date-box mr-4">
 										<span class="news-list-month"
-											>{String(new Date(item.date).getMonth() + 1).padStart(2, '0')}</span
+											>{String(new Date(post.date).getMonth() + 1).padStart(2, '0')}</span
 										>
 										<span class="news-list-slash">/</span>
 										<span class="news-list-date"
-											>{String(new Date(item.date).getDate()).padStart(2, '0')}</span
+											>{String(new Date(post.date).getDate()).padStart(2, '0')}</span
 										>
 									</div>
 									<div class="truncate-parent flex-col">
-										<p class="truncate-title news-list-title ml-2 font-bold">{item.title}</p>
-										<p class="truncate-heading news-list-heading mb-2">{item.heading}</p>
+										<p class="truncate-title news-list-title ml-2 font-bold">{post.title}</p>
+										<p class="truncate-heading news-list-heading mb-2">{post.heading}</p>
 									</div>
 									<div class="news-list-icon my-auto ml-auto">
 										<i class="fa-solid fa-angles-right left-auto mr-2"></i>
