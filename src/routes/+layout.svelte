@@ -313,9 +313,8 @@
 					</li>
 					<li>
 						<a
-							href="https://github.com/t-aoki186/atserver186.jp"
-							class="header-text"
-							target="_blank"><i class="fa-brands fa-github mr-1 text-xs"></i>ソースコード</a
+							href="/site/saucecode"
+							class="header-text"><i class="fa-brands fa-github mr-1 text-xs"></i>ソースコード</a
 						>
 					</li>
 					<li>
@@ -391,7 +390,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="/site/sauce" target="_blank">
+								<a href="/site/saucecode">
 									<span>ソースコード</span>
 								</a>
 							</li>
@@ -483,7 +482,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="/site/sauce" target="_blank">
+								<a href="/site/saucecode">
 									<span>ソースコード</span>
 								</a>
 							</li>
