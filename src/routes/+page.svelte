@@ -326,7 +326,7 @@
 	</div>
 	<div class="container mx-auto mb-10" data-aos="fade-up">
 		<img
-			src="https://moecounter.atserver186.jp/@ATShift?name=ATShift&theme=original-old&padding=8&offset=0&align=top&scale=1&pixelated=1&darkmode=0"
+			src="https://count.atserver186.jp/@atserver186.jp?name=atserver186.jp&theme=original-old&padding=8&offset=0&align=top&scale=1&pixelated=1&darkmode=0"
 			alt="アクセスカウンター"
 			class="mx-auto mb-8"
 		/>
