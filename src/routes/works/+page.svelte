@@ -19,13 +19,13 @@
 	<section class="container mx-auto mt-15 mb-25">
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 		<a
-			href="https://tohofes.jp/" target="_blank"
+			href="https://75th.tohofes.jp/" target="_blank"
 			class="block rounded-lg border p-4 transition hover:bg-gray-100 dark:hover:bg-gray-300"
 		>
 			<div class="flex items-center justify-between">
 				<div class="flex items-center gap-3">
 					<img src="https://pic.atserver186.jp/img/tohofes/tf26-logo-m-v3.webp" class="h-10" alt="第75回桐朋祭ホームページロゴ"/>
-					<span class="font-semibold">第75回桐朋祭ホームページ</span>
+					<span class="font-semibold">第75回桐朋祭公式ホームページ</span>
 				</div>
 			</div>
 		</a>
