@@ -39,11 +39,6 @@
 	let { data, children } = $props();
 	let accordionOpen = $state(false);
 
-	//共通変数
-	let logo = 'https://pic.atserver186.jp/img/atserver/root/ats_logo.webp';
-	let logo_2 = 'https://pic.atserver186.jp/img/atserver/root/ats_logo.webp';
-	let logo_alt = 'ATSERVER-ロゴ画像';
-
 	//ハンバーガーメニュー
 	let open = $state(false);
 	let isOtherClosing = $state(false);
@@ -181,7 +176,7 @@
 		<div class="flex items-center justify-between px-2 py-2">
 			<!--s:ロゴ-->
 			<a href="/" class="flex shrink-0 whitespace-nowrap transition">
-				<img src={logo} alt="" class="h-10 w-auto rounded-xl" />
+				<img src={data.logo} alt="" class="h-10 w-auto rounded-xl" />
 			</a>
 			<!--e:ロゴ-->
 			<!---->
@@ -356,7 +351,7 @@
 					<div class="footer-flex-content">
 						<div class="footer-logo">
 							<a href="/">
-								<img src={logo_2} alt={logo_alt} class="h-auto w-15 rounded-xl" />
+								<img src={data.logo_2} alt={data.logo_alt} class="h-auto w-15 rounded-xl" />
 							</a>
 						</div>
 					</div>
@@ -447,7 +442,7 @@
 				<!--s:ロゴ・住所-->
 				<div class="flex flex-col items-center justify-center gap-4">
 					<a href="/">
-						<img src={logo_2} alt={logo_alt} class="mt-4 h-auto w-20 rounded-xl" />
+						<img src={data.logo_2} alt={data.logo_alt} class="mt-4 h-auto w-20 rounded-xl" />
 					</a>
 				</div>
 				<!--s:ロゴ・住所-->
