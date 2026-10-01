@@ -38,14 +38,14 @@
 	const slides = [
 		{
 			id: 1,
-			link: '/server',
+			link: '/servers',
 			link_title: 'サーバー構成を見る',
 			body: '',
 			image: 'https://pic.atserver186.jp/img/atserver/root/tp-s1-2610-c.webp'
 		},
 		{
 			id: 2,
-			link: '/server',
+			link: '/servers',
 			link_title: 'サーバー構成を見る',
 			body: '',
 			image: 'https://pic.atserver186.jp/img/atserver/root/tp-s2-2610-c.webp'
