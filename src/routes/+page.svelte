@@ -153,8 +153,8 @@
 		<p class="mb-4">[左から右]横に流れるサービスのサムネイル</p>
 		<a href="/service" class="link-main">
 			<div class="link-main-underline">
-				<i class="fa-solid fa-arrow-right-long"></i>
 				<span>サービス一覧はこちら</span>
+				<i class="fa-solid fa-arrow-right-long"></i>
 			</div>
 		</a>
 		<br />
@@ -182,8 +182,8 @@
 		</div>
 		<a href="https://legacy.atserver186.jp/public/atserver186.jp/news/archives/2026/02/01/55/" class="link-main">
 			<div class="link-main-underline">
-				<i class="fa-solid fa-arrow-right-long"></i>
 				<span>仕様・外観を見る</span>
+				<i class="fa-solid fa-arrow-right-long"></i>
 			</div>
 		</a>
 	</div>
@@ -220,8 +220,8 @@
 		<br />
 		<a href="/contact" class="link-main">
 			<div class="link-main-underline">
-				<i class="fa-solid fa-arrow-right-long"></i>
 				<span>問い合わせる</span>
+				<i class="fa-solid fa-arrow-right-long"></i>
 			</div>
 		</a>
 		<br />
@@ -278,8 +278,8 @@
 		<br />
 		<a href="/news" class="link-main">
 			<div class="link-main-underline">
-				<i class="fa-solid fa-arrow-right-long"></i>
 				<span>お知らせ一覧へ</span>
+				<i class="fa-solid fa-arrow-right-long"></i>
 			</div>
 		</a>
 		<br />
@@ -314,8 +314,8 @@
 		</div>
 		<a href="/site/mulinks" class="link-main">
 			<div class="link-main-underline">
-				<i class="fa-solid fa-arrow-right-long"></i>
 				<span>もっと見る</span>
+				<i class="fa-solid fa-arrow-right-long"></i>
 			</div>
 		</a>
 		<br />
@@ -339,8 +339,8 @@
 		/>
 		<a href="https://moecounter.atserver186.jp/" class="link-main" target="_blank">
 			<div class="link-main-underline">
-				<i class="fa-solid fa-arrow-right-long"></i>
 				<span>このアクセスカウンターを使う</span>
+				<i class="fa-solid fa-up-right-from-square"></i>
 			</div>
 		</a>
 	</div>
