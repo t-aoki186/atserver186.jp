@@ -38,15 +38,17 @@
 	const slides = [
 		{
 			id: 1,
-			title: '外部公開用鯖',
-			/*body: 'これは最初のスライドです。',*/
-			image: 'https://pic.atserver186.jp/img/atserver/root/carousel/server_1.webp'
+			link: '/server',
+			link_title: 'サーバー構成を見る',
+			body: '',
+			image: 'https://pic.atserver186.jp/img/atserver/root/tp-s1-2610-c.webp'
 		},
 		{
 			id: 2,
-			title: '個人用鯖',
-			/*body: 'これは2番目のスライドです。',*/
-			image: 'https://pic.atserver186.jp/img/atserver/root/carousel/server_2.webp'
+			link: '/server',
+			link_title: 'サーバー構成を見る',
+			body: '',
+			image: 'https://pic.atserver186.jp/img/atserver/root/tp-s2-2610-c.webp'
 		}
 		/*
 		{
@@ -103,8 +105,13 @@
 								<img src={s.image} alt={s.title} class="slide-img h-full w-full object-cover" />
 							{/if}
 							<div class="p-4">
-								<h2 class="mb-2 text-sm font-semibold md:text-xl">{s.title}</h2>
-								<!--<p class="text-sm">{s.body}</p>-->
+								<a href="{s.link}" class="link-main">
+									<div class="link-main-underline">
+										<span>{s.link_title}</span>
+										<i class="fa-solid fa-arrow-right-long"></i>
+									</div>
+									</a>
+								<p class="text-sm">{s.body}</p>
 							</div>
 						</div>
 					</div>
