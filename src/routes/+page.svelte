@@ -163,6 +163,7 @@
 	<!--e:サービス-->
 	<!---->
 	<!--s:お知らせ(重要)-->
+	<!--
 	<div class="tp-info container mx-auto mt-10 rounded-xl p-4" data-aos="fade-up">
 		<div class="main-link">
 			<div class="link-4 flex items-center justify-center">
@@ -187,6 +188,7 @@
 			</div>
 		</a>
 	</div>
+	-->
 	<!--e:お知らせ(重要)-->
 	<!---->
 	<!--s:このサイトについて-->
