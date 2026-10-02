@@ -1,9 +1,6 @@
 <script>
 	const { data } = $props();
 
-	import { onMount } from 'svelte';
-	import { reveal } from '$lib/reveal';
-
 	let pageTitle = '関連サービス';
 </script>
 
@@ -17,19 +14,24 @@
 		<p class="tf26-page-title" style="color: black; margin-bottom: 0;">{pageTitle}</p>
 	</div>
 	<section class="container mx-auto mt-15 mb-25">
-			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-		<a
-			href="https://75th.tohofes.jp/" target="_blank"
-			class="block rounded-lg border p-4 transition hover:bg-gray-100 dark:hover:bg-gray-300"
-		>
-			<div class="flex items-center justify-between">
-				<div class="flex items-center gap-3">
-					<img src="https://pic.atserver186.jp/img/tohofes/tf26-logo-m-v3.webp" class="h-10" alt="第75回桐朋祭ホームページロゴ"/>
-					<span class="font-semibold">第75回桐朋祭公式ホームページ</span>
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+			<a
+				href="https://75th.tohofes.jp/"
+				target="_blank"
+				class="block rounded-lg border p-4 transition hover:bg-gray-100 dark:hover:bg-gray-300"
+			>
+				<div class="flex items-center justify-between">
+					<div class="flex items-center gap-3">
+						<img
+							src="https://pic.atserver186.jp/img/tohofes/tf26-logo-m-v3.webp"
+							class="h-10"
+							alt="第75回桐朋祭ホームページロゴ"
+						/>
+						<span class="font-semibold">第75回桐朋祭公式ホームページ</span>
+					</div>
 				</div>
-			</div>
-		</a>
-        <!--
+			</a>
+			<!--
 		<a
 			href="https://gitlab.atserver186.jp/t-aoki186/atserver186.jp.git" target="_blank"
 			class="block rounded-lg border p-4 transition hover:bg-gray-100 dark:hover:bg-gray-300"
@@ -42,7 +44,7 @@
 			</div>
 		</a>
         -->
-	</div>
+		</div>
 	</section>
 </main>
 <ol class="main-breadcrumb container mx-auto">

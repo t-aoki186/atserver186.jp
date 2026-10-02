@@ -1,35 +1,20 @@
 <script lang="ts">
-	import type { Post } from '$lib/types';
-
-	interface TableOfContents {
-		title: string;
-		id: string;
-		level: number;
-		children?: TableOfContents[];
-	}
-
-	// 型定義（htmlプロパティを追加）
-	let {
-		data
-	}: {
-		data: { post: Post & { html: string }; site_title: string; tableOfContents: TableOfContents[] };
-	} = $props();
+	import type { PageProps } from './$types';
+	let { data }: PageProps = $props();
 	const post = $derived(data.post);
 	const tableOfContents = $derived(data.tableOfContents);
 
 	let pageTitle = $derived(post.title);
 
-	function sanitizeTransitionName(str: string): string {
-		return str.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-_]/g, '');
-	}
+	const inputdate = $derived(new Date(post.date));
 
-	const inputdate = new Date(post.date);
-
-	const formattedDate = new Intl.DateTimeFormat('ja-JP', {
-		year: 'numeric',
-		month: '2-digit',
-		day: '2-digit'
-	}).format(inputdate);
+	const formattedDate = $derived(
+		new Intl.DateTimeFormat('ja-JP', {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit'
+		}).format(inputdate)
+	);
 </script>
 
 <svelte:head>
@@ -53,18 +38,23 @@
 				{post.category}</a
 			>
 		</div>
-		<p class=""><i class="fa-regular fa-clock"></i>{formattedDate}{#if post.edited === 1}<span class="ml-2 w-fit rounded-2xl border border-gray-500 px-1 text-xs"><i class="fa-solid fa-clock-rotate-left mr-1"></i>編集済</span>{/if}</p>
+		<p class="">
+			<i class="fa-regular fa-clock"></i>{formattedDate}{#if post.edited === 1}<span
+					class="ml-2 w-fit rounded-2xl border border-gray-500 px-1 text-xs"
+					><i class="fa-solid fa-clock-rotate-left mr-1"></i>編集済</span
+				>{/if}
+		</p>
 
 		{#if tableOfContents && tableOfContents.length > 0}
 			<nav class="table-of-contents mt-2 mb-6 rounded-xl bg-gray-100 p-4">
 				<h2 class="mb-3 text-lg font-bold"><i class="fa-solid fa-list-ul mr-1"></i>目次</h2>
 				<ul class="space-y-1">
-					{#each tableOfContents as item}
+					{#each tableOfContents as item (item.id)}
 						<li class="ml-0">
 							<a href="#{item.id}" class="text-black hover:underline">{item.title}</a>
 							{#if item.children && item.children.length > 0}
 								<ul class="ml-4 space-y-1">
-									{#each item.children as child}
+									{#each item.children as child (child.id)}
 										<li>
 											<a href="#{child.id}" class="text-black hover:underline">{child.title}</a>
 										</li>
@@ -78,6 +68,8 @@
 		{/if}
 
 		<div class="markdown-content">
+			<!-- Repository-owned static/news Markdown is rendered by the server; no user HTML is accepted. -->
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html post.html}
 		</div>
 	</article>

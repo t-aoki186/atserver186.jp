@@ -13,28 +13,28 @@ const gitignorePath = path.resolve(import.meta.dirname, '.gitignore');
 export default defineConfig(
 	includeIgnoreFile(gitignorePath),
 	js.configs.recommended,
-	ts.configs.recommended,
+	{
+		files: ['**/*.ts', '**/*.svelte'],
+		extends: [ts.configs.recommended]
+	},
 	svelte.configs.recommended,
 	prettier,
 	svelte.configs.prettier,
 	{
-		languageOptions: { globals: { ...globals.browser, ...globals.node } },
-		rules: {
-			// typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
-			// see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
-			'no-undef': 'off',
-			'svelte/no-navigation-without-resolve': 'off'
-		}
+		languageOptions: { globals: { ...globals.browser, ...globals.node } }
 	},
 	{
 		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
 		languageOptions: {
 			parserOptions: {
-				projectService: true,
-				extraFileExtensions: ['.svelte'],
+				// The recommended rules do not need the TypeScript project service.
 				parser: ts.parser,
 				svelteConfig
 			}
+		},
+		rules: {
+			// This site is served at the domain root (kit.paths.base is unset).
+			'svelte/no-navigation-without-resolve': 'off'
 		}
 	}
 );

@@ -1,9 +1,6 @@
 <script>
 	const { data } = $props();
 
-	import { onMount } from 'svelte';
-	import { reveal } from '$lib/reveal';
-
 	let pageTitle = 'サービス';
 </script>
 
@@ -18,7 +15,7 @@
 	</div>
 	<section class="container mx-auto mt-25 mb-25">
 		<div class="flex flex-wrap justify-center gap-4">
-			{#each data.results as item}
+			{#each data.results as item (item.id)}
 				<article class="sp-search-result-card">
 					<a href={item.id} class="sp-search-result-link-overlay">
 						<p class="hidden">hidden:エラー対策</p>

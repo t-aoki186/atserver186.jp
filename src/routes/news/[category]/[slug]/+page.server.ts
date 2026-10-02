@@ -7,15 +7,6 @@ import { join } from 'path';
 import fm from 'front-matter';
 import type { FrontMatter } from '$lib/types';
 
-function generateSlug(text: string): string {
-	return text
-		.toLowerCase()
-		.replace(/[^\w\s-]/g, '')
-		.replace(/\s+/g, '-')
-		.replace(/-+/g, '-')
-		.trim();
-}
-
 interface TableOfContents {
 	title: string;
 	id: string;
@@ -65,14 +56,14 @@ function parseTableOfContents(html: string): { toc: TableOfContents[]; updatedHt
 }
 
 export async function load({ params }: { params: { category: string; slug: string } }) {
-	let post: Post | undefined = await getPostBySlug(params.slug);
+	const post: Post | undefined = await getPostBySlug(params.slug);
 
 	if (!post) {
 		throw error(404, '記事が見つかりません');
 	}
 
-	if (post.category !== params.category){
-		throw error(404, 'error_test')
+	if (post.category !== params.category) {
+		throw error(404, 'error_test');
 	}
 
 	// ビルド後にcontentが空の場合は、ファイルシステムから直接読み込む
@@ -91,7 +82,7 @@ export async function load({ params }: { params: { category: string; slug: strin
 	}
 
 	// markedでマークダウンをHTMLに変換
-	let htmlContent = await marked(post.content);
+	const htmlContent = await marked(post.content);
 
 	// 見出しにIDを付与して目次を生成
 	const { toc, updatedHtml } = parseTableOfContents(htmlContent);

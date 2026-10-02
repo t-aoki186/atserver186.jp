@@ -1,13 +1,9 @@
 // Global module declarations to reduce noisy editor/TypeScript diagnostics
 // Add more `declare module` lines as needed for other packages that don't ship types
 
-declare module 'swiper';
 declare module 'swiper/css';
-declare module 'swiper/svelte';
 
 declare module 'reveal.js';
-
-declare module 'nprogress';
 
 // Allow importing plain CSS files (e.g. `import 'swiper/css'`) without TS errors
 declare module '*.css';

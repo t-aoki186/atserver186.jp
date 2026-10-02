@@ -1,15 +1,12 @@
 <script>
 	const { data } = $props();
 
-	import { onMount } from 'svelte';
-	import { reveal } from '$lib/reveal';
-
 	let pageTitle = '利用規約';
 </script>
 
 <svelte:head>
 	<title>{pageTitle} | {data.site_title}</title>
-    <meta property="og:title" content="{pageTitle} | {data.site_title}" />
+	<meta property="og:title" content="{pageTitle} | {data.site_title}" />
 </svelte:head>
 
 <main class="mt-15 mr-1 ml-1 min-h-screen">
@@ -18,7 +15,10 @@
 	</div>
 	<section class="container mx-auto mt-25 mb-25">
 		<div class="flex flex-col">
-            <a href="/site/privacy" class="underline mb-4 font-bold"><i class="fa-solid fa-arrow-up-right-from-square text-sm mr-1"></i>プライバシーポリシーはこちら</a>
+			<a href="/site/privacy" class="mb-4 font-bold underline"
+				><i class="fa-solid fa-arrow-up-right-from-square mr-1 text-sm"
+				></i>プライバシーポリシーはこちら</a
+			>
 			<p class="mb-2">
 				ウェブサイト「ATSERVER」（以下「本サイト」といいます）が提供するサービス（以下「本サービス」といいます）の利用条件を定めるものです。
 			</p>

@@ -1,9 +1,6 @@
 <script>
 	const { data } = $props();
 
-	import { onMount } from 'svelte';
-	import { reveal } from '$lib/reveal';
-
 	let pageTitle = '相互リンク';
 </script>
 
@@ -17,7 +14,7 @@
 	</div>
 	<section class="container mx-auto mt-25 mb-25">
 		<h2 class="text-xl font-bold">リンク</h2>
-		{#each data.results as item}
+		{#each data.results as item (item.url)}
 			<a href={item.url} target="_blank"
 				><i class="fa-solid fa-up-right-from-square text-xs"></i>
 				{item.title}<br /><span></span></a
