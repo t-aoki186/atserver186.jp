@@ -1,14 +1,11 @@
 <script lang="ts">
 	/*共通*/
-	let { data } = $props() as {
-		data: { latestNews: any[]; latestMulinks: any[]; latest2Mulinks: any[] };
-	};
+	import type { PageProps } from './$types';
+	let { data }: PageProps = $props();
 	import { onMount } from 'svelte';
 	import { reveal } from '$lib/reveal';
 	/*ローディング*/
 	import { isVisible } from '$lib/stores/loader';
-	/*モーダル*/
-	import Modal from '$lib/components/Modal.svelte';
 	/*カルーセル*/
 	import Swiper from 'swiper';
 	import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -18,21 +15,8 @@
 	/*Sveltekit-View-Transition(ページ遷移時のアニメーション)*/
 	import { setupViewTransition } from 'sveltekit-view-transition';
 	//
-	import { afterNavigate, beforeNavigate } from '$app/navigation';
-
-	/*s:モーダル*/
-	let showModal = $state(false);
-	let modalType = $state('');
-
-	function openModal(type: string) {
-		showModal = true;
-		modalType = type;
-	}
-	/*e:モーダル*/
-	//
 	/*s:カルーセル*/
 	let swiperContainer: HTMLDivElement | null = null;
-	let swiperInstance: any = null;
 
 	//カルーセルの内容
 	const slides = [
@@ -62,7 +46,7 @@
 	//
 	onMount(() => {
 		if (swiperContainer) {
-			swiperInstance = new Swiper(swiperContainer, {
+			const swiperInstance = new Swiper(swiperContainer, {
 				modules: [Navigation, Pagination, Autoplay],
 				navigation: {
 					nextEl: '.swiper-button-next',
@@ -71,9 +55,10 @@
 				pagination: { el: '.swiper-pagination', clickable: true },
 				autoplay: { delay: 3000, disableOnInteraction: false },
 				spaceBetween: 20,
-				slidersPreview: 1,
+				slidesPerView: 1,
 				loop: true
 			});
+			return () => swiperInstance.destroy(true, true);
 		}
 	});
 	/*s:カルーセル*/
@@ -98,19 +83,23 @@
 	<div class="carousel-wrapper">
 		<div class="swiper ats-swiper" bind:this={swiperContainer}>
 			<div class="swiper-wrapper">
-				{#each slides as s}
+				{#each slides as s (s.id)}
 					<div class="swiper-slide">
 						<div class="slide-card overflow-hidden rounded-lg bg-white shadow-md">
 							{#if s.image}
-								<img src={s.image} alt={s.title} class="slide-img h-full w-full object-cover" />
+								<img
+									src={s.image}
+									alt={s.link_title}
+									class="slide-img h-full w-full object-cover"
+								/>
 							{/if}
 							<div class="p-4">
-								<a href="{s.link}" class="link-main">
+								<a href={s.link} class="link-main">
 									<div class="link-main-underline">
 										<span>{s.link_title}</span>
 										<i class="fa-solid fa-arrow-right-long"></i>
 									</div>
-									</a>
+								</a>
 								<p class="text-sm">{s.body}</p>
 							</div>
 						</div>
@@ -137,7 +126,7 @@
 	<!--s:サービス-->
 	<div class="container m-auto mt-10 rounded-xl bg-(--title-bg-color)" data-aos="fade-up">
 		<p use:reveal class="news-section-title" style="padding: 0 0 10px 0;">
-			{#each '・サービス'.split('') as char, i}
+			{#each '・サービス'.split('') as char, i (i)}
 				<span class="char text-(--main-text-color)" style={`--d: ${i * 0.12}s`}>{char}</span>
 			{/each}
 		</p>
@@ -194,7 +183,7 @@
 	<!--s:このサイトについて-->
 	<div class="container m-auto mt-10" data-aos="fade-up">
 		<p use:reveal class="news-section-title" style="padding: 0 0 10px 0;">
-			{#each '・このサイトについて'.split('') as char, i}
+			{#each '・このサイトについて'.split('') as char, i (i)}
 				<span class="char text-(--main-text-color)" style={`--d: ${i * 0.12}s`}>{char}</span>
 			{/each}
 		</p>
@@ -236,13 +225,13 @@
 		<div class="main-link">
 			<div class="link-3" style="margin: 0 5px 5px 5px; ">
 				<p use:reveal class="news-section-title" style="padding: 0 0 10px 0;">
-					{#each '・お知らせ'.split('') as char, i}
+					{#each '・お知らせ'.split('') as char, i (i)}
 						<span class="char text-(--main-text-color)" style={`--d: ${i * 0.12}s`}>{char}</span>
 					{/each}
 				</p>
 				<hr class="main-hr mb-4" />
 				<ul>
-					{#each data?.latestNews ?? [] as post}
+					{#each data?.latestNews ?? [] as post (post.slug)}
 						<li class="mx-auto mb-4 w-full list-none">
 							<a href="/news/{post.category}/{post.slug}">
 								<div
@@ -292,7 +281,7 @@
 	<!--s:相互リンク-->
 	<div class="container m-auto mt-10" data-aos="fade-up">
 		<p use:reveal class="news-section-title" style="padding: 0 0 10px 0;">
-			{#each '・相互リンク'.split('') as char, i}
+			{#each '・相互リンク'.split('') as char, i (i)}
 				<span class="char text-(--main-text-color)" style={`--d: ${i * 0.12}s`}>{char}</span>
 			{/each}
 		</p>
@@ -300,14 +289,14 @@
 	<div class="container mx-auto mb-10" data-aos="fade-up">
 		<div class="main-link">
 			<div class="link-2">
-				{#each data?.latestMulinks ?? [] as item}
+				{#each data?.latestMulinks ?? [] as item (item.url)}
 					<a href={item.url} target="_blank"
 						><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>{item.title}</a
 					>
 				{/each}
 			</div>
 			<div class="link-2">
-				{#each data?.latest2Mulinks ?? [] as item}
+				{#each data?.latest2Mulinks ?? [] as item (item.url)}
 					<a href={item.url} target="_blank"
 						><i class="fa-solid fa-up-right-from-square mr-1 text-xs"></i>{item.title}</a
 					>
@@ -328,7 +317,7 @@
 	<!--s:アクセスカウンター-->
 	<div class="container m-auto mt-10" data-aos="fade-up">
 		<p use:reveal class="news-section-title" style="padding: 0 0 10px 0;">
-			{#each '・アクセスカウンター'.split('') as char, i}
+			{#each '・アクセスカウンター'.split('') as char, i (i)}
 				<span class="char text-(--main-text-color)" style={`--d: ${i * 0.12}s`}>{char}</span>
 			{/each}
 		</p>

@@ -1,11 +1,8 @@
 <script lang="ts">
-	import type { Post } from '$lib/types';
+	import type { PageProps } from './$types';
 
 	// Svelte 5 の $props() で data を受け取る
-	const { data } = $props();
-
-	import { onMount } from 'svelte';
-	import { reveal } from '$lib/reveal';
+	const { data }: PageProps = $props();
 
 	// data.posts を使う（+page.server.ts から渡される）
 	const posts = $derived(data.posts);
@@ -28,11 +25,16 @@
 	</div>
 	<section class="container mx-auto mt-15 mb-25">
 		<div class="mb-4 flex">
-			<a href="https://legacy.atserver186.jp/public/atserver186.jp/news/" target="_blank" class="text-lg"
-				><i class="fa-solid fa-folder text-bace mr-1"></i><span class="underline">過去のお知らせはアーカイブされました。</span></a
+			<a
+				href="https://legacy.atserver186.jp/public/atserver186.jp/news/"
+				target="_blank"
+				class="text-lg"
+				><i class="fa-solid fa-folder text-bace mr-1"></i><span class="underline"
+					>過去のお知らせはアーカイブされました。</span
+				></a
 			>
 		</div>
-		{#each posts as post}
+		{#each posts as post (post.slug)}
 			<ul>
 				<li class="mx-auto mb-4 w-full list-none" style="view-transition-name: newsp-hero;">
 					<a href="/news/{post.category}/{post.slug}">

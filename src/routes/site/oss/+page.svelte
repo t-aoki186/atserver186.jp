@@ -1,9 +1,6 @@
 <script>
 	const { data } = $props();
 
-	import { onMount } from 'svelte';
-	import { reveal } from '$lib/reveal';
-
 	let pageTitle = '使用しているOSS';
 </script>
 
@@ -57,18 +54,14 @@
 			<p class="mt-1 text-sm">
 				提供元:CSS Stock<br />
 				ライセンス:独自ライセンス（商用利用可）<br />
-				公式サイト:<a href="https://pote-chil.com" class="underline"
-					>://pote-chil.com</a
-				><br />
+				公式サイト:<a href="https://pote-chil.com" class="underline">://pote-chil.com</a><br />
 				利用内容:ボタンやカードのCSSコンポーネントに使用
 			</p>
 			<h2 class="mt-2 text-lg font-semibold">ICOON MONO</h2>
 			<p class="mt-1 text-sm">
 				提供元:TopeconHeroes<br />
 				ライセンス:独自ライセンス（商用利用可）<br />
-				公式サイト:<a href="https://icooon-mono.com" class="underline"
-					>icooon-mono.com</a
-				><br />
+				公式サイト:<a href="https://icooon-mono.com" class="underline">icooon-mono.com</a><br />
 				利用内容:サイト内のアイコンの一部に使用
 			</p>
 			<h2 class="mt-2 text-lg font-semibold">シルエットイラスト</h2>

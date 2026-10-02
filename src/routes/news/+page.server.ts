@@ -8,9 +8,8 @@ export async function load() {
 */
 
 import { getAllPosts } from '$lib/news';
-import type { Post } from '$lib/types';
 
 export async function load() {
-  const posts = await getAllPosts();
-  return { posts };
+	const posts = await getAllPosts();
+	return { posts };
 }

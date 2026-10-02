@@ -1,8 +1,6 @@
 <script lang="ts">
 	const { data } = $props();
 
-	// import { onMount } from 'svelte';
-	import { reveal } from '$lib/reveal';
 	import Modal from '$lib/components/ModalB.svelte';
 	import { navState } from '$lib/stores/navState.svelte.js';
 
@@ -113,30 +111,28 @@
 		<div class="clock-setting-btn">
 			<div class="clock-setting-btn-item">
 				<button onclick={toggleNav} class="dash-link cursor-pointer">
-					{@html navState.visible
-						? '<p>UI</p><i class="fa-solid fa-eye-slash"></i>非表示'
-						: '<p>UI</p><i class="fa-solid fa-eye"></i>表示'}
+					<p>UI</p>
+					<i class={navState.visible ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'}></i>
+					{navState.visible ? '非表示' : '表示'}
 				</button>
 			</div>
 			<div class="clock-setting-btn-item" class:is-dark={isDark}>
 				<button onclick={toggleMode} class="dash-link cursor-pointer">
-					{@html isDark
-						? '<p>テーマ</p><i class="fa-solid fa-sun"></i>'
-						: '<p>テーマ</p><i class="fa-solid fa-moon"></i>'}
+					<p>テーマ</p>
+					<i class={isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon'}></i>
 				</button>
 			</div>
 			<div class="clock-setting-btn-item">
 				<button id="fullscreen-toggle-btn" class="dash-link cursor-pointer">
-					{@html isFullscreen
-						? '<p>最小化</p><i class="fa-solid fa-compress"></i>'
-						: '<p>最大化</p><i class="fa-solid fa-expand"></i>'}
+					<p>{isFullscreen ? '最小化' : '最大化'}</p>
+					<i class={isFullscreen ? 'fa-solid fa-compress' : 'fa-solid fa-expand'}></i>
 				</button>
 			</div>
 		</div>
 		<div class="timezone-selector-container">
 			<label class="timezone-selector">
 				<select bind:value={timeZone}>
-					{#each zones as zone}
+					{#each zones as zone (zone.value)}
 						<option value={zone.value}>{zone.label}</option>
 					{/each}
 				</select>

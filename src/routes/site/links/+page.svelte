@@ -1,9 +1,6 @@
 <script>
 	const { data } = $props();
 
-	import { onMount } from 'svelte';
-	import { reveal } from '$lib/reveal';
-
 	let pageTitle = '各種SNSリンク';
 </script>
 

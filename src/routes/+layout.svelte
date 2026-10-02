@@ -3,17 +3,15 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	/*ローディング*/
-	import { isVisible, hasInitialized } from '$lib/stores/loader';
+	import { isVisible } from '$lib/stores/loader';
 	import Loading from '$lib/components/Loading.svelte';
-	import { get } from 'svelte/store';
 	/*独自スタイル*/
 	import './layout.css';
 	import './icon.css';
 	/*NProgress*/
 	import NProgress from 'nprogress';
 	import 'nprogress/nprogress.css';
-	/*Sqiper*/
-	import Swiper from 'swiper';
+	/*Swiper*/
 	import 'swiper/css';
 	/*favicon*/
 	import favicon from '$lib/assets/favicon.png';
@@ -37,7 +35,6 @@
 
 	//export
 	let { data, children } = $props();
-	let accordionOpen = $state(false);
 
 	//ハンバーガーメニュー
 	let open = $state(false);
@@ -83,10 +80,6 @@
 	}
 	/*e:モーダル*/
 	//
-	/*s:カルーセル*/
-	let swiperContainer: HTMLDivElement | null = null;
-	let swiperInstance: any = null;
-
 	onMount(() => {
 		const handleKeydown = (event: KeyboardEvent) => {
 			// Ctrl + K (または Cmd + K) を判定
@@ -307,9 +300,8 @@
 						>
 					</li>
 					<li>
-						<a
-							href="/site/saucecode"
-							class="header-text"><i class="fa-brands fa-github mr-1 text-xs"></i>ソースコード</a
+						<a href="/site/saucecode" class="header-text"
+							><i class="fa-brands fa-github mr-1 text-xs"></i>ソースコード</a
 						>
 					</li>
 					<li>
@@ -363,7 +355,12 @@
 							<li><a href="/service">webサービス</a></li>
 							<li><a href="/software">ソフトウェア</a></li>
 							<li><a href="/works/">関連サービス一覧</a></li>
-							<li><a href="https://dev.atserver186.jp" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square text-xs mr-1"></i>dev.atserver186.jp</a></li>
+							<li>
+								<a href="https://dev.atserver186.jp" target="_blank"
+									><i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"
+									></i>dev.atserver186.jp</a
+								>
+							</li>
 						</ul>
 					</div>
 					<div class="footer-flex-content">
@@ -455,7 +452,12 @@
 							<li><a href="/service">webサービス</a></li>
 							<li><a href="/software">ソフトウェア</a></li>
 							<li><a href="/works/">関連サービス一覧</a></li>
-							<li><a href="https://dev.atserver186.jp" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square text-xs mr-1"></i>dev.atserver186.jp</a></li>
+							<li>
+								<a href="https://dev.atserver186.jp" target="_blank"
+									><i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"
+									></i>dev.atserver186.jp</a
+								>
+							</li>
 						</ul>
 					</details>
 					<details class="accordion-main mb-4 min-w-full">
@@ -545,23 +547,23 @@
 					style="margin-right: 10px; margin-left: 10px;">プライバシーポリシー</a
 				><span class="footer-span">|</span>
 				<a href="/contact" class="footer-link" style="margin-left: 10px;">お問い合わせ</a>
-				<div class="flex mt-2">
-					<p class="footer-text my-auto">
-						&copy; 2026 ATSERVER. atserver186.jp
-					</p>
+				<div class="mt-2 flex">
+					<p class="footer-text my-auto">&copy; 2026 ATSERVER. atserver186.jp</p>
 					<!--<span class="my-auto mx-2 text-white">|</span>-->
 					<div class="ml-auto">
 						<a
-								href="https://github.com/t-aoki186/atserver186.jp.git" target="_blank"
-								class="bg-(--main-bg-color) p-0.5 rounded-sm text-xs tracking-wider transition" 
-								style="border: 1px solid var(--main-text-color);"
-								><i class="fa-brands fa-github"></i><kbd>Sauce</kbd></a
+							href="https://github.com/t-aoki186/atserver186.jp.git"
+							target="_blank"
+							class="rounded-sm bg-(--main-bg-color) p-0.5 text-xs tracking-wider transition"
+							style="border: 1px solid var(--main-text-color);"
+							><i class="fa-brands fa-github"></i><kbd>Sauce</kbd></a
 						>
 						<a
-								href="https://gitlab.atserver186.jp/t-aoki186/atserver186.jp.git" target="_blank"
-								class="bg-(--main-bg-color) p-0.5 rounded-sm text-xs tracking-wider transition" 
-								style="border: 1px solid var(--main-text-color);"
-								><i class="fa-brands fa-gitlab"></i><kbd>Sauce</kbd></a
+							href="https://gitlab.atserver186.jp/t-aoki186/atserver186.jp.git"
+							target="_blank"
+							class="rounded-sm bg-(--main-bg-color) p-0.5 text-xs tracking-wider transition"
+							style="border: 1px solid var(--main-text-color);"
+							><i class="fa-brands fa-gitlab"></i><kbd>Sauce</kbd></a
 						>
 					</div>
 				</div>
