@@ -17,7 +17,7 @@
 		<div class="mb-4 rounded-2xl bg-gray-50 p-4">
 			<p class="text-lg mb-4">使用しているオープンソースソフトウェアの一覧は、以下のリンクからご覧いただけます。</p>
 			<a href="https://github.com/t-aoki186/atserver186.jp/blob/main/docs/oss.md" target="_blank" class="hover:underline">
-				<i class="fa-solid fa-up-right-from-square mr-1 text-sm"></i>https://github.com/t-aoki186/tohofes2026-web/blob/main/oss.md
+				<i class="fa-solid fa-up-right-from-square mr-1 text-sm"></i>https://github.com/t-aoki186/atserver186.jp/blob/main/docs/oss.md
 			</a>
 			<p class="text-lg my-4">また、こちらのホームページのソースコードも、<a href="https://github.com/TohoComputerClub/" class="hover:underline">GitHub</a>と<a href="https://gitlab.atserver186.jp/t-aoki186/" class="hover:underline">GitLab</a>上でMITライセンスのもと公開されております。</p>
 			<a href="/site/saucecode" class="hover:underline">
