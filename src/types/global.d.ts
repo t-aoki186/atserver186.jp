@@ -2,10 +2,12 @@
 // Add more `declare module` lines as needed for other packages that don't ship types
 
 declare module 'swiper/css';
+declare module 'swiper/css/navigation';
+declare module 'swiper/css/pagination';
 
 declare module 'reveal.js';
 
-// Allow importing plain CSS files (e.g. `import 'swiper/css'`) without TS errors
+// Allow importing files whose specifiers end in .css or .scss.
 declare module '*.css';
 
 declare module '*.scss';
