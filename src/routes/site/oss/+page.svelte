@@ -1,7 +1,7 @@
 <script>
 	const { data } = $props();
 
-	let pageTitle = '使用しているOSS';
+	let pageTitle = 'オープンソースライセンス';
 </script>
 
 <svelte:head>
@@ -13,66 +13,20 @@
 	<div class="container m-auto mt-25 border-b-2 border-b-(--main-text-color)">
 		<p class="tf26-page-title" style="color: black; margin-bottom: 0;">{pageTitle}</p>
 	</div>
-	<section class="container mx-auto mt-25 mb-25">
-		<div class="mt-4">
-			<h2 class="mt-2 text-lg font-semibold">Font Awesome Free</h2>
-			<p class="mt-1 text-sm">
-				提供元:Fonticons, Inc.<br />
-				ライセンス:SIL Open Font License 1.1<br />
-				公式サイト:<a href="https://fontawesome.com" class="underline" target="_blank"
-					>fontawesome.com</a
-				><br />
-				利用内容:アイコン表示に使用
-			</p>
-			<h2 class="mt-2 text-lg font-semibold">SvelteKit</h2>
-			<p class="mt-1 text-sm">
-				提供元:Svelte contributors<br />
-				ライセンス:MIT License<br />
-				公式サイト:<a href="https://kit.svelte.dev" class="underline" target="_blank"
-					>kit.svelte.dev</a
-				>
-				<br />
-				利用内容:Webアプリケーションフレームワークとして使用<br />
-			</p>
-			<h2 class="mt-2 text-lg font-semibold">Tailwind CSS</h2>
-			<p class="mt-1 text-sm">
-				提供元:Tailwind Labs, Inc.<br />
-				ライセンス:MIT License<br />
-				公式サイト:<a href="https://tailwindcss.com/" class="underline">tailwindcss.com</a><br />
-				利用内容:ユーティリティファーストなスタイル適用に使用
-			</p>
-			<h2 class="mt-2 text-lg font-semibold">NProgress</h2>
-			<p class="mt-1 text-sm">
-				提供元: Rico Sta. Cruz<br />
-				ライセンス: MIT License<br />
-				公式サイト:<a href="https://ricostacruz.com/nprogress/" class="underline"
-					>ricostacruz.com/nprogress/</a
-				><br />
-				利用内容: ページ遷移時のプログレスバー表示
-			</p>
-			<h2 class="mt-2 text-lg font-semibold">CSS Stock</h2>
-			<p class="mt-1 text-sm">
-				提供元:CSS Stock<br />
-				ライセンス:独自ライセンス（商用利用可）<br />
-				公式サイト:<a href="https://pote-chil.com" class="underline">://pote-chil.com</a><br />
-				利用内容:ボタンやカードのCSSコンポーネントに使用
-			</p>
-			<h2 class="mt-2 text-lg font-semibold">ICOON MONO</h2>
-			<p class="mt-1 text-sm">
-				提供元:TopeconHeroes<br />
-				ライセンス:独自ライセンス（商用利用可）<br />
-				公式サイト:<a href="https://icooon-mono.com" class="underline">icooon-mono.com</a><br />
-				利用内容:サイト内のアイコンの一部に使用
-			</p>
-			<h2 class="mt-2 text-lg font-semibold">シルエットイラスト</h2>
-			<p class="mt-1 text-sm">
-				提供元:TopeconHeroes<br />
-				ライセンス:独自ライセンス（商用利用可）<br />
-				公式サイト:<a href="https://www.silhouette-illust.com" class="underline"
-					>silhouette-illust.com</a
-				><br />
-				利用内容:サイト内のイラストの一部に使用
-			</p>
+	<section class="container mx-auto mt-15 mb-25">
+		<div class="mb-4 rounded-2xl bg-gray-50 p-4">
+			<p class="text-lg mb-4">使用しているオープンソースソフトウェアの一覧は、以下のリンクからご覧いただけます。</p>
+			<a href="https://github.com/t-aoki186/atserver186.jp/blob/main/docs/oss.md" target="_blank" class="hover:underline">
+				<i class="fa-solid fa-up-right-from-square mr-1 text-sm"></i>https://github.com/t-aoki186/tohofes2026-web/blob/main/oss.md
+			</a>
+			<p class="text-lg my-4">また、こちらのホームページのソースコードも、<a href="https://github.com/TohoComputerClub/" class="hover:underline">GitHub</a>と<a href="https://gitlab.atserver186.jp/t-aoki186/" class="hover:underline">GitLab</a>上でMITライセンスのもと公開されております。</p>
+			<a href="/site/saucecode" class="hover:underline">
+				<i class="fa-solid fa-folder mr-1 text-sm"></i>ソースコード
+			</a>
+			<span>|</span>
+			<a href="https://opensource.org/license/mits" class="hover:underline" target="_blank">
+				<i class="fa-solid fa-up-right-from-square mr-1 text-sm"></i>MIT LICENSE
+			</a>
 		</div>
 	</section>
 </main>
