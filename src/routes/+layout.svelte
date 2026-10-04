@@ -290,18 +290,38 @@
 			>
 				<ul class="flex flex-col gap-4 text-sm tracking-wide">
 					<li>
+						<a href="/about" class="header-text"
+							><i class="fa-solid fa-circle-info mr-1 text-xs"></i>当サイトについて</a
+						>
+					</li>
+					<li>
+						<a href="/site/terms" class="header-text"
+							><i class="fa-regular fa-file-lines mr-1 text-xs"></i>利用規約</a
+						>
+					</li>
+					<li>
+						<a href="/site/privacy" class="header-text"
+							><i class="fa-regular fa-file-lines mr-1 text-xs"></i>プライバシーポリシー</a
+						>
+					</li>
+					<li>
 						<a href="/news" class="header-text"
-							><i class="fa-regular fa-file-lines mr-1 text-xs"></i>ニュース</a
+							><i class="fa-regular fa-newspaper mr-1 text-xs"></i>お知らせ</a
+						>
+					</li>
+					<li>
+						<a href="/contact" class="header-text"
+							><i class="fa-solid fa-envelope mr-1 text-xs"></i>お問い合わせ</a
 						>
 					</li>
 					<li>
 						<a href="/site/oss" class="header-text"
-							><i class="fa-solid fa-rectangle-list mr-1 text-xs"></i>使用しているOSS</a
+							><i class="fa-solid fa-rectangle-list mr-1 text-xs"></i>オープンソースライセンス</a
 						>
 					</li>
 					<li>
 						<a href="/site/saucecode" class="header-text"
-							><i class="fa-brands fa-github mr-1 text-xs"></i>ソースコード</a
+							><i class="fa-solid fa-code mr-1 text-xs"></i>ソースコード</a
 						>
 					</li>
 					<li>
@@ -312,11 +332,6 @@
 					<li>
 						<a href="/site/links" class="header-text"
 							><i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"></i>各種SNS / リンク</a
-						>
-					</li>
-					<li>
-						<a href="/contact" class="header-text"
-							><i class="fa-solid fa-envelope mr-1 text-xs"></i>お問い合わせ</a
 						>
 					</li>
 					<hr class="main-hr" />
@@ -378,7 +393,7 @@
 							</li>
 							<li>
 								<a href="/site/oss">
-									<span>使用しているOSS</span>
+									<span>オープンソースライセンス</span>
 								</a>
 							</li>
 							<li>
@@ -475,7 +490,7 @@
 							</li>
 							<li>
 								<a href="/site/oss">
-									<span>使用しているOSS</span>
+									<span>オープンソースライセンス</span>
 								</a>
 							</li>
 							<li>
