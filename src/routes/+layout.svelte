@@ -264,12 +264,28 @@
 		{#if !otherOpen && !isOtherClosing}
 			<nav class="px-6 pt-6 pb-6 md:hidden">
 				<ul class="flex flex-col gap-4 text-sm tracking-wide">
-					<li><a href="/" class="header-text"><i class="fa-solid fa-house mr-1 text-xs"></i>ホーム</a></li>
-					<li><a href="/service" class="header-text"><i class="fa-solid fa-gears mr-1 text-xs"></i>サービス</a></li>
-					<li><a href="/software" class="header-text"><i class="fa-solid fa-window-maximize mr-1 text-xs"></i>ソフトウェア</a></li>
-					<li><a href="/contact" class="header-text"><i class="fa-solid fa-envelope mr-1 text-xs"></i>お問い合わせ</a></li>
 					<li>
-						<button class="header-text" onclick={() => (otherOpen = !otherOpen)}><i class="fa-solid fa-ellipsis mr-1 text-xs"></i>その他</button>
+						<a href="/" class="header-text"><i class="fa-solid fa-house mr-1 text-xs"></i>ホーム</a>
+					</li>
+					<li>
+						<a href="/service" class="header-text"
+							><i class="fa-solid fa-gears mr-1 text-xs"></i>サービス</a
+						>
+					</li>
+					<li>
+						<a href="/software" class="header-text"
+							><i class="fa-solid fa-window-maximize mr-1 text-xs"></i>ソフトウェア</a
+						>
+					</li>
+					<li>
+						<a href="/contact" class="header-text"
+							><i class="fa-solid fa-envelope mr-1 text-xs"></i>お問い合わせ</a
+						>
+					</li>
+					<li>
+						<button class="header-text" onclick={() => (otherOpen = !otherOpen)}
+							><i class="fa-solid fa-ellipsis mr-1 text-xs"></i>その他</button
+						>
 					</li>
 				</ul>
 			</nav>
@@ -365,21 +381,37 @@
 
 					<!-- フッターの右側コンテンツ -->
 					<div class="footer-flex-content">
-						<h4>サービス</h4>
+						<h4>ご案内</h4>
 						<ul>
-							<li><a href="/service">webサービス</a></li>
-							<li><a href="/software">ソフトウェア</a></li>
-							<li><a href="/works/">関連サービス一覧</a></li>
 							<li>
-								<a href="https://dev.atserver186.jp" target="_blank"
-									><i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"
-									></i>dev.atserver186.jp</a
-								>
+								<a href="/service">
+									<span>webサービス</span>
+								</a>
+							</li>
+							<li>
+								<a href="/software">
+									<span>ソフトウェア</span>
+								</a>
+							</li>
+							<li>
+								<a href="/service/api">
+									<span>APIドキュメント</span>
+								</a>
+							</li>
+							<li>
+								<a href="/works">
+									<span>開発を担当したもの</span>
+								</a>
+							</li>
+							<li>
+								<a href="https://dev.atserver186.jp/services/" target="_blank">
+									<span>関連サービス一覧</span>
+								</a>
 							</li>
 						</ul>
 					</div>
 					<div class="footer-flex-content">
-						<h4>ATSERVERについて</h4>
+						<h4>当サイトについて</h4>
 						<ul>
 							<li>
 								<a href="/about">
@@ -387,8 +419,23 @@
 								</a>
 							</li>
 							<li>
+								<a href="/site/terms">
+									<span>利用規約</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/privacy">
+									<span>プライバシーポリシー</span>
+								</a>
+							</li>
+							<li>
 								<a href="/news">
 									<span>お知らせ</span>
+								</a>
+							</li>
+							<li>
+								<a href="/contact">
+									<span>お問い合わせ</span>
 								</a>
 							</li>
 							<li>
@@ -399,21 +446,6 @@
 							<li>
 								<a href="/site/saucecode">
 									<span>ソースコード</span>
-								</a>
-							</li>
-							<li>
-								<a href="/site/terms">
-									<span>利用規約</span>
-								</a>
-							</li>
-							<li>
-								<a href="/site/privacypolicy">
-									<span>プライバシーポリシー</span>
-								</a>
-							</li>
-							<li>
-								<a href="/contact">
-									<span>お問い合わせ</span>
 								</a>
 							</li>
 						</ul>
@@ -428,21 +460,39 @@
 								</a>
 							</li>
 							<li>
+								<a href="https://misskey.io/@t_aoki186" target="_blank">
+									<i class="tf26-icon-material icon-misskey-mi mr-1 text-xs"></i>
+									<span>Misskey.io</span>
+								</a>
+							</li>
+							<li>
+								<p class="text-gray-500">
+									<i class="tf26-icon-material icon-misskey-mi mr-1 text-xs"></i>
+									<span>あっとみすき(準備中)</span>
+								</p>
+								<!--
+						<a href="https://mi.atserver186.jp/t-aoki186" target="_blank">
+							<i class="tf26-icon-material icon-misskey-mi mr-1 text-xs"></i>
+							<span>あっとみすき</span>
+						</a>
+						-->
+							</li>
+							<li>
 								<a href="https://github.com/t-aoki186" target="_blank">
-									<i class="fa-brands fa-github text-xs"></i>
+									<i class="fa-brands fa-github mr-1 text-xs"></i>
 									<span>Github</span>
 								</a>
 							</li>
 							<li>
-								<a href="https://gitlab.atserver186.jp/" target="_blank">
-									<i class="fa-brands fa-gitlab text-xs"></i>
+								<a href="https://gitlab.atserver186.jp/t-aoki186" target="_blank">
+									<i class="fa-brands fa-gitlab mr-1 text-xs"></i>
 									<span>Gitlab</span>
 								</a>
 							</li>
 							<li>
-								<a href="/site/links">
+								<a href="/site/mulinks">
 									<i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"></i>
-									<span>すべてのリンクを確認する</span>
+									<span>相互リンク</span>
 								</a>
 							</li>
 						</ul>
@@ -462,21 +512,37 @@
 				<!--s:アコーディオン-->
 				<div class="mt-8">
 					<details class="accordion-main mb-4 min-w-full">
-						<summary class="font-bold">サービス</summary>
+						<summary class="font-bold">ご案内</summary>
 						<ul class="pt-2 pl-2">
-							<li><a href="/service">webサービス</a></li>
-							<li><a href="/software">ソフトウェア</a></li>
-							<li><a href="/works/">関連サービス一覧</a></li>
 							<li>
-								<a href="https://dev.atserver186.jp" target="_blank"
-									><i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"
-									></i>dev.atserver186.jp</a
-								>
+								<a href="/service">
+									<span>webサービス</span>
+								</a>
+							</li>
+							<li>
+								<a href="/software">
+									<span>ソフトウェア</span>
+								</a>
+							</li>
+							<li>
+								<a href="/service/api">
+									<span>APIドキュメント</span>
+								</a>
+							</li>
+							<li>
+								<a href="/works">
+									<span>開発を担当したもの</span>
+								</a>
+							</li>
+							<li>
+								<a href="https://dev.atserver186.jp/services/" target="_blank">
+									<span>関連サービス一覧</span>
+								</a>
 							</li>
 						</ul>
 					</details>
 					<details class="accordion-main mb-4 min-w-full">
-						<summary class="font-bold">ATSERVERについて</summary>
+						<summary class="font-bold">当サイトについて</summary>
 						<ul class="pt-2 pl-2">
 							<li>
 								<a href="/about">
@@ -484,8 +550,23 @@
 								</a>
 							</li>
 							<li>
+								<a href="/site/terms">
+									<span>利用規約</span>
+								</a>
+							</li>
+							<li>
+								<a href="/site/privacy">
+									<span>プライバシーポリシー</span>
+								</a>
+							</li>
+							<li>
 								<a href="/news">
 									<span>お知らせ</span>
+								</a>
+							</li>
+							<li>
+								<a href="/contact">
+									<span>お問い合わせ</span>
 								</a>
 							</li>
 							<li>
@@ -496,21 +577,6 @@
 							<li>
 								<a href="/site/saucecode">
 									<span>ソースコード</span>
-								</a>
-							</li>
-							<li>
-								<a href="/site/terms">
-									<span>利用規約</span>
-								</a>
-							</li>
-							<li>
-								<a href="/site/privacypolicy">
-									<span>プライバシーポリシー</span>
-								</a>
-							</li>
-							<li>
-								<a href="/contact">
-									<span>お問い合わせ</span>
 								</a>
 							</li>
 						</ul>
@@ -525,21 +591,39 @@
 								</a>
 							</li>
 							<li>
+								<a href="https://misskey.io/@t_aoki186" target="_blank">
+									<i class="tf26-icon-material icon-misskey-mi mr-1 text-xs"></i>
+									<span>Misskey.io</span>
+								</a>
+							</li>
+							<li>
+								<p class="text-gray-500">
+									<i class="tf26-icon-material icon-misskey-mi mr-1 text-xs"></i>
+									<span>あっとみすき(準備中)</span>
+								</p>
+								<!--
+						<a href="https://mi.atserver186.jp/t-aoki186" target="_blank">
+							<i class="tf26-icon-material icon-misskey-mi mr-1 text-xs"></i>
+							<span>あっとみすき</span>
+						</a>
+						-->
+							</li>
+							<li>
 								<a href="https://github.com/t-aoki186" target="_blank">
-									<i class="fa-brands fa-github text-xs"></i>
+									<i class="fa-brands fa-github mr-1 text-xs"></i>
 									<span>Github</span>
 								</a>
 							</li>
 							<li>
-								<a href="https://gitlab.atserver186.jp/" target="_blank">
-									<i class="fa-brands fa-gitlab text-xs"></i>
+								<a href="https://gitlab.atserver186.jp/t-aoki186" target="_blank">
+									<i class="fa-brands fa-gitlab mr-1 text-xs"></i>
 									<span>Gitlab</span>
 								</a>
 							</li>
 							<li>
-								<a href="/site/links">
+								<a href="/site/mulinks">
 									<i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"></i>
-									<span>すべてのリンクを確認する</span>
+									<span>相互リンク</span>
 								</a>
 							</li>
 						</ul>
