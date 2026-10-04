@@ -1,7 +1,7 @@
 <script>
 	const { data } = $props();
 
-	let pageTitle = '関連サービス';
+	let pageTitle = '開発を担当したもの';
 </script>
 
 <svelte:head>
