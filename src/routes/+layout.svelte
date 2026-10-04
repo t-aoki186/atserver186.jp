@@ -264,12 +264,12 @@
 		{#if !otherOpen && !isOtherClosing}
 			<nav class="px-6 pt-6 pb-6 md:hidden">
 				<ul class="flex flex-col gap-4 text-sm tracking-wide">
-					<li><a href="/" class="header-text">ホーム</a></li>
-					<li><a href="/service" class="header-text">サービス</a></li>
-					<li><a href="/software" class="header-text">ソフトウェア</a></li>
-					<li><a href="/contact" class="header-text">お問い合わせ</a></li>
+					<li><a href="/" class="header-text"><i class="fa-solid fa-house mr-1 text-xs"></i>ホーム</a></li>
+					<li><a href="/service" class="header-text"><i class="fa-solid fa-gears mr-1 text-xs"></i>サービス</a></li>
+					<li><a href="/software" class="header-text"><i class="fa-solid fa-window-maximize mr-1 text-xs"></i>ソフトウェア</a></li>
+					<li><a href="/contact" class="header-text"><i class="fa-solid fa-envelope mr-1 text-xs"></i>お問い合わせ</a></li>
 					<li>
-						<button class="header-text" onclick={() => (otherOpen = !otherOpen)}>その他</button>
+						<button class="header-text" onclick={() => (otherOpen = !otherOpen)}><i class="fa-solid fa-ellipsis mr-1 text-xs"></i>その他</button>
 					</li>
 				</ul>
 			</nav>
