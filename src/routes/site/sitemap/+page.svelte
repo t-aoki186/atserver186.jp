@@ -28,7 +28,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="/software" target="_blank">
+						<a href="/software">
 							<span>ソフトウェア</span>
 						</a>
 					</li>
