@@ -19,7 +19,7 @@
 			<a href="https://github.com/t-aoki186/atserver186.jp/blob/main/docs/oss.md" target="_blank" class="hover:underline">
 				<i class="fa-solid fa-up-right-from-square mr-1 text-sm"></i>https://github.com/t-aoki186/atserver186.jp/blob/main/docs/oss.md
 			</a>
-			<p class="text-lg my-4">また、こちらのホームページのソースコードも、<a href="https://github.com/TohoComputerClub/" class="hover:underline">GitHub</a>と<a href="https://gitlab.atserver186.jp/t-aoki186/" class="hover:underline">GitLab</a>上でMITライセンスのもと公開されております。</p>
+			<p class="text-lg my-4">また、こちらのホームページのソースコードも、<a href="https://github.com/t-aoki186/" class="hover:underline">GitHub</a>と<a href="https://gitlab.atserver186.jp/t-aoki186/" class="hover:underline">GitLab</a>上でMITライセンスのもと公開されております。</p>
 			<a href="/site/saucecode" class="hover:underline">
 				<i class="fa-solid fa-folder mr-1 text-sm"></i>ソースコード
 			</a>
