@@ -9,66 +9,56 @@
 	<meta property="og:title" content="{pageTitle} | {data.site_title}" />
 </svelte:head>
 
-<main class="mt-15 mr-1 ml-1 min-h-screen">
+<main class="mt-25 mr-1 ml-1 min-h-screen">
 	<div class="container m-auto mt-25 border-b-2 border-b-(--main-text-color)">
 		<p class="tf26-page-title" style="color: black; margin-bottom: 0;">{pageTitle}</p>
 	</div>
-	<section class="container mx-auto mt-25 mb-25">
-		<div class="flex">
+	<section class="container mx-auto mt-15 mb-25">
+		<div class="sitemap-container">
 			<div class="sitemap-content">
 				<h2
 					class="border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
 				>
-					提供中のもの
+					ご案内
 				</h2>
-				<ul>
-					<li class="flex flex-col gap-2.5">
+				<ul class="sitemap-ul">
+					<li>
 						<a href="/service">
 							<span>webサービス</span>
 						</a>
 					</li>
 					<li>
-						<a href="https://dev.atserver186.jp/service/" target="_blank">
-							<span>開発中のwebサービス</span>
+						<a href="/software" target="_blank">
+							<span>ソフトウェア</span>
 						</a>
 					</li>
 					<li>
-						<a href="/software">
-							<span>PC/スマホ用ソフトウェア</span>
+						<a href="/service/api">
+							<span>APIドキュメント</span>
 						</a>
 					</li>
 					<li>
-						<a href="https://dev.atserver186.jp/software/" target="_blank">
-							<span>開発中のPC/スマホ用ソフトウェア</span>
+						<a href="/works">
+							<span>開発を担当したもの</span>
 						</a>
 					</li>
 					<li>
-						<a href="https://dev.atserver186.jp/api/" target="_blank">
-							<span>API等について</span>
-						</a>
-					</li>
-					<li>
-						<a href="/site/related-services">
-							<span>関連サービス(別ドメイン)</span>
+						<a href="https://dev.atserver186.jp/services/" target="_blank">
+							<span>関連サービス一覧</span>
 						</a>
 					</li>
 				</ul>
 			</div>
 			<div class="sitemap-content">
 				<h2
-					class="border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
+					class="mt-2 border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
 				>
-					ATSERVERについて
+					当サイトについて
 				</h2>
-				<ul>
-					<li class="flex flex-col gap-2.5">
+				<ul class="sitemap-ul">
+					<li>
 						<a href="/about">
 							<span>当サイトについて</span>
-						</a>
-					</li>
-					<li>
-						<a href="/site/related-services">
-							<span>関連サービス(別ドメイン)</span>
 						</a>
 					</li>
 					<li>
@@ -77,73 +67,79 @@
 						</a>
 					</li>
 					<li>
-						<a href="/site/privacypolicy">
+						<a href="/site/privacy">
 							<span>プライバシーポリシー</span>
 						</a>
 					</li>
 					<li>
 						<a href="/news">
-							<span>ニュース</span>
+							<span>お知らせ</span>
+						</a>
+					</li>
+					<li>
+						<a href="/contact">
+							<span>お問い合わせ</span>
 						</a>
 					</li>
 					<li>
 						<a href="/site/oss">
-							<span>使用しているOSS</span>
+							<span>オープンソースライセンス</span>
 						</a>
 					</li>
 					<li>
-						<a href="https://github.com/t-aoki186/atserver186.jp" target="_blank">
+						<a href="/site/saucecode">
 							<span>ソースコード</span>
-						</a>
-					</li>
-					<li>
-						<a href="/site/contact">
-							<span>お問い合わせ</span>
 						</a>
 					</li>
 				</ul>
 			</div>
 			<div class="sitemap-content">
 				<h2
-					class="border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
+					class="mt-2 border-l-[3px] border-(--main-text-color) pl-2 text-lg font-bold tracking-[3px] text-(--main-text-color)"
 				>
 					各種SNS / リンク
 				</h2>
-				<ul>
+				<ul class="sitemap-ul">
 					<li>
-						<a href="https://x.com/ATShift186_XZ1" target="_blank">
+						<a href="https://x.com/t_aoki186" target="_blank">
 							<i class="fa-brands fa-x-twitter mr-1 text-xs"></i>
-							<span>Twitter</span>
+							<span>X(Twitter)</span>
 						</a>
 					</li>
 					<li>
-						<a href="https://msk.atserver186.jp" target="_blank">
+						<a href="https://misskey.io/@t_aoki186" target="_blank">
 							<i class="tf26-icon-material icon-misskey-mi mr-1 text-xs"></i>
-							<span>Misskey(あっとみすき)</span>
+							<span>Misskey.io</span>
 						</a>
 					</li>
 					<li>
-						<a href="https://www.youtube.com/@atshift" target="_blank">
-							<i class="fa-brands fa-youtube mr-1 text-xs"></i>
-							<span>YouTube</span>
+						<p class="text-gray-500">
+							<i class="tf26-icon-material icon-misskey-mi mr-1 text-xs"></i>
+							<span>あっとみすき(準備中)</span>
+						</p>
+						<!--
+						<a href="https://mi.atserver186.jp/t-aoki186" target="_blank">
+							<i class="tf26-icon-material icon-misskey-mi mr-1 text-xs"></i>
+							<span>あっとみすき</span>
 						</a>
+						-->
 					</li>
 					<li>
-						<a href="https://developer.atserver186.jp" target="_blank">
-							<i class="fa-solid fa-comment mr-1 text-xs"></i>
-							<span>ATSocial</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://github.com/t-aoki186/" target="_blank">
+						<a href="https://github.com/t-aoki186" target="_blank">
 							<i class="fa-brands fa-github mr-1 text-xs"></i>
 							<span>Github</span>
 						</a>
 					</li>
 					<li>
-						<a href="/site/links">
-							<i class="fa-solid fa-ellipsis mr-1 text-xs"></i>
-							<span>すべてのSNS / リンクを見る</span>
+						<a href="https://gitlab.atserver186.jp/t-aoki186" target="_blank">
+							<i class="fa-brands fa-gitlab mr-1 text-xs"></i>
+							<span>Gitlab</span>
+						</a>
+					</li>
+					<li>
+						<a href="/site/mulinks">
+							<i class="fa-solid fa-arrow-up-right-from-square mr-1 text-xs"></i>
+							<span>相互リンク</span>
 						</a>
 					</li>
 				</ul>
@@ -157,10 +153,29 @@
 </ol>
 
 <style>
+	.sitemap-container {
+		display: flex;
+	}
+
 	.sitemap-content {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
 		width: calc(100% / 3);
+	}
+
+	.sitemap-ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+	}
+
+	@media (max-width: 768px) {
+		.sitemap-container {
+			flex-direction: column;
+		}
+
+		.sitemap-content {
+			width: 100%;
+		}
 	}
 </style>
