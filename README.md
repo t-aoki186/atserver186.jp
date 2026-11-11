@@ -1,54 +1,56 @@
-# sv
+# ATSERVER
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## プロジェクト概要
+当プロジェクトは、既存のATSERVERホームページを動的から静的へ書き換えるものです。
 
-## Creating a project
+[rewrite.atserver186.jp](https://rewrite.atserver186.jp)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## コミットルール
+[Conventional Commits ( www.conventionalcommits.org/ja/v1.0.0/ )](https://www.conventionalcommits.org/ja/v1.0.0/)に基づきコミットを行います。
 
-```sh
-# create a new project
-npx sv create my-app
+- 原文
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
 ```
 
-To recreate this project with the same configuration:
+- 訳
+```
+<型>[任意 スコープ]: <タイトル>
 
-```sh
-# recreate this project
-pnpm dlx sv@1.3.0 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" enhanced-img sveltekit-adapter="adapter:static" mdsvex storybook --install pnpm .
+[任意 本文]
+
+[任意 フッター]
 ```
 
-## Adding features
+## 依存関係のインストール
 
-Add features to your project with `sv add`:
+`node.js`,`npm`,`pnpm`が開発用PCに入っていることを確認してください。
+次のコマンドを使って、必要なパッケージを取得します。
 
-```sh
-npx sv add
+```
+pnpm install
 ```
 
-For example, to add Tailwind CSS:
+## 開発サーバを建てる
 
-```sh
-npx sv add tailwindcss
+通常は`http://localhost:5173`に開発サーバを建てられます。
+
+```
+pnpm run dev
 ```
 
-## Developing
+ウィンドウを開く場合は`--open`を付けます。
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## 本番環境での動かし方
 
-```sh
-npm run dev
+ビルド
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```
+pnpm run build
 ```
 
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
+ビルドが完了したら、`/build`内のファイルをApachやnginxなどのウェブサーバーにデプロイします。
