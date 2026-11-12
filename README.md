@@ -40,7 +40,7 @@ pnpm install
 通常は`http://localhost:5173`に開発サーバを建てられます。
 
 ```
-pnpm run dev
+pnpm dev
 ```
 
 ウィンドウを開く場合は`--open`を付けます。
@@ -50,7 +50,7 @@ pnpm run dev
 ビルド
 
 ```
-pnpm run build
+pnpm build
 ```
 
 ビルドが完了したら、`/build`内のファイルをApachやnginxなどのウェブサーバーにデプロイします。
