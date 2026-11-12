@@ -1,3 +1,18 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+:root {
+	--main-bg-color: #e2e2e2;
+	--main-accent-color: #383838;
+	--sub-accent-color: #424242;
+	--main-text-color: #000;
+	--sub-text-color: #ffffff;
+	--emphasis-text-color: #e2e2e2;
+	--small-text-color: #a7a7a7;
+}
+
+body {
+	font-family: 'Noto Sans JP', sans-serif;
+	background-color: var(--main-bg-color);
+}
