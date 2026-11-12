@@ -38,7 +38,7 @@
 					<a href={resolve('/tools')}>ツール</a>
 				</li>
 				<li>
-					<a href={resolve('/download')}>ダウンロード</a>
+					<a href={resolve('/donwloads')}>ダウンロード</a>
 				</li>
 				<li>
 					<a href={resolve('/contact')}>お問い合わせ</a>
