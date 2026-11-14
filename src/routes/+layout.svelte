@@ -19,7 +19,7 @@
 				alt="ATSERVER Logo"
 				class="h-10 w-10"
 			/>
-			<p class="my-auto ml-2 text-bace font-bold">ATSERVER</p>
+			<p class="my-auto ml-2 text-bace font-bold header-logo-txt">ATSERVER</p>
 		</a>
 		<nav class="my-auto ml-auto flex">
 			<ul class="flex gap-4">
