@@ -34,7 +34,7 @@
 			/>
 			<!--<p class="text-bace header-logo-txt my-auto ml-2 font-bold">ATSERVER</p>-->
 		</a>
-		<nav class="my-auto ml-auto flex">
+		<nav class="my-auto ml-auto hidden sm:flex">
 			<ul class="flex gap-4">
 				<li>
 					<button
@@ -76,6 +76,14 @@
 				</li>
 			</ul>
 		</nav>
+		<button
+			type="button"
+			class="my-auto ml-auto flex cursor-pointer flex-col sm:hidden"
+			title="メニュー"
+		>
+			<i class="fa-solid fa-bars mx-auto text-xl"></i>
+			<p class="text-[10px]">MENU</p>
+		</button>
 	</div>
 </header>
 
