@@ -5,6 +5,8 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
+@custom-variant scl (&.scrolled);
+
 :root {
 	--main-bg-color: #e2e2e2;
 	--main-accent-color: #383838;
