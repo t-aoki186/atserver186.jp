@@ -12,6 +12,7 @@
 <svelte:window onscroll={() => (scrolled = window.scrollY > 50)} />
 
 <svelte:head>
+	<link rel="stylesheet" href="https://cdn.atserver186.jp/libs/fontawesome/css/all.min.css" />
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
@@ -36,24 +37,32 @@
 		<nav class="my-auto ml-auto flex">
 			<ul class="flex gap-4">
 				<li>
-					<button type="button" class="">
-						<kbd>Ctrl&plus;k</kbd>
+					<button
+						type="button"
+						class="cursor-pointer rounded-sm sm:border sm:bg-gray-300/40 px-1 py-0.5 text-xs"
+					>
+						<div class="hidden sm:flex">
+							<kbd><i class="fa-solid fa-magnifying-glass"></i>Ctrl&plus;k</kbd>
+						</div>
+						<div class="flex sm:hidden">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</div>
 					</button>
 				</li>
 				<li>
-					<a href={resolve('/')}>ホーム</a>
+					<a href={resolve('/')} class="text-xs">ホーム</a>
 				</li>
 				<li>
-					<a href={resolve('/services')}>サービス</a>
+					<a href={resolve('/services')} class="text-xs">サービス</a>
 				</li>
 				<li>
-					<a href={resolve('/tools')}>ツール</a>
+					<a href={resolve('/tools')} class="text-xs">ツール</a>
 				</li>
 				<li>
-					<a href={resolve('/donwloads')}>ダウンロード</a>
+					<a href={resolve('/donwloads')} class="text-xs">ダウンロード</a>
 				</li>
 				<li>
-					<a href={resolve('/contact')}>お問い合わせ</a>
+					<a href={resolve('/contact')} class="text-xs">お問い合わせ</a>
 				</li>
 			</ul>
 		</nav>
