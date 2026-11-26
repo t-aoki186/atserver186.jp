@@ -7,6 +7,12 @@
 	let scrolled = $state(false);
 
 	let { children }: LayoutProps = $props();
+
+	let openedHeader = $state(false);
+
+	function openHeader() {
+		openedHeader = !openedHeader;
+	}
 </script>
 
 <svelte:window onscroll={() => (scrolled = window.scrollY > 50)} />
@@ -18,8 +24,10 @@
 
 <header>
 	<div
-		class="fixed flex min-h-12 w-full overflow-hidden border border-black/10 bg-white/50 p-2 backdrop-blur-md transition-all duration-500 scl:right-3 scl:left-3 scl:m-2.5 scl:mt-2.5 scl:mb-auto scl:w-auto scl:rounded-2xl scl:p-2.5"
-		class:scrolled
+		class="fixed flex min-h-12 w-full overflow-hidden border border-black/10 bg-white/50 p-2 backdrop-blur-md transition-all duration-500
+		scl:right-3 scl:left-3 scl:m-2.5 scl:mt-2.5 scl:mb-auto scl:w-auto scl:rounded-2xl scl:p-2.5 
+		hop:min-h-screen"
+		class:scrolled class:openedHeader
 	>
 		<a href={resolve('/')} title="ホーム" class="flex">
 			<img
@@ -30,10 +38,19 @@
 			<img
 				src="https://pic.atserver186.jp/img/atserver/root/ats_logo.webp"
 				alt="ATSERVER Logo"
-				class="my-auto flex h-10 w-auto md:hidden"
+				class="my-auto flex h-10 w-auto md:hidden hop:my-0" class:openedHeader
 			/>
 			<!--<p class="text-bace header-logo-txt my-auto ml-2 font-bold">ATSERVER</p>-->
 		</a>
+
+		<div class="hidden hop:flex hop:flex-col mt-10 -ml-3" class:openedHeader>
+			<hr class="border border-black w-full"/>
+			<ul>
+				<li>test1</li>
+				<li>test2</li>
+			</ul>
+		</div>
+
 		<nav class="my-auto ml-auto hidden sm:flex">
 			<ul class="flex gap-4">
 				<li>
@@ -78,10 +95,11 @@
 		</nav>
 		<button
 			type="button"
-			class="my-auto ml-auto flex cursor-pointer flex-col sm:hidden"
+			onclick={openHeader}
+			class="my-auto ml-auto flex cursor-pointer flex-col sm:hidden hop:my-0" class:openedHeader
 			title="メニュー"
 		>
-			<i class="fa-solid fa-bars mx-auto text-xl"></i>
+			<i class="fa-solid fa-bars mx-auto text-xl" class:openedHeader></i>
 			<p class="text-[10px]">MENU</p>
 		</button>
 	</div>

@@ -6,6 +6,8 @@
 @plugin '@tailwindcss/typography';
 
 @custom-variant scl (&.scrolled);
+@custom-variant hop (&.openedHeader);
+@custom-variant hoph (&.openedHeaderH);
 
 :root {
 	--main-bg-color: #e2e2e2;
