@@ -17,6 +17,8 @@
 	--sub-text-color: #ffffff;
 	--emphasis-text-color: #e2e2e2;
 	--small-text-color: #a7a7a7;
+
+	--main-black-color: #000;
 }
 
 /*s:フォント*/
@@ -50,7 +52,24 @@ body {
 	background-color: var(--main-bg-color);
 }
 
-.header-logo-txt{
-    /*font-family: 'Noto Sans JP', sans-serif !important;*/
-    font-weight: var(--font-weight-bold) /* 700 */;
+.top-section {
+	background-color: var(--main-bg-color);
+	background-image:
+		linear-gradient(0deg, transparent 31px, #333 32px),
+		linear-gradient(90deg, transparent 31px, #333 32px);
+	background-size: 32px 32px;
+	height: 100vh;
+}
+
+.header-logo-txt {
+	/*font-family: 'Noto Sans JP', sans-serif !important;*/
+	font-weight: var(--font-weight-bold) /* 700 */;
+}
+
+.section-title {
+	font-size: 1.8rem;
+	font-weight: 600;
+	text-align: left;
+	color: var(--main-text-color);
+	padding: 10px 0;
 }
