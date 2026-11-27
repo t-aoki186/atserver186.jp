@@ -1,0 +1,22 @@
+.custom-icon {
+	display: inline-block;
+	width: 1.2em; /* 文字サイズに合わせる */
+	height: 1.2em;
+    margin-bottom: 8px;
+	background-color: currentColor; /* 文字色と同じ色にする */
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	vertical-align: middle;
+}
+
+.icon-atserver {
+	-webkit-mask-image: url('https://cdn.atserver186.jp/img/material/ats-logo.webp');
+	mask-image: url('https://cdn.atserver186.jp/img/material/ats-logo.webp');
+}
+
+.social-misskey-mi {
+	-webkit-mask-image: url('https://cdn.atserver186.jp/img/material/logo/misskey-mi-logo.svg');
+	mask-image: url('https://cdn.atserver186.jp/img/material/logo/misskey-mi-logo.svg');
+}

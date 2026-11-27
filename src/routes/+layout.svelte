@@ -1,5 +1,6 @@
 <script lang="ts">
 	import './layout.css';
+	import './custom-icon.css';
 	import favicon from '#lib/assets/favicon.ico';
 	import type { LayoutProps } from './$types';
 	import { resolve } from '$app/paths';
@@ -159,11 +160,16 @@
 						><i class="fa-brands fa-x-twitter text-2xl text-white"></i></a
 					>
 					<a href="https://misskey.io/@t_aoki186/" title="Misskey.io"
-						><i class="cu-brands social-misskey text-2xl text-white"></i></a
+						><i class="custom-icon social-misskey-mi text-2xl text-white"></i></a
 					>
+					<span title="あっとミスキ"
+						><i class="custom-icon social-misskey-mi text-2xl text-gray-400"></i></span
+					>
+					<!--
 					<a href="https://mi.atserver186.jp/@t_aoki186" title="あっとミスキ"
-						><i class="cu-brands social-misskey text-2xl text-white"></i></a
+						><i class="custom-icon social-misskey-mi text-2xl text-white"></i></a
 					>
+					-->
 					<a href="https://github.com/t-aoki186/" title="Github"
 						><i class="fa-brands fa-github text-2xl text-white"></i></a
 					>
