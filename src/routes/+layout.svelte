@@ -153,8 +153,8 @@
 		<div class="mobile-menu-clip">
 			<nav id="mobile-navigation" aria-label="モバイルナビゲーション">
 				<ul>
-					{#each mobileLinks as link (link.href)}
-						<li>
+					{#each mobileLinks as link, index (link.href)}
+						<li style={`--menu-item-index: ${index}`}>
 							<a href={link.href} onclick={() => (openedHeader = false)}>
 								<i class={`fa-solid ${link.icon}`} aria-hidden="true"></i>
 								<span>{link.label}</span>
