@@ -171,7 +171,7 @@
 	{@render children()}
 </section>
 
-<footer class="footer-bg-color p-15">
+<footer class="footer-bg-color md:p-15 p-5">
 	<div class="mb-5 hidden md:grid md:grid-cols-3 md:gap-4">
 		<div class="">
 			<img
