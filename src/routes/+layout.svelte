@@ -22,6 +22,13 @@
 		{ href: resolve('/contact'), label: 'お問い合わせ', icon: 'fa-envelope' }
 	];
 
+	const socialLinks = [
+		{ href: resolve('/'), label: 'X(旧Twitter)', iconcat: 'fa-brands' , icon: 'fa-x-twitter' },
+		{ href: resolve('/services'), label: 'Misskey.io', iconcat: 'custom-icon' , icon: 'social-misskey-mi' },
+		{ href: resolve('/tools'), label: 'Github', iconcat: 'fa-brands' , icon: 'fa-github' },
+		{ href: resolve('/donwloads'), label: 'Gitlab(ats)', iconcat: 'fa-brands' , icon: 'fa-gitlab' }
+	];
+
 	afterNavigate(() => (openedHeader = false));
 
 	onMount(() => {
@@ -146,7 +153,7 @@
 </section>
 
 <footer class="footer-bg-color p-15">
-	<div class="mb-5 grid grid-cols-3 gap-4">
+	<div class="mb-5 md:grid md:grid-cols-3 md:gap-4">
 		<div class="">
 			<img
 				src="https://pic.atserver186.jp/img/atserver/root/ats_logo.webp"
@@ -155,28 +162,15 @@
 			/>
 			<div>
 				<p class="text-lg text-white">Social</p>
-				<div class="my-4">
-					<a href="https://x.com/t_aoki186/" title="X(Twitter)"
-						><i class="fa-brands fa-x-twitter text-2xl text-white"></i></a
-					>
-					<a href="https://misskey.io/@t_aoki186/" title="Misskey.io"
-						><i class="custom-icon social-misskey-mi text-2xl text-white"></i></a
-					>
-					<span title="あっとミスキ"
-						><i class="custom-icon social-misskey-mi text-2xl text-gray-400"></i></span
-					>
-					<!--
-					<a href="https://mi.atserver186.jp/@t_aoki186" title="あっとミスキ"
-						><i class="custom-icon social-misskey-mi text-2xl text-white"></i></a
-					>
-					-->
-					<a href="https://github.com/t-aoki186/" title="Github"
-						><i class="fa-brands fa-github text-2xl text-white"></i></a
-					>
-					<a href="https://gitlab.atserver186.jp/t-aoki186/" title="Gitlab(ats)"
-						><i class="fa-brands fa-gitlab text-2xl text-white"></i></a
-					>
-				</div>
+				<ul class="my-4 flex gap-4">
+					{#each socialLinks as link (link.href)}
+						<li>
+							<a href={link.href} title={link.label}>
+								<i class={`${link.iconcat} ${link.icon} text-2xl text-white`} aria-hidden="true"></i>
+							</a>
+						</li>
+					{/each}
+				</ul>
 			</div>
 		</div>
 		<div class="">
