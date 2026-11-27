@@ -143,3 +143,68 @@
 <section class="min-h-screen">
 	{@render children()}
 </section>
+
+<footer class="footer-bg-color p-15">
+	<div class="mb-5 grid grid-cols-3 gap-4">
+		<div class="">
+			<img
+				src="https://pic.atserver186.jp/img/atserver/root/ats_logo.webp"
+				alt="ATSERVER Logo"
+				class="mb-4 w-[15%]"
+			/>
+			<div>
+				<p class="text-lg text-white">Social</p>
+				<div class="my-4">
+					<a href="https://x.com/t_aoki186/" title="X(Twitter)"
+						><i class="fa-brands fa-x-twitter text-2xl text-white"></i></a
+					>
+					<a href="https://misskey.io/@t_aoki186/" title="Misskey.io"
+						><i class="cu-brands social-misskey text-2xl text-white"></i></a
+					>
+					<a href="https://mi.atserver186.jp/@t_aoki186" title="あっとミスキ"
+						><i class="cu-brands social-misskey text-2xl text-white"></i></a
+					>
+					<a href="https://github.com/t-aoki186/" title="Github"
+						><i class="fa-brands fa-github text-2xl text-white"></i></a
+					>
+					<a href="https://gitlab.atserver186.jp/t-aoki186/" title="Gitlab(ats)"
+						><i class="fa-brands fa-gitlab text-2xl text-white"></i></a
+					>
+				</div>
+			</div>
+		</div>
+		<div class="">
+			<p class="text-lg text-white">Information</p>
+			<ul class="mt-2">
+				<li>
+					<a href={resolve('/')} class="text-white">test</a>
+				</li>
+				<li>
+					<a href={resolve('/')} class="text-white">test</a>
+				</li>
+				<li>
+					<a href={resolve('/')} class="text-white">test</a>
+				</li>
+			</ul>
+		</div>
+		<div class="">
+			<p class="text-lg text-white">Policies</p>
+			<ul class="mt-2">
+				<li>
+					<a href={resolve('/')} class="text-white">test</a>
+				</li>
+				<li>
+					<a href={resolve('/')} class="text-white">test</a>
+				</li>
+				<li>
+					<a href={resolve('/')} class="text-white">test</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<img
+		src="https://pic.atserver186.jp/img/atserver/root/alft_h.svg"
+		class="mx-auto opacity-70 invert"
+		alt="ATSERVER"
+	/>
+</footer>

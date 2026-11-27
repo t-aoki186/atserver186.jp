@@ -233,3 +233,9 @@ body {
 		--header-duration: 0ms;
 	}
 }
+
+
+/*フッター*/
+.footer-bg-color{
+	background: linear-gradient(to top, #424242, black);
+}
