@@ -12,6 +12,8 @@
 	let { children }: LayoutProps = $props();
 
 	let openedHeader = $state(false);
+	let openedFooterInfo = $state(false);
+	let openedFooterPolicies = $state(false);
 	let menuButton: HTMLButtonElement;
 
 	const mobileLinks = [
@@ -216,22 +218,52 @@
 	<div class="md:hidden">
 		<div class="mb-8">
 			<p class="text-lg text-white">Menu</p>
-			<details class="accordion-003">
-				<summary class="py-4">Information</summary>
-				<ul class="mb-4">
-					{#each infoMenuLinks as link (link)}
-						<li><a href={link.href} class="text-white">{link.label}</a></li>
-					{/each}
-				</ul>
-			</details>
-			<details class="accordion-003">
-				<summary class="py-4">Policies</summary>
-				<ul class="mb-4">
-					{#each policiesMenuLinks as link (link)}
-						<li><a href={link.href} class="text-white">{link.label}</a></li>
-					{/each}
-				</ul>
-			</details>
+			<div class="accordion-003" class:expanded={openedFooterInfo}>
+				<button
+					type="button"
+					class="accordion-trigger py-4"
+					aria-expanded={openedFooterInfo}
+					aria-controls="footer-information"
+					onclick={() => (openedFooterInfo = !openedFooterInfo)}
+				>Information</button>
+				<div
+					id="footer-information"
+					class="accordion-content"
+					inert={!openedFooterInfo}
+					aria-hidden={!openedFooterInfo}
+				>
+					<div class="accordion-clip">
+						<ul class="pb-4">
+							{#each infoMenuLinks as link (link)}
+								<li><a href={link.href} class="text-white">{link.label}</a></li>
+							{/each}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="accordion-003" class:expanded={openedFooterPolicies}>
+				<button
+					type="button"
+					class="accordion-trigger py-4"
+					aria-expanded={openedFooterPolicies}
+					aria-controls="footer-policies"
+					onclick={() => (openedFooterPolicies = !openedFooterPolicies)}
+				>Policies</button>
+				<div
+					id="footer-policies"
+					class="accordion-content"
+					inert={!openedFooterPolicies}
+					aria-hidden={!openedFooterPolicies}
+				>
+					<div class="accordion-clip">
+						<ul class="pb-4">
+							{#each policiesMenuLinks as link (link)}
+								<li><a href={link.href} class="text-white">{link.label}</a></li>
+							{/each}
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div>
 			<p class="text-lg text-white">Social</p>
