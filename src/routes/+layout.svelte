@@ -23,10 +23,29 @@
 	];
 
 	const socialLinks = [
-		{ href: resolve('/'), label: 'X(旧Twitter)', iconcat: 'fa-brands' , icon: 'fa-x-twitter' },
-		{ href: resolve('/services'), label: 'Misskey.io', iconcat: 'custom-icon' , icon: 'social-misskey-mi' },
-		{ href: resolve('/tools'), label: 'Github', iconcat: 'fa-brands' , icon: 'fa-github' },
-		{ href: resolve('/donwloads'), label: 'Gitlab(ats)', iconcat: 'fa-brands' , icon: 'fa-gitlab' }
+		{ href: resolve('/'), label: 'X(旧Twitter)', iconcat: 'fa-brands', icon: 'fa-x-twitter' },
+		{
+			href: resolve('/services'),
+			label: 'Misskey.io',
+			iconcat: 'custom-icon',
+			icon: 'social-misskey-mi'
+		},
+		{ href: resolve('/tools'), label: 'Github', iconcat: 'fa-brands', icon: 'fa-github' },
+		{ href: resolve('/donwloads'), label: 'Gitlab(ats)', iconcat: 'fa-brands', icon: 'fa-gitlab' }
+	];
+
+	const infoMenuLinks = [
+		{ href: resolve('/'), label: 'infoA' },
+		{ href: resolve('/'), label: 'infoB' },
+		{ href: resolve('/'), label: 'infoC' },
+		{ href: resolve('/'), label: 'infoD' }
+	];
+
+	const policiesMenuLinks = [
+		{ href: resolve('/'), label: 'poliA' },
+		{ href: resolve('/'), label: 'poliB' },
+		{ href: resolve('/'), label: 'poliC' },
+		{ href: resolve('/'), label: 'poliD' }
 	];
 
 	afterNavigate(() => (openedHeader = false));
@@ -153,7 +172,7 @@
 </section>
 
 <footer class="footer-bg-color p-15">
-	<div class="mb-5 md:grid md:grid-cols-3 md:gap-4">
+	<div class="mb-5 hidden md:grid md:grid-cols-3 md:gap-4">
 		<div class="">
 			<img
 				src="https://pic.atserver186.jp/img/atserver/root/ats_logo.webp"
@@ -163,10 +182,11 @@
 			<div>
 				<p class="text-lg text-white">Social</p>
 				<ul class="my-4 flex gap-4">
-					{#each socialLinks as link (link.href)}
+					{#each socialLinks as link (link)}
 						<li>
 							<a href={link.href} title={link.label}>
-								<i class={`${link.iconcat} ${link.icon} text-2xl text-white`} aria-hidden="true"></i>
+								<i class={`${link.iconcat} ${link.icon} text-2xl text-white`} aria-hidden="true"
+								></i>
 							</a>
 						</li>
 					{/each}
@@ -176,32 +196,57 @@
 		<div class="">
 			<p class="text-lg text-white">Information</p>
 			<ul class="mt-2">
-				<li>
-					<a href={resolve('/')} class="text-white">test</a>
-				</li>
-				<li>
-					<a href={resolve('/')} class="text-white">test</a>
-				</li>
-				<li>
-					<a href={resolve('/')} class="text-white">test</a>
-				</li>
+				{#each infoMenuLinks as link (link)}
+					<li><a href={link.href} class="text-white">{link.label}</a></li>
+				{/each}
 			</ul>
 		</div>
 		<div class="">
 			<p class="text-lg text-white">Policies</p>
 			<ul class="mt-2">
-				<li>
-					<a href={resolve('/')} class="text-white">test</a>
-				</li>
-				<li>
-					<a href={resolve('/')} class="text-white">test</a>
-				</li>
-				<li>
-					<a href={resolve('/')} class="text-white">test</a>
-				</li>
+				{#each policiesMenuLinks as link (link)}
+					<li><a href={link.href} class="text-white">{link.label}</a></li>
+				{/each}
 			</ul>
 		</div>
 	</div>
+	<!--e: pc-footer-->
+	<!---->
+	<!--s: sp-footer-->
+	<div class="md:hidden">
+		<div class="mb-8">
+			<p class="text-lg text-white">Menu</p>
+			<details class="accordion-003">
+				<summary class="py-4">Information</summary>
+				<ul class="mb-4">
+					{#each infoMenuLinks as link (link)}
+						<li><a href={link.href} class="text-white">{link.label}</a></li>
+					{/each}
+				</ul>
+			</details>
+			<details class="accordion-003">
+				<summary class="py-4">Policies</summary>
+				<ul class="mb-4">
+					{#each policiesMenuLinks as link (link)}
+						<li><a href={link.href} class="text-white">{link.label}</a></li>
+					{/each}
+				</ul>
+			</details>
+		</div>
+		<div>
+			<p class="text-lg text-white">Social</p>
+			<ul class="my-4 flex gap-4">
+				{#each socialLinks as link (link)}
+					<li>
+						<a href={link.href} title={link.label}>
+							<i class={`${link.iconcat} ${link.icon} text-2xl text-white`} aria-hidden="true"></i>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	</div>
+	<!--e: sp-footer-->
 	<img
 		src="https://pic.atserver186.jp/img/atserver/root/alft_h.svg"
 		class="mx-auto opacity-70 invert"
