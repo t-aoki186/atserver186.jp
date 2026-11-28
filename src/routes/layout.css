@@ -58,6 +58,53 @@ body {
 	background-color: var(--main-text-color);
 }
 
+.link-main {
+	display: flex;
+	position: relative;
+	background-color: white;
+	border: var(--main-text-color) solid 1.5px;
+	color: var(--title-bg-color);
+	transition: 0.5s;
+	text-decoration: none;
+	border-radius: 50px;
+	padding: 10px 15px;
+	width: fit-content;
+	vertical-align: middle;
+	align-items: center;
+	cursor: pointer;
+	@apply mx-auto text-center;
+}
+
+/* .link-main-underline: 下線アニメーション用 */
+.link-main-underline {
+	position: relative;
+	display: inline-block;
+	@apply mx-auto;
+}
+
+/*.link-main:hover {
+	background-color: color-mix(in srgb, var(--hover-main-text-color), transparent 90%);
+}*/
+
+.link-main-underline::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: -2px;
+	width: 0; /* 初期状態は幅0 */
+	height: 1px;
+	background: var(--main-text-color);
+	transition: 0.3s;
+}
+
+/* 親aタグのホバーで下線を表示 */
+.link-main:hover .link-main-underline::after {
+	width: 95%;
+	text-align: center;
+	align-items: center;
+}
+
 .top-section {
 	background-color: var(--main-bg-color);
 	background-image:
