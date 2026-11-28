@@ -52,6 +52,12 @@ body {
 	background-color: var(--main-bg-color);
 }
 
+.main-hr {
+	border: none;
+	height: 1px;
+	background-color: var(--main-text-color);
+}
+
 .top-section {
 	background-color: var(--main-bg-color);
 	background-image:
