@@ -4,19 +4,19 @@
 
 <main>
 	<section class="top-section"></section>
-	<section class="container mx-auto">
+	<section class="container mx-auto p-5 md:p-0">
 		<h1 class="my-10 text-3xl">・お知らせ</h1>
 		<hr class="main-hr" />
 	</section>
-	<section class="container mx-auto">
+	<section class="container mx-auto p-5 md:p-0">
 		<h1 class="my-10 text-3xl">・ツール</h1>
 		<hr class="main-hr" />
 	</section>
-	<section class="container mx-auto">
+	<section class="container mx-auto p-5 md:p-0">
 		<h1 class="my-10 text-3xl">・サービス</h1>
 		<hr class="main-hr" />
 	</section>
-	<section class="container mx-auto">
+	<section class="container mx-auto p-5 md:p-0">
 		<h1 class="my-10 text-3xl">・このサイトについて</h1>
 
 		<div class="md:grid md:grid-cols-2">
@@ -29,7 +29,7 @@
 					何か問題が発生した場合や質問がある場合は、お問い合わせフォームからご連絡ください。
 				</p>
 			</div>
-			<div class="flex rounded-2xl bg-white py-10">
+			<div class="flex rounded-2xl bg-white py-10 mt-5 md:mt-0">
 				<img
 					src="https://pic.atserver186.jp/img/atserver/root/alft_h.png"
 					alt="ATSERVERロゴ"
@@ -49,7 +49,7 @@
 
 		<hr class="main-hr" />
 	</section>
-	<section class="container mx-auto">
+	<section class="container mx-auto p-5 md:p-0">
 		<h1 class="my-10 text-3xl">・アクセスカウンター</h1>
 		<img
 			src="https://count.atserver186.jp/@atserver186.jp?name=atserver186.jp&theme=original-old&padding=8&offset=0&align=top&scale=1&pixelated=1&darkmode=0"
@@ -64,7 +64,7 @@
 		</a>
 		<hr class="main-hr" />
 	</section>
-	<section class="container mx-auto">
+	<section class="container mx-auto p-5 md:p-0">
 		<button type="button" class="">アニメーションをもう一度再生する</button>
 		<a href={resolve('/')} class="">開発を担当したサービス</a>
 	</section>
